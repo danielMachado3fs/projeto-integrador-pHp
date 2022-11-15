@@ -1,6 +1,6 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="bootstrap5/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="js/sweetalert2/sweetalert2.min.css">
 
 <!-- BoxIcons -->
 <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
