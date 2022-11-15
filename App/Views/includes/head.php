@@ -22,7 +22,9 @@
 <link rel="stylesheet" href="css/formulario.css" />
 
 <!-- Scripts -->
-<script src="jquery/jquery.min.js"></script>
-<script src="popperjs/dist/umd/popper.min.js"></script>
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/popperjs/dist/umd/popper.min.js"></script>
 <script src="bootstrap5/dist/js/bootstrap.min.js"></script>
-<script src="sweetalert2/sweetalert2.min.js"></script>
+<script src="js/sweetalert2/sweetalert2.min.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/jquery.maskMoney.min.js"></script>
