@@ -14,13 +14,16 @@
 }
 
 :root {
-    --shape: hsl(0, 0%, 100%);
-    --primary-color: hsl(0, 59%, 48%);
+    --shape: #e6eef1;
+    --primary-color: #005776;
+    --secondary-color: #669aad;
+    --tree-color: #b3cdd6;
     --text-color: hsl(0, 2%, 39%);
     --background-color: hsl(210, 10%, 98%);
     --submenu-color: hsl(0, 0%, 91%);
     --line-color: hsl(0, 0%, 77%);
     --shape-black: hsl(0, 0%, 0%);
+
     --colorText-00: #ffffff;
     --colorText-01: #c33333;
     --colorText-02: #7d7979;
@@ -46,19 +49,6 @@ body {
     height: 100vh;
     background-color: var(--background-color);
 }
-
-/* .container {
-  padding: 20px;
-}
-
-.page-title {
-  padding-bottom: 15px;
-}
-
-.page-body {
-  background-color: #ffffff;
-  padding: 15px;
-} */
 
 a {
     text-decoration: none;
@@ -89,7 +79,7 @@ button {
     background-color: var(--shape);
     width: 250px;
     height: 100%;
-    padding: 8px 0;
+    padding: 0px 0px 8px 0px;
 }
 
 .sidebar .logo-content {
@@ -244,19 +234,14 @@ button {
     display: block;
 }
 
-.content .top-bar .profile .profile-content .dropdown-profile {
-}
-
 .container {
     padding: 20px;
-}
-
-.container .title {
 }
 
 .container .title h1 {
     color: var(--primary-color);
     font-size: 2.1rem;
+    padding-bottom: 20px;
 }
 
 .container .filter-wrapper {
@@ -274,13 +259,8 @@ button {
     padding-inline: 20px;
     display: flex;
     flex-direction: row;
-    justify-container: space-between;
+    justify-content: space-between;
     align-items: center;
-
-    /* border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  border-right: solid 1.5px;
-  border-right-color: var(--line-color); */
 }
 
 .container .filter-wrapper .filter .filter-select {
@@ -310,6 +290,7 @@ button {
     height: 40px;
     border-radius: 5px;
 }
+
 .filter-btn {
     width: 65px;
     padding: 10px;
@@ -379,6 +360,7 @@ button {
     margin-inline: 3px;
     background-color: var(--background-color);
 }
+
 .container .table table button i {
     padding: 5px;
 }
@@ -386,6 +368,7 @@ button {
 .container .table table button:nth-child(1) {
     background-color: #3b6dee;
 }
+
 .container .table table button:nth-child(1):hover {
     background-color: #2753c2;
 }
@@ -393,12 +376,15 @@ button {
 .container .table table button:nth-child(2) {
     background-color: #ff0000;
 }
+
 .container .table table button:nth-child(2):hover {
     background-color: #d60101;
 }
+
 .container .table table button:nth-child(3) {
     background-color: #07e037;
 }
+
 .container .table table button:nth-child(3):hover {
     background-color: #02bb2a;
 }
