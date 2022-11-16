@@ -49,8 +49,6 @@ class Usuario extends Model
             $this->_set('id', $usuario['id']);
             $this->_set('nome', $usuario['nome']);
         }
-
-
         return $this;
     }
 }
