@@ -10,33 +10,20 @@ use MF\Model\Container;
 //os models
 use App\Models\Produto;
 use App\Models\Info;
+use App\Models\Veiculo;
 
 
-class VeiculosController extends Action {
+class VeiculosController extends Action
+{
 
-	public function index() {
+	public function index()
+	{
+		$veiculo = Container::getModel('Veiculo');
 
-		// $produto = Container::getModel('Produto');
-
-		// $produtos = $produto->getProdutos();
-
-		// @$this->view->dados = $produtos;
-
-		$this->render('index');
-	}
-
-	public function sobreNos() {
-
-		$info = Container::getModel('Info');
-
-		$informacoes = $info->getInfo();
+		$informacoes = $veiculo->getVeiculos();
 
 		@$this->view->dados = $informacoes;
 
-		$this->render('sobreNos');
+		$this->render('index');
 	}
-
 }
-
-
-?>
