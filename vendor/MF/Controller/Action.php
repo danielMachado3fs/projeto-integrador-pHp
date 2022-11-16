@@ -10,11 +10,13 @@ abstract class Action {
 		$this->view = new \stdClass();
 	}
 
-	protected function render($view, $view_data = []) {
+	protected function render($view, $view_data = [], $layout = '') {
 		$this->view->page = $view;
-
-		if(file_exists("../App/Views/layoutDefault.php")) {
-			require_once "../App/Views/layoutDefault.php";
+		if($layout == ''){
+		 $layout = 'layoutDefault';
+		}
+		if(file_exists("../App/Views/".$layout.".php")) {
+			require_once "../App/Views/".$layout.".php";
 		} else {
 			$this->content($view_data);
 		}

@@ -16,26 +16,25 @@ class IndexController extends Action {
 
 	public function index() {
 
-		$produto = Container::getModel('Produto');
+	// 	$produto = Container::getModel('Produto');
 
-		$produtos = $produto->getProdutos();
+	// 	$produtos = $produto->getProdutos();
 
-		@$this->view->dados = $produtos;
+	// 	@$this->view->dados = $produtos;
 
-		$this->render('index');
+	// 	$this->render('index');
 	}
 
 	public function sobreNos() {
 
-		$info = Container::getModel('Info');
+	// 	$info = Container::getModel('Info');
 
-		$informacoes = $info->getInfo();
+	// 	$informacoes = $info->getInfo();
 
-		@$this->view->dados = $informacoes;
+	// 	@$this->view->dados = $informacoes;
 
-		$this->render('sobreNos');
-	}
-
+	// 	$this->render('sobreNos');
+	 }
 }
 
 
