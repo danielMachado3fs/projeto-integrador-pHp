@@ -1,6 +1,6 @@
 $(document).on('blur','.buscaCep',function(){
     let zipcode = $(this).val().replace('-','');
-    if(zipcode.length == 7){
+    if(zipcode.length == 8){
         var url = "https://viacep.com.br/ws/" + zipcode + "/json/";
         $("#estado").val("...");
         $("#cidade").val("...");
