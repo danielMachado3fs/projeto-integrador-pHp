@@ -8,35 +8,39 @@
 }
 
 /* --------------------------  BOTÕES -------------------------- */
-.divBtn {
-  grid-column: 2;
-  grid-row: 1;
+
+.rodape_btn {
   display: flex;
-  place-self: end;
-  gap: 40px;
-  margin: 20px 40px;
-  /* Margin vertical =20px e margin horizontal =40px */
+  flex-direction: row;
+  justify-content: end;
+  padding: 10px;
+}
+
+input[readonly] {
+  background-color: #c6c6c6;
 }
 
 #sendBtn {
-  background-color: var(--colorButtonSave);
+  background-color: var(--primary-color);
   padding: 10px 30px;
   border-radius: 4px;
   color: var(--colorTextButton);
   border: none;
   font-size: 1.4rem;
   font-weight: bold;
+  margin: 0 5px;
 }
 
 #cancelBtn {
-  background-color: var(--colorButtonCancel);
+  border: 2px solid var(--shape-black);
   padding: 10px 30px;
   border-radius: 4px;
-  color: var(--colorTextButton);
-  border: none;
+  color: var(--shape-black);
+  /* border: none; */
   font-size: 1.4rem;
   font-weight: bold;
   transition: width 2s;
+  margin: 0 5px;
 }
 
 #sendBtn:focus,
@@ -50,7 +54,9 @@
 #cancelBtn:hover {
   outline: 0;
   cursor: pointer;
+  color: #fff;
   background-color: var(--colorButtonCancelAnimation);
+  border: 2px solid var(--colorButtonCancelAnimation);
 }
 
 @media (max-width: 380px) {

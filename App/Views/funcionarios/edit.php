@@ -5,7 +5,7 @@
         </div>
         <div class="divForm">
           <div id="form">
-            <form action="/add_store" method="post">
+            <form action="/update_store" method="post">
               <div class="inputFormName">
                 <div>
                   <label for="nome">Nome</label>

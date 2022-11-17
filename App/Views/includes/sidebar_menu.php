@@ -1,6 +1,6 @@
 <nav class="sidebar">
   <div class="logo-content">
-    <img src="assets/images/logo.svg" alt="" width="130" height="60" />
+    <img src="./images/logo3.svg" alt="" width="250" height="70" style="scale: 3.5;"/>
   </div>
 
   <ul class="nav-list">

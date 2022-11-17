@@ -1,9 +1,4 @@
 /* ----------------FORMULÁRIO FUNCIONÃRIOS --------------------*/
-:root {
-    --colorText-00: #ffffff;
-    --colorText-01: #c33333;
-    --backgroundColor-00: #c33333;
-}
 
 .titleFuncionarios {
     color: var(--colorText-00);
@@ -22,11 +17,11 @@
 }
 
 .divForm {
-    width: 1000px;
+    max-width: 1920px;
     /*Para uma tela de computador normal. FAZER OS RESPONSIVOS DEPOIS*/
     margin: 0 auto;
     padding: 5px 20px 0px 20px;
-    background-color: var(--backgroundColor-02);
+    background-color: var(----shape);
     border-radius: 4px;
 }
 
@@ -66,7 +61,7 @@ input {
 /*----------- REMOVE A BORDA DOS INPUT QUANDO CLICADO--------- */
 input:focus {
     outline: 0;
-    border-color: var(--backgroundColor-00);
+    border-color: var(--primary-color);
 }
 
 /* -------------MEDIA------------------ */

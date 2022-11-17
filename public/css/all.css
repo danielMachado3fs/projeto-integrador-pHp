@@ -14,27 +14,25 @@
 }
 
 :root {
-  --shape: hsl(0, 0%, 100%);
-  --primary-color: hsl(0, 59%, 48%);
+  --shape: #e6eef1;
+  --primary-color: #005776;
+  --secondary-color: #669aad;
+  --tree-color: #b3cdd6;
   --text-color: hsl(0, 2%, 39%);
   --background-color: hsl(210, 10%, 98%);
   --submenu-color: hsl(0, 0%, 91%);
   --line-color: hsl(0, 0%, 77%);
   --shape-black: hsl(0, 0%, 0%);
+
   --colorText-00: #ffffff;
   --colorText-01: #c33333;
   --colorText-02: #7d7979;
   --colorText-03: #737373;
   --colorTextButton: #e3e3e3;
-  --backgroundColor-00: #c33333;
-  --backgroundColor-01: #f1f1f1;
-  --backgroundColor-02: #ffffff;
-  --backgroundColor-03: #f5f5f5;
   --colorShadow: #c9c9c9;
   --colorInputBorder: #dcdcdc;
   --colorButtonSave: #3b6dee;
   --colorButtonCancel: #c33333;
-
   font-size: 62.5%; /* 1rem = 10px */
 }
 
@@ -46,19 +44,6 @@ body {
   height: 100vh;
   background-color: var(--background-color);
 }
-
-/* .container {
-  padding: 20px;
-}
-
-.page-title {
-  padding-bottom: 15px;
-}
-
-.page-body {
-  background-color: #ffffff;
-  padding: 15px;
-} */
 
 a {
   text-decoration: none;
@@ -89,7 +74,7 @@ button {
   background-color: var(--shape);
   width: 250px;
   height: 100%;
-  padding: 8px 0;
+  padding: 0px 0px 8px 0px;
 }
 
 .sidebar .logo-content {
@@ -244,19 +229,14 @@ button {
   display: block;
 }
 
-.content .top-bar .profile .profile-content .dropdown-profile {
-}
-
 .container {
   padding: 20px;
-}
-
-.container .title {
 }
 
 .container .title h1 {
   color: var(--primary-color);
   font-size: 2.1rem;
+  padding-bottom: 20px;
 }
 
 /* -----------------------FILTRO------------------*/
@@ -376,6 +356,7 @@ button {
   .container .filter-wrapper {
     width: 100%;
   }
+
   .container .filter-wrapper .filter .filter-select span {
     font-size: 1rem;
   }

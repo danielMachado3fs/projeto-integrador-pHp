@@ -12,10 +12,4 @@ class Veiculo extends Model
     $query = "select * from veiculo";
     return $this->db->query($query)->fetchAll();
   }
-
-  public function getTipos()
-  {
-    $query = "select marca from veiculo";
-    return $this->db->query($query)->fetchAll();
-  }
 }
