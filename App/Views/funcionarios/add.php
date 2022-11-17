@@ -26,7 +26,7 @@
                     </div>
                     <div class="inputForm">
                       <label for="cep">CEP</label>
-                      <input class="input" type="text" name="cep" id="cep" placeholder="0000-000" required>
+                      <input class="input buscaCep" type="text" name="cep" id="cep" placeholder="0000-000" required>
                     </div>
                     <div class="inputForm">
                       <label for="estado">Estado</label>
@@ -86,52 +86,5 @@
             $("#cep").mask("00000-000");
             $("#cpf").mask("000.000.000-00");
             $("#telefone").mask("(00) 00000-0000");
-
-            $('#cep').blur(function(){
-                let zipcode = $(this).val().replace('-','');
-                if(zipcode.length < 7){
-                    zip_invalide();
-                }else{
-                    search_zipcode(zipcode);
-                }
-            });
         })
-
-        function search_zipcode(zipcode) {
-            var url = "https://viacep.com.br/ws/" + zipcode + "/json/";
-            $("#estado").val("...");
-            $("#cidade").val("...");
-            $("#logradouro").val("...");
-            $("#bairro").val("...");
-            $.ajax({
-                url: url,
-                dataType: 'jsonp',
-                crossDomain: true,
-                contentType: "application/json"
-            }).done(function(json, textStatus, jqXHR) {
-                console.log(json);
-                if (json["erro"] == true) {
-                    zip_invalide();
-                } else {
-                    $("#estado").val(json["uf"]);
-                    $("#cidade").val(json["localidade"]);
-                    $("#logradouro").val(json["logradouro"]);
-                    $("#bairro").val(json["bairro"]);
-                }
-            });
-        }
-
-        function zip_invalide() {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'CEP inválido!',
-                footer: 'Por favor informe o CEP novamente',
-                confirmButtonColor: "var(--primary-color)"
-            })
-            $("#estado").val('');
-            $("#cidade").val('');
-            $("#logradouro").val('');
-            $("#bairro").val('');
-        }
     </script>

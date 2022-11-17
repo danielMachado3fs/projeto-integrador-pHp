@@ -28,3 +28,4 @@
 <script src="js/sweetalert2/sweetalert2.min.js"></script>
 <script src="js/jquery.mask.min.js"></script>
 <script src="js/jquery.maskMoney.min.js"></script>
+<script src="js/all.js"></script>
