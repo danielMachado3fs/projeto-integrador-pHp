@@ -13,7 +13,16 @@
                 <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha">
                 <small id="ajudausuario" class="form-text text-muted">Esqueci minha senha</small>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+            <?php if ($this->view->login == 'erro') { ?>
+                <div class="row">
+                    <div class="col">
+                        <span class="text text-danger">Usuário invalido</span>
+                    </div>
+                </div>
+            <?php } ?>
         </form>
     </div>
     <div class="col-sm">

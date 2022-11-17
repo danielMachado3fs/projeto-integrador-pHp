@@ -17,7 +17,7 @@ class LoginController extends Action
 
 	public function index()
 	{
-		@$this->view->dados = '';
+		$this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
 		$this->render('index', [], 'layoutLogin');
 	}
 
@@ -28,14 +28,18 @@ class LoginController extends Action
 		$usuario->_set('email', $_POST['email']);
 		$usuario->_set('senha', $_POST['senha']);
 
-		echo '<pre>';
-		print_r($usuario);
-		echo '</pre>';
+		$usuario->autenticar();
 
-		$retorno = $usuario->autenticar();
+		if ($usuario->_get('id') != '' && $usuario->_get('nome')) {
 
-		echo '<pre>';
-		print_r($usuario);
-		echo '</pre>';
+			session_start();
+
+			$_SESSION['id'] = $usuario->_get('id');
+			$_SESSION['nome'] = $usuario->_get('nome');
+
+			header('location: / timeline');
+		} else {
+			header('location: /?login=erro');
+		}
 	}
 }

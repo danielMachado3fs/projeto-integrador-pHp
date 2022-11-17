@@ -10,11 +10,11 @@ class Route extends Bootstrap
 	protected function initRoutes()
 	{
 
-		$routes['home'] = array(
-			'route' => '/',
-			'controller' => 'indexController',
-			'action' => 'index'
-		);
+		// $routes['home'] = array(
+		// 	'route' => '/',
+		// 	'controller' => 'indexController',
+		// 	'action' => 'index'
+		// );
 
 		$routes['sobre_nos'] = array(
 			'route' => '/sobre_nos',
@@ -35,7 +35,7 @@ class Route extends Bootstrap
 		);
 
 		$routes['login'] = array(
-			'route' => '/login',
+			'route' => '/',
 			'controller' => 'LoginController',
 			'action' => 'index'
 		);
