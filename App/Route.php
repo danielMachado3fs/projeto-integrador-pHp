@@ -32,6 +32,12 @@ class Route extends Bootstrap {
 			'action' => 'add'
 		);
 
+		$routes['funcionario_add_store'] = array(
+			'route' => '/add_store',
+			'controller' => 'funcionariosController',
+			'action' => 'add_store'
+		);
+
 		$this->setRoutes($routes);
 	}
 

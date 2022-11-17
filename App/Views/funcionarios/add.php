@@ -1,12 +1,11 @@
 <div class="formularioFuncionarios">
-
     <div id="divPrincipalForm">
         <div class="title">
             <h1>Adicionar Funcionário</h1>
         </div>
         <div class="divForm">
           <div id="form">
-            <form action="/funcionario_add_store" method="post">
+            <form action="/add_store" method="post">
               <div class="inputFormName">
                 <div>
                   <label for="nome">Nome</label>
