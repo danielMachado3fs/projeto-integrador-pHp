@@ -49,7 +49,7 @@
                 <div class="contentsFormulario2">
                   <div class="inputForm">
                     <label for="cpf">CPF</label>
-                    <input class="input" type="number" name="cpf" id="cpf" required placeholder="000.000.000-00" required>
+                    <input class="input" type="text" name="cpf" id="cpf" required placeholder="000.000.000-00" required>
                   </div>
                   <div class="inputForm">
                     <label for="telefone">Telefone</label>
@@ -84,6 +84,8 @@
     <script>
         $(document).ready(function(){
             $("#cep").mask("00000-000");
+            $("#cpf").mask("000.000.000-00");
+            $("#telefone").mask("(00) 00000-0000");
 
             $('#cep').blur(function(){
                 let zipcode = $(this).val().replace('-','');
@@ -124,7 +126,8 @@
                 icon: 'error',
                 title: 'Oops...',
                 text: 'CEP inválido!',
-                footer: 'Por favor informe o CEP novamente'
+                footer: 'Por favor informe o CEP novamente',
+                confirmButtonColor: "var(--primary-color)"
             })
             $("#estado").val('');
             $("#cidade").val('');
