@@ -37,7 +37,7 @@ class LoginController extends Action
 			$_SESSION['id'] = $usuario->_get('id');
 			$_SESSION['nome'] = $usuario->_get('nome');
 
-			header('location: / timeline');
+			header('location: /dashboard');
 		} else {
 			header('location: /?login=erro');
 		}
