@@ -18,9 +18,10 @@
     --primary-color: #005776;
     --secondary-color: #669aad;
     --tree-color: #b3cdd6;
-    --text-color: hsl(0, 2%, 39%);
+    /* --text-color: hsl(0, 2%, 39%); */
+    --text-color: #005776;
     --background-color: hsl(210, 10%, 98%);
-    --submenu-color: hsl(0, 0%, 91%);
+    --submenu-color: #e6eef1;
     --line-color: hsl(0, 0%, 77%);
     --shape-black: hsl(0, 0%, 0%);
 
@@ -72,7 +73,7 @@ button {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: var(--shape);
+    background-color: var(--tree-color);
     width: 250px;
     height: 100%;
     padding: 0px 0px 8px 0px;
@@ -163,6 +164,7 @@ button {
     width: calc(100% - 250px);
     left: 25rem;
     margin: 0 auto;
+    background-color: var(--shape);
     /* overflow: auto; */
 }
 /*========== TopBar ==========*/
@@ -233,6 +235,10 @@ button {
 .container {
     padding: 20px;
 }
+
+/* .panel-body{
+    
+} */
 
 .container .title h1 {
     color: var(--primary-color);
