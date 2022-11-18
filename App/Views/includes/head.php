@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="css/all.css" />
 <link rel="stylesheet" href="css/botoes.css" />
 <link rel="stylesheet" href="css/formulario.css" />
+<link rel="stylesheet" href="css/table.css" />
 
 <!-- Scripts -->
 <script src="js/jquery/jquery.min.js"></script>

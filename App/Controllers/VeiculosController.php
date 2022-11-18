@@ -6,31 +6,24 @@ namespace App\Controllers;
 use MF\Controller\Action;
 use MF\Model\Container;
 
-class VeiculosController extends Action {
 
-	public function index() {
+//os models
+use App\Models\Produto;
+use App\Models\Info;
+use App\Models\Veiculo;
 
-		// $produto = Container::getModel('Produto');
 
-		// $produtos = $produto->getProdutos();
+class VeiculosController extends Action
+{
 
-		// @$this->view->dados = $produtos;
+	public function index()
+	{
+		$veiculo = Container::getModel('Veiculo');
 
-		$this->render('index');
-	}
-
-	public function sobreNos() {
-
-		$info = Container::getModel('Info');
-
-		$informacoes = $info->getInfo();
+		$informacoes = $veiculo->getVeiculos();
 
 		@$this->view->dados = $informacoes;
 
-		$this->render('sobreNos');
+		$this->render('index');
 	}
-
 }
-
-
-?>
