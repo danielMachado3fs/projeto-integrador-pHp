@@ -54,14 +54,15 @@ class FuncionariosController extends Action {
 
 	}
 
-	public function update(){
-		$profissional = 
-		$this->render('update');
+	public function edit(){
+		// var_dump($_GET['id']);
+		$this->view->data = $this->funcionarioModel->getOne(2);
+		// var_dump($this->view->data);
+		$this->render('edit');
 	}
 
-	public function update_store(){
-		$funcionarioModel = Container::getModel('Funcionario');
-		$funcionarioModel->_set('nome', $_POST['nome'])
+	public function edit_store(){
+		$this->funcionarioModel->_set('nome', $_POST['nome'])
 		->_set('dataNascimento', $_POST['dataNascimento'])
 		->_set('cpf', $_POST['cpf'])
 		->_set('email', $_POST['email'])
@@ -75,7 +76,7 @@ class FuncionariosController extends Action {
 		->_set('complemento', $_POST['complemento'])
 		->_set('setor', $_POST['setor']);
 
-		$save_id = $funcionarioModel->salvar();
+		$save_id = $this->funcionarioModel->salvar($_POST['id']);
 		var_dump($save_id);
 	}
 
