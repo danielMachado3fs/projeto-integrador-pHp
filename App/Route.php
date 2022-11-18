@@ -34,6 +34,7 @@ class Route extends Bootstrap
 			'action' => 'add'
 		);
 
+<<<<<<< HEAD
 		$routes['login'] = array(
 			'route' => '/',
 			'controller' => 'LoginController',
@@ -56,6 +57,12 @@ class Route extends Bootstrap
 			'route' => '/sair',
 			'controller' => 'DashBoardController',
 			'action' => 'sair'
+=======
+		$routes['funcionario_add_store'] = array(
+			'route' => '/add_store',
+			'controller' => 'funcionariosController',
+			'action' => 'add_store'
+>>>>>>> 356c7925a964b02869dfc49f607968f16fb57ec0
 		);
 
 		$this->setRoutes($routes);
