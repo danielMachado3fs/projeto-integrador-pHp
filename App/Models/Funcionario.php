@@ -62,10 +62,30 @@ class Funcionario extends Model{
     }
 
     public function getOne($id){
-        $sql = "SELECT * FROM $this->table WHERE id = $id";
+        $sql = "SELECT * FROM $this->table WHERE deleted = 0 AND id = $id";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function getAllWhere($options = array()){
+        $where = '';
+        if($options['id']){
+            $where .= " AND id = {$options['id']}";
+        }
+        
+        if($options['setor']){
+            $where .= " AND setor = {$options['setor']}";
+        }
+
+        if($options['estado']){
+            $where .= " AND estado = {$options['estado']}";
+        }
+        
+        $sql = "SELECT * FROM $this->table WHERE deleted = 0 $where";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
 }
