@@ -164,7 +164,6 @@ button {
     width: calc(100% - 250px);
     left: 25rem;
     margin: 0 auto;
-    background-color: var(--shape);
     /* overflow: auto; */
 }
 /*========== TopBar ==========*/
@@ -234,6 +233,7 @@ button {
 
 .container {
   padding: 20px;
+  background-color: var(--shape);
 }
 
 /* .panel-body{

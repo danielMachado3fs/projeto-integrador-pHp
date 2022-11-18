@@ -1,7 +1,7 @@
 <div class="title">
   <h1>Editar Funcionário</h1>
 </div>
-<div class="divForm">
+<div class="panelBody">
   <div id="form">
     <form action="/add_store" method="post">
       <div class="inputFormName">

@@ -5,6 +5,7 @@ $veiculos = array(array("model" => "S10", "marca" => "Chevrolet", "ano" => "2016
 <div class="title">
   <h1>Veículos Cadastrados</h1>
 </div>
+<div class="panelBody">
 <div class="filter-wrapper">
   <div class="filter">
     <div class="filter-select">
@@ -99,8 +100,8 @@ $veiculos = array(array("model" => "S10", "marca" => "Chevrolet", "ano" => "2016
   </div>
 </div>
 <div class="footerButton">
-
   <button id="sendBtn">Cadastrar</button>
+</div>
 </div>
 
 <script>

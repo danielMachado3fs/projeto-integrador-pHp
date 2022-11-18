@@ -2,7 +2,7 @@
 <div class="title">
   <h1>Editar Funcionário</h1>
 </div>
-<div class="divForm">
+<div class="panelBody">
   <form action="/edit_store" method="post">
     <div class="inputFormName">
       <div>

@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-.divForm {
+.panelBody {
     max-width: 1920px;
     /*Para uma tela de computador normal. FAZER OS RESPONSIVOS DEPOIS*/
     margin: 0 auto;
@@ -59,14 +59,14 @@ input:focus {
         display: flex;
         flex-direction: column;
     }
-    .divForm {
+    .panelBody {
         display: grid;
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 550px) {
-    .divForm {
+    .panelBody {
         display: grid;
         grid-template-columns: 1fr;
         width: auto;
