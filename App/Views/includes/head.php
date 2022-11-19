@@ -13,9 +13,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
 
-<!-- Select2 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
-
 <!-- Outros css -->
 <link rel="stylesheet" href="css/all.css" />
 <link rel="stylesheet" href="css/botoes.css" />
@@ -30,3 +27,7 @@
 <script src="js/jquery.mask.min.js"></script>
 <script src="js/jquery.maskMoney.min.js"></script>
 <script src="js/all.js"></script>
+
+<!-- Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
