@@ -58,6 +58,16 @@ class Route extends Bootstrap {
 			'action' => 'edit_store'
 		);
 
+
+		$routes['posto_add'] = array(
+			'route' => '/adicionar_posto',
+			'controller' => 'postoController',
+			'action' => 'add'
+		);
+
+
+
+
 		/**fim */
 
 		$this->setRoutes($routes);
