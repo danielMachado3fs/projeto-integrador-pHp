@@ -60,6 +60,12 @@ class Route extends Bootstrap {
 
 		/**fim */
 
+		$routes['tickets'] = array(
+            'route' => '/tickets',
+            'controller' => 'ticketsController',
+            'action' => 'tickets'
+        );
+
 		$this->setRoutes($routes);
 	}
 
