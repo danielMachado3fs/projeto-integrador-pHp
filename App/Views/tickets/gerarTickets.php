@@ -66,10 +66,10 @@
                     </select>
                     </div>
                     <div class="inputForm">
-                      <label for="dateEmissao">Data de emissão</label> 
+                      <label for="dateEmissao"> Data de emissão</label> 
                       
                       <input class="input" type="date" name="dateEmissao" id="dateEmissao"
-                      min="2022-11-11">
+                      min="<?php echo date("Y-m-d");?>"  max="<?php echo date("Y-m-d");?>">
                       
                     </div>
                     <div class="inputForm">
