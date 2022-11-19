@@ -4,9 +4,11 @@ namespace App;
 
 use MF\Init\Bootstrap;
 
-class Route extends Bootstrap {
+class Route extends Bootstrap
+{
 
-	protected function initRoutes() {
+	protected function initRoutes()
+	{
 
 		$routes['home'] = array(
 			'route' => '/',
@@ -68,7 +70,4 @@ class Route extends Bootstrap {
 
 		$this->setRoutes($routes);
 	}
-
 }
-
-?>

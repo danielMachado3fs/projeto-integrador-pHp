@@ -1,109 +1,108 @@
 /* ----------------FORMULÁRIO FUNCIONÃRIOS --------------------*/
 
-
 #nome {
-    width: 100%;
+  width: 100%;
 }
 
 .panelBody {
-    max-width: 1920px;
-    /*Para uma tela de computador normal. FAZER OS RESPONSIVOS DEPOIS*/
-    margin: 0 auto;
-    padding: 5px 20px 0px 20px;
-    background-color: #fff;
-    border-radius: 4px;
+  max-width: 1920px;
+  /*Para uma tela de computador normal. FAZER OS RESPONSIVOS DEPOIS*/
+  margin: 0 auto;
+  padding: 5px 20px 0px 20px;
+  background-color: #fff;
+  border-radius: 4px;
 }
 
 .divFormulario {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .contentsFormulario {
-    justify-self: left;
+  justify-self: left;
 }
 
 .contentsFormulario,
 input {
-    width: 100%;
+  width: 100%;
 }
 
 .contentsFormulario2 {
-    justify-self: left;
-    grid-row: 1;
-    grid-column: 2;
+  justify-self: left;
+  grid-row: 1;
+  grid-column: 2;
 }
 
 .contentsFormulario2,
 input {
-    width: 100%;
+  width: 100%;
 }
 
 .inputFormName {
-    padding: 8px;
+  padding: 8px;
 }
 
 .inputForm {
-    padding: 8px;
+  padding: 8px;
 }
 
 select {
-    /* background-color: transparent;
+  /* background-color: transparent;
     border: 0;
     padding: 0 2rem 0 0;
     color: var(--text-color);
     appearance: none;
     cursor: pointer;
     outline: 0; */
-    color: var(--text-color);
-    border-color: var(--primary-color); 
-    width: 100%;
+  color: var(--text-color);
+  border-color: var(--primary-color);
+  width: 100%;
 }
 
 /*----------- REMOVE A BORDA DOS INPUT QUANDO CLICADO--------- */
 input:focus {
-    outline: 0;
-    border-color: var(--primary-color);
+  outline: 0;
+  border-color: var(--primary-color);
 }
 
 /* -------------MEDIA------------------ */
 @media (max-width: 820px) {
-    .divFormulario {
-        display: flex;
-        flex-direction: column;
-    }
-    .panelBody {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+  .divFormulario {
+    display: flex;
+    flex-direction: column;
+  }
+  .panelBody {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 550px) {
-    .panelBody {
-        display: grid;
-        grid-template-columns: 1fr;
-        width: auto;
-    }
+  .panelBody {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: auto;
+  }
 
-    .divBtn {
-        display: flex;
-        gap: 40px;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
+  .divBtn {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .titleFormulario {
-        padding: 15px 30px;
-    }
+  .titleFormulario {
+    padding: 15px 30px;
+  }
 }
 
 @media (max-width: 370px) {
-    .titleFuncionarios {
-        font-size: 1.6rem;
-    }
+  .titleFuncionarios {
+    font-size: 1.6rem;
+  }
 
-    .titleFormulario {
-        font-size: 1.5rem;
-    }
+  .titleFormulario {
+    font-size: 1.5rem;
+  }
 }

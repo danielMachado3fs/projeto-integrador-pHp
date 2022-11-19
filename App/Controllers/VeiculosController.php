@@ -15,15 +15,38 @@ use App\Models\Veiculo;
 
 class VeiculosController extends Action
 {
+	private $vehicleModel;
+
+	public function __construct()
+	{
+		$this->vehicleModel = Container::getModel('Veiculo');
+	}
 
 	public function index()
 	{
-		$veiculo = Container::getModel('Veiculo');
+		if (isset($_GET['search'])) {
+			$this->vehicleModel->_set('tipo', $_GET['types']);
+			$this->vehicleModel->_set('marca', $_GET['brands']);
 
-		$informacoes = $veiculo->getVeiculos();
+			if (isset($_GET['types']) && isset($_GET['brands'])) {
+				if ($_GET['types'] === 'all' && $_GET['brands'] === 'all') {
+					$viewData = $this->vehicleModel->getVehicles();
+				} else {
+					$viewData = $this->vehicleModel->getVeiculosByTypeAndBrand();
+				}
+			}
+		} else {
+			$viewData = $this->vehicleModel->getVehicles();
+		}
 
-		@$this->view->dados = $informacoes;
+		$viewFilter['tipo'] = $this->vehicleModel->getTypes();
+		$viewFilter['marca'] = $this->vehicleModel->getBrands();
+		$viewFilter['selectedBrand'] = $_GET['brands'];
+		$viewFilter['selectedType'] = $_GET['types'];
+		@$this->view->dados = $viewData;
+		@$this->view->dataFilters = $viewFilter;
 
+		// @$this->view->filterdatas = $viewDataFilter;
 		$this->render('index');
 	}
 }
