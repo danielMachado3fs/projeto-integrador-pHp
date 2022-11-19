@@ -1,17 +1,5 @@
 /* ----------------FORMULÁRIO FUNCIONÃRIOS --------------------*/
 
-.titleFuncionarios {
-  color: var(--colorText-00);
-  margin: 0px 0px 0px 30px;
-  font-size: 1.8rem;
-}
-
-.titleFormulario {
-  padding: 15px 60px;
-  color: var(--colorText-01);
-  font-size: 1.7rem;
-}
-
 #nome {
   width: 100%;
 }
@@ -21,7 +9,7 @@
   /*Para uma tela de computador normal. FAZER OS RESPONSIVOS DEPOIS*/
   margin: 0 auto;
   padding: 5px 20px 0px 20px;
-  background-color: var(----shape);
+  background-color: #fff;
   border-radius: 4px;
 }
 

@@ -28,10 +28,12 @@ class Route extends Bootstrap
 			'action' => 'index'
 		);
 
-		$routes['veiculos_filter'] = array(
-			'route' => '/veiculo_filter',
-			'controller' => 'veiculosController',
-			'action' => 'filter'
+		/**rotas funcionários */
+
+		$routes['funcionario_index'] = array(
+			'route' => '/funcionarios',
+			'controller' => 'funcionariosController',
+			'action' => 'index'
 		);
 
 		$routes['funcionario_add'] = array(
@@ -45,6 +47,20 @@ class Route extends Bootstrap
 			'controller' => 'funcionariosController',
 			'action' => 'add_store'
 		);
+
+		$routes['funcionario_edit'] = array(
+			'route' => '/funcionario_edit',
+			'controller' => 'funcionariosController',
+			'action' => 'edit'
+		);
+
+		$routes['funcionario_edit_store'] = array(
+			'route' => '/edit_store',
+			'controller' => 'funcionariosController',
+			'action' => 'edit_store'
+		);
+
+		/**fim */
 
 		$this->setRoutes($routes);
 	}
