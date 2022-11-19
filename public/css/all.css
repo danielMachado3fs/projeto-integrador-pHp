@@ -265,33 +265,89 @@ button {
     border-right-color: var(--line-color); */
 }
 
-.container .filter-wrapper .filter .filter-select {
+.filter-wrapper .filter .filter-select {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  position: relative;
+  justify-content: center;
 }
 
-.container .filter-wrapper .filter .filter-select span {
+.filter-wrapper .filter .filter-select span {
   font-size: 1.6rem;
 }
 
-.container .filter-wrapper .filter .filter-select .label {
+.filter-wrapper .filter .filter-select .label {
   color: var(--shape-black);
 }
 
-.container .filter-wrapper .filter .filter-select .select {
+.filter-wrapper .filter .filter-select .select {
   color: var(--text-color);
 }
 
-.container .filter-wrapper .filter i {
+.filter-wrapper .filter i {
   color: var(--primary-color);
   font-size: 2rem;
 }
 
-.container .filter-wrapper .line {
+.filter-wrapper .line {
   background-color: var(--line-color);
   width: 0.12rem;
   height: 4rem;
   border-radius: 5rem;
+}
+
+.filter-wrapper .filter .filter-select select {
+  background-color: transparent;
+  border: 0;
+  padding: 0 2rem 0 0;
+  color: var(--text-color);
+  appearance: none;
+  cursor: pointer;
+}
+
+.filter-wrapper .filter .filter-select select option {
+  cursor: pointer;
+}
+
+.filter-wrapper .filter .filter-select select:focus {
+  outline: none;
+}
+
+.filter-select .custom-arrow-down-type,
+.filter-select .custom-arrow-up-type,
+.filter-select .custom-arrow-down-brand,
+.filter-select .custom-arrow-up-brand {
+  position: absolute;
+  /* background-color: red; */
+  top: 50%;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.filter-select .custom-arrow-down-type.selected {
+  display: none;
+}
+
+.filter-select .custom-arrow-up-type {
+  display: none;
+}
+
+.filter-select .custom-arrow-up-type.selected {
+  display: inherit;
+}
+
+.filter-select .custom-arrow-down-brand.selected {
+  display: none;
+}
+
+.filter-select .custom-arrow-up-brand {
+  display: none;
+}
+
+.filter-select .custom-arrow-up-brand.selected {
+  display: inherit;
 }
 
 .filter-btn {
