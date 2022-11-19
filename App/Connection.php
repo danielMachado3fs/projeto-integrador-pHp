@@ -3,8 +3,9 @@
 namespace App;
 
 class Connection {
+	private static $connection = null;
 
-	public static function getDb() {
+	private function getDb() {
 		try {
 
 			$conn = new \PDO(
@@ -16,9 +17,18 @@ class Connection {
 			return $conn;
 
 		} catch (\PDOException $e) {
-			//.. tratar de alguma forma ..//
+			var_dump('Error database: ' . $e->getMessage());
 		}
 	}
+
+	public static function getInstance(): \PDO
+    {
+        if (!isset(self::$connection)) {
+            self::$connection = self::getDb();
+        }
+
+        return self::$connection;
+    }
 }
 
 ?>

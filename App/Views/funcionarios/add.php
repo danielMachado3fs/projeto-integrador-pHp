@@ -1,89 +1,83 @@
-<div class="formularioFuncionarios">
-
-      <div id="divPrincipalForm">
-        <div class="title">
-            <h1>Adicionar Funcionário</h1>
+<div class="title">
+  <h1>Editar Funcionário</h1>
+</div>
+<div class="panelBody">
+  <div id="form">
+    <form action="/add_store" method="post">
+      <div class="inputFormName">
+        <div>
+          <label for="nome">Nome</label>
+          <input class="input" class="inputName" type="text" name="nome" id="nome" placeholder="Ex: Joao Silva" required>
         </div>
-        <div class="divForm">
-          <div id="form">
-            <form action="" method="post">
-              <div class="inputFormName">
-                <div>
-                  <label for="txtName">Nome</label>
-                  <input class="input"  class="inputName" type="text" name="txtName" id="txtName" placeholder="Ex: Joao Silva"
-                    required>
-                </div>
-              </div>
-              <div class="divFormulario">
-                <div class="contentsFormulario">
-                  <div>
-                    <div class="inputForm">
-                      <label for="dateBirth">Data de nascimento</label>
-                      <input class="input" type="date" name="dateBirth" id="dateBirth">
-                    </div>
-                    <div class="inputForm">
-                      <label for="txtEmail">Email</label>
-                      <input class="input" type="email" name="txtEmail" id="txtEmail" placeholder="joao@exemplo.com" required>
-                    </div>
-                    <div class="inputForm">
-                      <label for="numberCep">CEP</label>
-                      <input class="input" type="number" name="numberCep" id="numberCep" placeholder="12345-678">
-                    </div>
-                    <div class="inputForm">
-                      <label for="txtEstate">Estado</label>
-                      <input class="input" type="text" name="txtEstate" id="txtEstate">
-                    </div>
-                    <div class="inputForm">
-                      <label for="txtDistrict">Bairro</label>
-                      <input class="input" type="text" name="txtDistrict" id="txtDistrict">
-                    </div>
-                    <div class="inputForm">
-                      <label for="numberEnd">Numero</label>
-                      <input class="input" type="number" name="numberEnd" id="numberEnd">
-                    </div>
-                    <div class="inputForm">
-                      <label for="txtSector">Setor</label>
-                      <input class="input" type="text" name="txtSector" id="txtSector" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="contentsFormulario2">
-                  <div class="inputForm">
-                    <label for="numberCpf">CPF</label>
-                    <input class="input" type="number" name="numberCpf" id="numberCpf" required placeholder="12345-678">
-                  </div>
-                  <div class="inputForm">
-                    <label for="numberTelephone">Telefone</label>
-                    <input class="input" type="number" name="numberTelephone" id="numberTelephone" required
-                      placeholder="(31) 91234-5678">
-                  </div>
-                  <div class="inputForm">
-                    <label for="txtCity">Cidade</label>
-                    <input class="input" type="text" name="txtCity" id="txtCity">
-                  </div>
-                  <div class="inputForm">
-                    <label for="txtPatio">Logradouro</label>
-                    <input class="input" type="text" name="txtPatio" id="txtPatio" placeholder="Avenida Paulista">
-                  </div>
-                  <div class="inputForm">
-                    <label for="txtComplement">Complemento</label>
-                    <input class="input" type="text" name="txtComplement" id="txtComplement"
-                      placeholder="Casa, apartamento, condomínio">
-                  </div>
-                </div>
-                <div class="divBtn">
-                  <div>
-                    <input class="input" id="sendBtn" type="submit" value="Salvar">
-                    <!-- <button id="sendBtn">Salvar</button> -->
-                  </div>
-                  <div>
-                    <!-- <input id="cancelBtn" type="submit" value="Cancelar"> -->
-                    <button id="cancelBtn">Cancelar</button>
-                  </div>
-                </div>
-              </div>
-            </form>
+      </div>
+      <div class="divFormulario">
+        <div class="contentsFormulario">
+          <div>
+            <div class="inputForm">
+              <label for="dataNascimento">Data de nascimento</label>
+              <input class="input" type="date" name="dataNascimento" id="dataNascimento" required>
+            </div>
+            <div class="inputForm">
+              <label for="email">Email</label>
+              <input class="input" type="email" name="email" id="email" placeholder="joao@exemplo.com" required>
+            </div>
+            <div class="inputForm">
+              <label for="cep">CEP</label>
+              <input class="input buscaCep" type="text" name="cep" id="cep" placeholder="0000-000" required>
+            </div>
+            <div class="inputForm">
+              <label for="estado">Estado</label>
+              <input class="input" type="text" name="estado" id="estado" readonly required>
+            </div>
+            <div class="inputForm">
+              <label for="bairro">Bairro</label>
+              <input class="input" type="text" name="bairro" id="bairro" readonly required>
+            </div>
+            <div class="inputForm">
+              <label for="numero">Numero</label>
+              <input class="input" type="number" name="numero" id="numero" required>
+            </div>
+            <div class="inputForm">
+              <label for="setor">Setor</label>
+              <input class="input" type="text" name="setor" id="setor" required>
+            </div>
+          </div>
+        </div>
+        <div class="contentsFormulario2">
+          <div class="inputForm">
+            <label for="cpf">CPF</label>
+            <input class="input" type="text" name="cpf" id="cpf" required placeholder="000.000.000-00" required>
+          </div>
+          <div class="inputForm">
+            <label for="telefone">Telefone</label>
+            <input class="input" type="text" name="telefone" id="telefone" required placeholder="(00) 90000-0000">
+          </div>
+          <div class="inputForm">
+            <label for="cidade">Cidade</label>
+            <input class="input" type="text" name="cidade" id="cidade" readonly required>
+          </div>
+          <div class="inputForm">
+            <label for="logradouro">Logradouro</label>
+            <input class="input" type="text" name="logradouro" id="logradouro" readonly required>
+          </div>
+          <div class="inputForm">
+            <label for="complemento">Complemento</label>
+            <input class="input" type="text" name="complemento" id="complemento" placeholder="Casa, apartamento, condomínio" required>
           </div>
         </div>
       </div>
-    </div>
+      <div class="rodape_btn">
+        <button id="sendBtn" type="submit">Salvar</button>
+        <button id="cancelBtn">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $("#cep").mask("00000-000");
+    $("#cpf").mask("000.000.000-00");
+    $("#telefone").mask("(00) 00000-0000");
+  })
+</script>

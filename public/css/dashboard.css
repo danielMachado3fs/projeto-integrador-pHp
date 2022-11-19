@@ -1,6 +1,6 @@
 :root {
   --colorText-02: #7d7979;
-  --backgroundColor-02: #ffffff;
+  ----shape: #ffffff;
   --backgroundColor-00: #c33333;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .contentsDashboard {
-  background-color: var(--backgroundColor-02);
+  background-color: var(----shape);
 }
 
 
@@ -30,7 +30,7 @@
 
 .navbarDashboard {
   list-style: none;
-  background-color: var(--backgroundColor-02);
+  background-color: var(----shape);
   color: var(--colorText-02);
   padding: 0px;
 }

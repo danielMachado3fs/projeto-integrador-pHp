@@ -26,11 +26,39 @@ class Route extends Bootstrap {
 			'action' => 'index'
 		);
 
+		/**rotas funcionários */
+
+		$routes['funcionario_index'] = array(
+			'route' => '/funcionarios',
+			'controller' => 'funcionariosController',
+			'action' => 'index'
+		);
+
 		$routes['funcionario_add'] = array(
 			'route' => '/funcionario_add',
 			'controller' => 'funcionariosController',
 			'action' => 'add'
 		);
+
+		$routes['funcionario_add_store'] = array(
+			'route' => '/add_store',
+			'controller' => 'funcionariosController',
+			'action' => 'add_store'
+		);
+
+		$routes['funcionario_edit'] = array(
+			'route' => '/funcionario_edit',
+			'controller' => 'funcionariosController',
+			'action' => 'edit'
+		);
+
+		$routes['funcionario_edit_store'] = array(
+			'route' => '/edit_store',
+			'controller' => 'funcionariosController',
+			'action' => 'edit_store'
+		);
+
+		/**fim */
 
 		$this->setRoutes($routes);
 	}
