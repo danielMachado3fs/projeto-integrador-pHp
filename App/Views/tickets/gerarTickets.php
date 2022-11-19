@@ -1,11 +1,15 @@
-
+<div class="title">
+  <h1>Gerar Tickets</h1>
+</div>
+<div class="panelBody">
+  <div id="form">
                 
             <form>
               <div class="divFormulario">
                 <div class="contentsFormulario">
                   
                   <div>
-                    <label  for="motorista">Motorista</label> 
+                    <label class="inputForm" for="motorista">&nbsp;Motorista</label> 
                      
                       <select  size="1" name="motorista">
                           <option> Artur Santos</option>
@@ -23,7 +27,7 @@
 
                   <div>
                     <div >
-                      <label for="postoCombustiveis">Posto de Combustíveis</label> 
+                      <label class="inputForm" for="postoCombustiveis">Posto de Combustíveis</label> 
                       <select  size="1" name="postos">
                         <option> Posto Belvedere </option>
                         <option> Posto Ipiranga </option>
@@ -35,7 +39,7 @@
                     </select>
                     </div>
                     <div  >
-                      <label for="TipoCombustiveis">Tipo de Combustíveis</label> 
+                      <label class="inputForm" for="TipoCombustiveis">Tipo de Combustíveis</label> 
                       <select   size="1" name="tiposCombustiveis">
                         <option> Gasolina comum </option>
                         <option> Gasolina aditivada </option>
@@ -51,7 +55,7 @@
                       <input class="input" type="number" name="valor" id="valor" placeholder="R$00">
                     </div>
                     <div  >
-                      <label for="veiculo">Veiculo</label> 
+                      <label class="inputForm" for="veiculo">&nbsp;Veiculo</label> 
                        <select  size="1" name="postos">
                         <option> Hyundai: HR</option>
                         <option> Hyundai: HD80 </option>
@@ -79,15 +83,15 @@
                      
                   </div>
                 </div>
-                <div class="divBtn">
-                  <div>
-                    <input class="input" id="sendBtn" type="submit" value="Salvar">
-                    <!-- <button id="sendBtn">Salvar</button> -->
-                  </div>
-                  <div>
-                    <!-- <input id="cancelBtn" type="submit" value="Cancelar"> -->
-                    <button id="cancelBtn">Cancelar</button>
-                  </div>
-                </div>
+               
               </div>
+              <div class="rodape_btn">
+        <button id="sendBtn" type="submit">Salvar</button>
+        <button id="cancelBtn">Cancelar</button>
+      </div>
             </form>
+
+
+
+          </div>
+    </div>

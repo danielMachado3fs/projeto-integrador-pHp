@@ -95,7 +95,14 @@ input:focus {
     }
 }
 select{
-    
+    margin-left:8px;
     width: 98%;
+     background-color: transparent;
+  border-bottom: 1px  0px 0px 0px solid gray;
+  padding: 0 2rem 0 0;
+  color: var(--text-color);
+  appearance: none;
+  cursor: pointer;
     /*height:40px;*/
   }
+ 
