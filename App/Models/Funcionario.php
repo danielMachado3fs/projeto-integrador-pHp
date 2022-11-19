@@ -31,7 +31,7 @@ class Funcionario extends Model{
     public function salvar($id = null){
         $sql = "INSERT INTO $this->table ($this->values) VALUES (:nome, :dataNascimento, :cpf, :email, :telefone, :cep, :cidade, :estado, :logradouro, :bairro, :numero, :complemento, :setor)";
         if($id){
-            $sql = "UPDATE $this->table SET 'nome' = ':nome', 'dataNascimento' = ':dataNascimento', 'cpf' = ':cpf', 'email' = ':email', 'telefone' = ':telefone', 'cep' = ':cep', 'cidade' = ':cidade', 'estado' = ':estado', 'logradouro' = ':logradouro', 'bairro' = ':bairro', 'numero' = ':numero', 'complemento' = ':complemento', 'setor' = ':setor' WHERE 'id' = $id";
+            $sql = "UPDATE $this->table SET nome = :nome, dataNascimento = :dataNascimento, cpf = :cpf, email = :email, telefone = :telefone, cep = :cep, cidade = :cidade, estado = :estado, logradouro = :logradouro, bairro = :bairro, numero = :numero, complemento = :complemento, setor = :setor WHERE id = $id";
         }
        
         $stmt = $this->db->prepare($sql);
@@ -59,6 +59,13 @@ class Funcionario extends Model{
 
     public function add($funcionario){
 
+    }
+
+    public function getOne($id){
+        $sql = "SELECT * FROM $this->table WHERE id = $id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 
 }
