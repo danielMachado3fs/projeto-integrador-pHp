@@ -94,3 +94,8 @@ input:focus {
         font-size: 1.5rem;
     }
 }
+select{
+    
+    width: 98%;
+    /*height:40px;*/
+  }
