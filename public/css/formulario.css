@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.divForm {
+.panelBody {
   max-width: 1920px;
   /*Para uma tela de computador normal. FAZER OS RESPONSIVOS DEPOIS*/
   margin: 0 auto;
@@ -46,6 +46,19 @@ input {
   padding: 8px;
 }
 
+select {
+  /* background-color: transparent;
+    border: 0;
+    padding: 0 2rem 0 0;
+    color: var(--text-color);
+    appearance: none;
+    cursor: pointer;
+    outline: 0; */
+  color: var(--text-color);
+  border-color: var(--primary-color);
+  width: 100%;
+}
+
 /*----------- REMOVE A BORDA DOS INPUT QUANDO CLICADO--------- */
 input:focus {
   outline: 0;
@@ -58,14 +71,14 @@ input:focus {
     display: flex;
     flex-direction: column;
   }
-  .divForm {
+  .panelBody {
     display: grid;
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 550px) {
-  .divForm {
+  .panelBody {
     display: grid;
     grid-template-columns: 1fr;
     width: auto;
