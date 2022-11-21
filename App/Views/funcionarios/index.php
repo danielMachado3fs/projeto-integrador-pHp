@@ -65,7 +65,7 @@ function uniqueValue($datas, $typeValue)
                             <td><?= strtoupper($funcionario->setor) ?></td>
                             <td>
                                 <a href="/funcionario_edit?id=<?= $funcionario->id ?>"><i class="bx bxs-edit"></i></a>
-                                <a href="/funcionario_delete?id=<?= $funcionario->id ?>"><i class="bx bxs-trash"></i></a>
+                                <a onclick="alertDeleteFuncionario(<?= $funcionario->id ?>)"><i class="bx bxs-trash"></i></a>
                                 <a href="/funcionario_view?id=<?= $funcionario->id ?>"><i class="bx bxs-show"></i></a>
                             </td>
                         </tr>
@@ -92,13 +92,54 @@ function uniqueValue($datas, $typeValue)
     });
 
 
-    function alertDeleteVehicle() {
+    function alertDeleteFuncionario(id) {
         Swal.fire({
-            title: 'oii!',
-            text: 'Do you want to continue',
-            icon: 'error',
-            showCancelButton: true,
-            cancelButtonText: 'Cancelar'
-        })
+                title: "Excluir Funcionario",
+                text: "Esse processo não pode ser desfeito.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: "#ff0000",
+                cancelButtonColor: "#a9c0d4",
+                confirmButtonText: "Remover",
+                cancelButtonText: "Cancelar",
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "GET",
+                        url: '/funcionario_delete',
+                        data: {
+                            id: id
+                        },
+                        dataType: "json",
+                        success: function(result) {
+                            console.log(result);
+                            if (result.success) {
+                                Swal.fire({
+                                    title: "Funcionário Excluído Com Sucesso!",
+                                    icon: "success",
+                                    confirmButtonColor: "var(--primary-color)",
+                                    confirmButtonText: "Ok",
+                                }).then((result) => {
+                                    sessionStorage.setItem("isdeleted", 'true');
+                                    location.reload();
+                                })
+                            } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: result.message,
+                                    icon: "error",
+                                    confirmButtonColor: "var(--primary-color)",
+                                    confirmButtonText: "Ok",
+                                });
+                            }
+                        }
+                    });
+                } else if (
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    // If cancel do nothing (stay on same page).
+                }
+            })
     }
 </script>

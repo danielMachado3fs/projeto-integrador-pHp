@@ -60,6 +60,12 @@ class Route extends Bootstrap
 			'action' => 'edit_store'
 		);
 
+		$routes['funcionario_delete'] = array(
+			'route' => '/funcionario_delete',
+			'controller' => 'funcionariosController',
+			'action' => 'delete'
+		);
+
 		/**fim */
 
 		$routes['tickets'] = array(

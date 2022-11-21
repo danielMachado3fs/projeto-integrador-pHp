@@ -94,6 +94,19 @@ class FuncionariosController extends Action {
 		}
 	}
 
+	public function delete(){
+		$funcionario = $this->funcionarioModel->getOne($_GET['id']);
+		if($funcionario && $funcionario->id){
+			if($this->funcionarioModel->delete($funcionario->id) === true){
+				echo json_encode(array('success' => true));
+			}else{
+				echo json_encode(array('success' => false, 'message' => 'Erro ao excluir funcionário'));
+			}
+		}else{
+			echo json_encode(array('success' => false, 'message' => 'Registro não encontrado'));
+		}
+	}
+
 }
 
 

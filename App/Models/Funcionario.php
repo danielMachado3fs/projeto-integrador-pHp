@@ -57,6 +57,15 @@ class Funcionario extends Model{
         return $stmt->errorInfo();
     }
 
+    public function delete($id){
+        $sql = "UPDATE $this->table SET deleted = 1 WHERE id = $id";
+        $stmt = $this->db->prepare($sql);
+        if($stmt->execute() && $id){
+            return true;
+        }
+        return $stmt->errorInfo();
+    }
+
     public function getOne($id){
         $sql = "SELECT * FROM $this->table WHERE deleted = 0 AND id = $id";
         $stmt = $this->db->prepare($sql);
