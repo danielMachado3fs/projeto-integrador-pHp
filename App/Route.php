@@ -28,6 +28,12 @@ class Route extends Bootstrap
 			'action' => 'index'
 		);
 
+		$routes['veiculos_delete'] = array(
+			'route' => '/veiculos_delete',
+			'controller' => 'veiculosController',
+			'action' => 'delete'
+		);
+
 		/**rotas funcionários */
 
 		$routes['funcionario_index'] = array(
@@ -63,10 +69,10 @@ class Route extends Bootstrap
 		/**fim */
 
 		$routes['tickets'] = array(
-            'route' => '/tickets',
-            'controller' => 'ticketsController',
-            'action' => 'tickets'
-        );
+			'route' => '/tickets',
+			'controller' => 'ticketsController',
+			'action' => 'tickets'
+		);
 
 		$this->setRoutes($routes);
 	}

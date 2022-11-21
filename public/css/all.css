@@ -14,28 +14,28 @@
 }
 
 :root {
-    --shape: #e6eef1;
-    --primary-color: #005776;
-    --secondary-color: #669aad;
-    --tree-color: #b3cdd6;
-    /* --text-color: hsl(0, 2%, 39%); */
-    --text-color: #005776;
-    --background-color: hsl(210, 10%, 98%);
-    --submenu-color: #e6eef1;
-    --line-color: hsl(0, 0%, 77%);
-    --shape-black: hsl(0, 0%, 0%);
+  --shape: #e6eef1;
+  --primary-color: #005776;
+  --secondary-color: #669aad;
+  --tree-color: #b3cdd6;
+  /* --text-color: hsl(0, 2%, 39%); */
+  --text-color: #005776;
+  --background-color: hsl(210, 10%, 98%);
+  --submenu-color: #e6eef1;
+  --line-color: hsl(0, 0%, 77%);
+  --shape-black: hsl(0, 0%, 0%);
 
-    --colorText-00: #ffffff;
-    --colorText-01: #c33333;
-    --colorText-02: #7d7979;
-    --colorText-03: #737373;
-    --colorTextButton: #e3e3e3;
-    --colorShadow: #c9c9c9;
-    --colorInputBorder: #dcdcdc;
-    --colorButtonSave: #3b6dee;
-    --colorButtonCancel: #c33333;
+  --colorText-00: #ffffff;
+  --colorText-01: #c33333;
+  --colorText-02: #7d7979;
+  --colorText-03: #737373;
+  --colorTextButton: #e3e3e3;
+  --colorShadow: #c9c9c9;
+  --colorInputBorder: #dcdcdc;
+  --colorButtonSave: #3b6dee;
+  --colorButtonCancel: #c33333;
 
-    font-size: 62.5%; /* 1rem = 10px */
+  font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
@@ -44,7 +44,7 @@ body {
   font-size: 1.6rem;
   width: 100%;
   height: 100vh;
-  background-color: var(--background-color);
+  background-color: var(--shape);
 }
 
 a {
@@ -70,13 +70,13 @@ button {
 
 /*========== SIDEBAR ==========*/
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: var(--tree-color);
-    width: 250px;
-    height: 100%;
-    padding: 0px 0px 8px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--tree-color);
+  width: 250px;
+  height: 100%;
+  padding: 0px 0px 8px 0px;
 }
 
 .sidebar .logo-content {
@@ -159,12 +159,12 @@ button {
 }
 
 .content {
-    position: absolute;
-    height: 100%;
-    width: calc(100% - 250px);
-    left: 25rem;
-    margin: 0 auto;
-    /* overflow: auto; */
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 250px);
+  left: 25rem;
+  margin: 0 auto;
+  /* overflow: auto; */
 }
 /*========== TopBar ==========*/
 .content .top-bar {
@@ -414,6 +414,12 @@ button {
   justify-content: flex-end;
   padding: 2rem;
 }
+
+/* --------------SweetAlert2---------------- */
+.swal2-popup {
+  font-size: 1.3rem !important;
+}
+/* ----------------------------------------- */
 
 @media screen and (min-width: 500px) and (max-width: 900px) {
   .container .filter-wrapper {

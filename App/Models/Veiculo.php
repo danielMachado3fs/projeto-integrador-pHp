@@ -84,4 +84,11 @@ class Veiculo extends Model
     $stmt->execute(array('tipo' => $this->tipo));
     return $stmt->fetchAll();
   }
+
+  public function deleteVehicle($vehicleId)
+  {
+    $query = "UPDATE veiculo SET deletado=:deletado WHERE id = :id";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute(array('id' => $vehicleId, 'deletado' => 1));
+  }
 }
