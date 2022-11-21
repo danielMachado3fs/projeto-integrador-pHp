@@ -39,7 +39,12 @@
           </div>
           <div class="inputForm">
             <label for="setor">Setor</label>
-            <input class="input" type="text" name="setor" id="setor" required value='<?= $modelInfo->setor ?>'>
+              <select class="select2" size="1" name="setor" id="setor">
+                <option> Selecione...</option>
+                <option <?php if ($modelInfo->setor == 'administrativo') echo 'selected';?> value="administrativo"> Administrativo </option>
+                <option <?php if ($modelInfo->setor == 'financeiro') echo 'selected';?> value="financeiro"> Financeiro </option>
+                <option <?php if ($modelInfo->setor == 'logistica') echo 'selected';?> value="logistica"> Logística </option>
+              </select>
           </div>
         </div>
       </div>
@@ -68,7 +73,7 @@
     </div>
     <div class="rodape_btn">
       <button id="sendBtn" type="submit">Salvar</button>
-      <button id="cancelBtn">Cancelar</button>
+      <a id="cancelBtn" href="/funcionarios">Cancelar</a>
     </div>
     <input type="hidden" name="id" id="id" value='<?= $modelInfo->id ?>'>
   </form>

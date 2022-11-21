@@ -18,13 +18,25 @@ class FuncionariosController extends Action {
 
 	public function index() {
 
-		// $produto = Container::getModel('Produto');
+		if (isset($_GET['search'])) {
+			if (isset($_GET['nome']) && isset($_GET['setor'])) {
+				if ($_GET['nome'] === 'all' && $_GET['setor'] === 'all') {
+					$viewData['funcionarios'] = $this->funcionarioModel->getAll();
+				} else {
+					$options = [
+						"nome" => $_GET['nome'],
+						"setor" => $_GET['setor']
+					];
+					$viewData['funcionarios'] = $this->funcionarioModel->getAllWhere($options);
+				}
+			}
+		} else {
+			$viewData['funcionarios'] = $this->funcionarioModel->getAll();
+		}
 
-		// $produtos = $produto->getProdutos();
-
-		// @$this->view->dados = $produtos;
-
-		// $this->render('index');
+		$viewData['selectedNome'] = $_GET['nome'];
+		$viewData['selectedSetor'] = $_GET['setor'];
+		$this->render('index', $viewData);
     }
 
 	public function add() {
@@ -56,7 +68,7 @@ class FuncionariosController extends Action {
 
 	public function edit(){
 		// var_dump($_GET['id']);
-		$this->view->data = $this->funcionarioModel->getOne(2);
+		@$this->view->data = $this->funcionarioModel->getOne($_GET['id']);
 		// var_dump($this->view->data);
 		$this->render('edit');
 	}
@@ -77,7 +89,9 @@ class FuncionariosController extends Action {
 		->_set('setor', $_POST['setor']);
 
 		$save_id = $this->funcionarioModel->salvar($_POST['id']);
-		var_dump($save_id);
+		if($save_id){
+			$this->index();
+		}
 	}
 
 }

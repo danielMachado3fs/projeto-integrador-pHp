@@ -44,7 +44,7 @@ CREATE TABLE `veiculo` (
 --
 
 INSERT INTO `veiculo` (`id`, `placa`, `modelo`, `marca`, `anoFabricacao`, `tipo`, `dataAquisicao`, `valor`, `deleted`) VALUES
-(1, 'abc1234', 'S10', 'carrodoido', '2022-11-15', 'carro', '2022-11-15', '20.00', 0);
+(1, 'ABC1234', 'S10', 'CHEVROLET', '2022-11-15', 'carro', '2022-11-15', '50000.00', 0);
 
 --
 -- Índices para tabelas despejadas

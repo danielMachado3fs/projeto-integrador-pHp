@@ -10,9 +10,10 @@
     <div class="content">
         <?= $this->load_topbar() ?>
         <div class="container">
-            <?= $this->content($view_data) ?>
+            <?= $this->content($viewData) ?>
         </div>
     </div>
+    <?= $this->load_footer() ?>
 </body>
 
 </html>

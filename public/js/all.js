@@ -40,3 +40,5 @@ function zip_invalide() {
   $("#logradouro").val("");
   $("#bairro").val("");
 }
+
+$(".select2").select2();

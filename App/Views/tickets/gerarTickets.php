@@ -86,7 +86,6 @@
 </div>
 
 <script>
-  $('.select2').select2();
   $('#valor').mask('#.000,00', {
     reverse: true
   })
