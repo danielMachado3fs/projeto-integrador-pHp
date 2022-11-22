@@ -69,26 +69,20 @@ class Veiculo extends Model
     return $this->db->query($query)->fetchAll();
   }
 
-  public function getVehiclesByBrand()
-  {
-    $query = "SELECT * FROM veiculo WHERE marca = :marca";
-    $stmt = $this->db->prepare($query);
-    $stmt->execute(array('marca' => $this->marca));
-    return $stmt->fetchAll();
-  }
-
-  public function getVehiclesByType()
-  {
-    $query = "SELECT * FROM veiculo WHERE tipo = :tipo";
-    $stmt = $this->db->prepare($query);
-    $stmt->execute(array('tipo' => $this->tipo));
-    return $stmt->fetchAll();
-  }
-
   public function deleteVehicle($vehicleId)
   {
     $query = "UPDATE veiculo SET deletado=:deletado WHERE id = :id";
     $stmt = $this->db->prepare($query);
     $stmt->execute(array('id' => $vehicleId, 'deletado' => 1));
+  }
+
+  public function viewVehicle($vehicleId)
+  {
+    $query = "SELECT * FROM veiculo WHERE id = :id";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute(array('id' => $vehicleId));
+    $veiculos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    // echo json_encode($veiculos);
+    return ($veiculos);
   }
 }

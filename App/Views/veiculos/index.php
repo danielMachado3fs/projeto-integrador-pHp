@@ -115,13 +115,29 @@ function uniqueValue($datas, $typeValue)
               <button><i class="bx bxs-edit"></i></button>
               <button onclick="alertDeleteVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
                   class="bx bxs-trash"></i></button>
-              <button><i class="bx bxs-show"></i></button>
+              <button id="btn-view" onclick="viewVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
+                  class="bx bxs-show"></i></button>
             </td>
           </tr>
           <?php }
           } ?>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div id="fade-view" class="hide"></div>
+  <div id="modal-view" class="hide">
+    <div id="modal-header">
+      <h2>Visualizar</h2>
+      <button id="close-modal-view">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+    <div id="modal-body">
+      <div class="containerForm">
+        <div class="fieldForm">
+        </div>
+      </div>
     </div>
   </div>
   <div class="footerButton">
@@ -139,7 +155,6 @@ $(".select-brand").click(function() {
 $(".select-type").click(function() {
   $(".container .filter-wrapper .filter .filter-select .custom-arrow-up-type").toggleClass("selected");
   $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-type").toggleClass("selected");
-
 });
 
 $(function() {
@@ -159,7 +174,7 @@ function alertDeleteVehicle(elem) {
     })
     .then((result) => {
       if (result.isConfirmed) {
-        var vehicleId = $(elem).attr("data-id");
+        let vehicleId = $(elem).attr("data-id");
         $.ajax({
           type: "POST",
           url: '/veiculos_delete',
@@ -197,5 +212,95 @@ function alertDeleteVehicle(elem) {
         result.dismiss === swal.DismissReason.cancel
       ) {}
     })
+}
+
+$("#close-modal-view").click(function() {
+  $("#modal-view").toggleClass("hide");
+  $("#fade-view").toggleClass("hide");
+});
+
+$("#fade-view").click(function() {
+  $("#modal-view").toggleClass("hide");
+  $("#fade-view").toggleClass("hide");
+});
+
+async function viewVehicle(elem) {
+  let vehicleId = $(elem).attr("data-id");
+  await $.ajax({
+    type: "GET",
+    url: '/veiculos_view',
+    data: {
+      vehicle_id: vehicleId
+    },
+    contentType: "application/json",
+    dataType: "json",
+    success: function(response) {
+      $("#modal-view").toggleClass("hide");
+      $("#fade-view").toggleClass("hide");
+
+      function findKey(obj, value) {
+        const key = Object.keys(obj).find(key => obj[key].includes(value))
+        const keyFormatted = key.charAt(0).toUpperCase() + key.slice(1);
+        return keyFormatted
+      }
+
+      response.forEach((key, index) => {
+        $('.fieldForm').html('')
+
+        $(".fieldForm").append(`
+          <div class="box-input-view">
+            <label>${findKey(response[index],response[index].placa)}</label>
+            <input class="input input-view" type="text" value="${response[index].placa}" readonly>
+          </div>
+          <div class="box-input-view">
+            <label>${findKey(response[index],response[index].marca)}</label>
+            <input class="input input-view" type="text" value="${response[index].marca}" readonly>
+          </div>
+          <div class="box-input-view">
+            <label>${findKey(response[index],response[index].modelo)}</label>
+            <input class="input input-view" type="text" value="${response[index].modelo}" readonly>
+          </div>
+          <div class="box-input-view">
+            <label>${findKey(response[index],response[index].anoFabricacao) == "AnoFabricacao" && "Ano Fabricação"}</label>
+            <input class="input input-view" type="text" value="${response[index].anoFabricacao}" readonly>
+          </div>
+          <div class="box-input-view">
+            <label>${findKey(response[index],response[index].dataAquisicao) == "DataAquisicao" && "Data De Aquisição"}</label>
+            <input class="input input-view" type="text" value="${response[index].dataAquisicao}" readonly>
+          </div>
+          <div class="box-input-view">
+            <label>${findKey(response[index],response[index].valor)}</label>
+            <input class="input input-view-amount" type="text" data-thousands="." data-decimal="," data-prefix="R$ " value="${moneyMask(response[index].valor)}" readonly>
+        `)
+      });
+
+      console.log("Veiculo retornado com sucesso.");
+    },
+    error: function(response) {
+      console.log("Error no Banco de Dados.");
+      Swal.fire({
+        title: "Error!",
+        text: "Veículo não excluido com sucesso",
+        icon: "error",
+        confirmButtonColor: "var(--primary-color)",
+        confirmButtonText: "Ok",
+      });
+    }
+  });
+}
+
+const moneyMask = (value) => {
+  value = value.replace('.', '').replace(',', '').replace(/\D/g, '')
+
+  const options = {
+    minimumFractionDigits: 2
+  }
+  const result = new Intl.NumberFormat('pt-BR', options).format(
+    parseFloat(value) / 100
+  )
+
+  console.log(result)
+
+  return 'R$ ' + result
 }
 </script>

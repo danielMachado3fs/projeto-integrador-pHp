@@ -34,6 +34,12 @@ class Route extends Bootstrap
 			'action' => 'delete'
 		);
 
+		$routes['veiculos_view'] = array(
+			'route' => '/veiculos_view',
+			'controller' => 'veiculosController',
+			'action' => 'view'
+		);
+
 		/**rotas funcionários */
 
 		$routes['funcionario_index'] = array(

@@ -59,4 +59,11 @@ class VeiculosController extends Action
 		$vehicleId = $_POST["vehicle_id"];
 		$this->vehicleModel->deleteVehicle($vehicleId);
 	}
+
+	public function view()
+	{
+		$vehicleId = $_GET["vehicle_id"];
+		$dataVehicle = $this->vehicleModel->viewVehicle($vehicleId);
+		echo json_encode($dataVehicle);
+	}
 }
