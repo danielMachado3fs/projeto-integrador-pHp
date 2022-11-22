@@ -41,4 +41,44 @@ function zip_invalide() {
   $("#bairro").val("");
 }
 
+
 $(".select2").select2();
+function showToastAlert(icon, title, key, value, valueAfter = false) {
+  if (sessionStorage.getItem(key) !== value) {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2500,
+      timerProgressBar: true,
+      didOpen: toast => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+    Toast.fire({
+      icon: icon,
+      title: title,
+    });
+    sessionStorage.setItem(key, valueAfter);
+  }
+}
+
+// if (sessionStorage.getItem("isdeleted") !== "false") {
+//   const Toast = Swal.mixin({
+//     toast: true,
+//     position: "top-end",
+//     showConfirmButton: false,
+//     timer: 2500,
+//     timerProgressBar: true,
+//     didOpen: toast => {
+//       toast.addEventListener("mouseenter", Swal.stopTimer);
+//       toast.addEventListener("mouseleave", Swal.resumeTimer);
+//     },
+//   });
+//   Toast.fire({
+//     icon: "success",
+//     title: "Veículo Excluido Com Sucesso!",
+//   });
+//   sessionStorage.setItem("isdeleted", "false");
+// }

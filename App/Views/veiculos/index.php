@@ -1,4 +1,7 @@
 <?php
+
+use App\Route;
+
 function uniqueValue($datas, $typeValue)
 {
   $dataList = array();
@@ -67,7 +70,7 @@ function uniqueValue($datas, $typeValue)
   </form>
   <div class="table">
     <div class="table-section">
-      <table>
+      <table id="tableHolder">
         <thead>
           <tr>
             <th>Tipo</th>
@@ -82,23 +85,24 @@ function uniqueValue($datas, $typeValue)
         <tbody>
           <?php
           $vehicles = $this->view->dados;
-          foreach ($vehicles as $indice => $vehicle) {;
+          foreach ($vehicles as $indice => $vehicle) {
+            if ($vehicle['deletado'] == 0) {
           ?>
           <tr>
             <td>
               <span class="icon-type">
                 <?php
-                  switch ($vehicle['tipo']) {
-                    case "carro":
-                      echo '<i class="bx bxs-car"></i>';
-                      break;
-                    case "caminhao":
-                      echo '<i class="bx bxs-truck"></i>';
-                      break;
-                    default:
-                      echo '<i class="bx bxs-car"></i>';;
-                  }
-                  ?>
+                    switch ($vehicle['tipo']) {
+                      case "carro":
+                        echo '<i class="bx bxs-car"></i>';
+                        break;
+                      case "caminhao":
+                        echo '<i class="bx bxs-truck"></i>';
+                        break;
+                      default:
+                        echo '<i class="bx bxs-car"></i>';;
+                    }
+                    ?>
               </span>
             </td>
             <td><?= $vehicle['modelo'] ?></td>
@@ -109,11 +113,13 @@ function uniqueValue($datas, $typeValue)
             </td>
             <td>
               <button><i class="bx bxs-edit"></i></button>
-              <button onclick="alertDeleteVehicle()"><i class="bx bxs-trash"></i></button>
+              <button onclick="alertDeleteVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
+                  class="bx bxs-trash"></i></button>
               <button><i class="bx bxs-show"></i></button>
             </td>
           </tr>
-          <?php } ?>
+          <?php }
+          } ?>
         </tbody>
       </table>
     </div>
@@ -133,16 +139,63 @@ $(".select-brand").click(function() {
 $(".select-type").click(function() {
   $(".container .filter-wrapper .filter .filter-select .custom-arrow-up-type").toggleClass("selected");
   $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-type").toggleClass("selected");
+
 });
 
+$(function() {
+  showToastAlert("success", "Veículo Excluido Com Sucesso!", "isdeleted", "false");
+})
 
-function alertDeleteVehicle() {
+function alertDeleteVehicle(elem) {
   Swal.fire({
-    title: 'oii!',
-    text: 'Do you want to continue',
-    icon: 'error',
-    showCancelButton: true,
-    cancelButtonText: 'Cancelar'
-  })
+      title: "Excluir Veículo",
+      text: "Excluindo esse veículo perderá todas as informações do veículo. Esse processo não pode ser desfeito.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: "#ff0000",
+      cancelButtonColor: "#a9c0d4",
+      confirmButtonText: "Remover",
+      cancelButtonText: "Cancelar",
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        var vehicleId = $(elem).attr("data-id");
+        $.ajax({
+          type: "POST",
+          url: '/veiculos_delete',
+          data: {
+            vehicle_id: vehicleId
+          },
+          dataType: "text",
+          success: function(data, statusText, xhr) {
+            console.log("Veiculo deletado com sucesso.");
+            if (xhr.status == 200) {
+              Swal.fire({
+                title: "Veículo Excluido Com Sucesso!",
+                text: "Veículo excluido com sucesso",
+                icon: "success",
+                confirmButtonColor: "var(--primary-color)",
+                confirmButtonText: "Ok",
+              }).then((result) => {
+                sessionStorage.setItem("isdeleted", 'true');
+                location.reload();
+              })
+            }
+          },
+          error: function(response) {
+            console.log("Error no Banco de Dados.");
+            Swal.fire({
+              title: "Error!",
+              text: "Veículo não excluido com sucesso",
+              icon: "error",
+              confirmButtonColor: "var(--primary-color)",
+              confirmButtonText: "Ok",
+            });
+          }
+        });
+      } else if (
+        result.dismiss === swal.DismissReason.cancel
+      ) {}
+    })
 }
 </script>

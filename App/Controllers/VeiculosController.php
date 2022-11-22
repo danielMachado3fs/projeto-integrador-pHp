@@ -39,14 +39,24 @@ class VeiculosController extends Action
 			$viewData = $this->vehicleModel->getVehicles();
 		}
 
+		if (!empty($_GET['brands']) && !empty($_GET['types'])) {
+			$viewFilter['selectedBrand'] = $_GET['brands'];
+			$viewFilter['selectedType'] = $_GET['types'];
+		}
+
 		$viewFilter['tipo'] = $this->vehicleModel->getTypes();
 		$viewFilter['marca'] = $this->vehicleModel->getBrands();
-		$viewFilter['selectedBrand'] = $_GET['brands'];
-		$viewFilter['selectedType'] = $_GET['types'];
+
 		@$this->view->dados = $viewData;
 		@$this->view->dataFilters = $viewFilter;
 
 		// @$this->view->filterdatas = $viewDataFilter;
 		$this->render('index');
+	}
+
+	public function delete()
+	{
+		$vehicleId = $_POST["vehicle_id"];
+		$this->vehicleModel->deleteVehicle($vehicleId);
 	}
 }
