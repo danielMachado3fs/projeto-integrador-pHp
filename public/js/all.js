@@ -41,6 +41,8 @@ function zip_invalide() {
   $("#bairro").val("");
 }
 
+
+$(".select2").select2();
 function showToastAlert(icon, title, key, value, valueAfter = false) {
   if (sessionStorage.getItem(key) !== value) {
     const Toast = Swal.mixin({

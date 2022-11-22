@@ -38,9 +38,14 @@
               <input class="input" type="number" name="numero" id="numero" required>
             </div>
             <div class="inputForm">
-              <label for="setor">Setor</label>
-              <input class="input" type="text" name="setor" id="setor" required>
-            </div>
+            <label for="setor">Setor</label>
+              <select class="select2" size="1" name="setor" id="setor">
+                <option> Selecione...</option>
+                <option value="administrativo"> Administrativo </option>
+                <option value="financeiro"> Financeiro </option>
+                <option value="logistica"> Logística </option>
+              </select>
+          </div>
           </div>
         </div>
         <div class="contentsFormulario2">
@@ -68,7 +73,7 @@
       </div>
       <div class="rodape_btn">
         <button id="sendBtn" type="submit">Salvar</button>
-        <button id="cancelBtn">Cancelar</button>
+        <a id="cancelBtn" href="/funcionarios">Cancelar</a>
       </div>
     </form>
   </div>

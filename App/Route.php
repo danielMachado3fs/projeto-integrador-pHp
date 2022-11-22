@@ -71,6 +71,22 @@ class Route extends Bootstrap
 			'controller' => 'funcionariosController',
 			'action' => 'edit_store'
 		);
+		$routes['funcionario_delete'] = array(
+			'route' => '/funcionario_delete',
+			'controller' => 'funcionariosController',
+			'action' => 'delete'
+		);
+		$routes['posto_add'] = array(
+			'route' => '/adicionar_posto',
+			'controller' => 'postoController',
+			'action' => 'add'
+		);
+
+		$routes['posto_add_store'] = array(
+			'route' => '/adicionar_posto_store',
+			'controller' => 'postoController',
+			'action' => 'add_store'
+		);
 
 		/**fim */
 

@@ -77,3 +77,40 @@
 .container .table table button:nth-child(3):hover {
   background-color: #02bb2a;
 }
+
+/*
+*css para formatar links na tabela
+*/
+
+.container .table table a {
+  padding: 6px;
+  color: var(--shape);
+  font-size: 1.6rem;
+  border-radius: 100%;
+  /* border: 1px solid var(--line-color); */
+  margin-inline: 3px;
+  background-color: var(--background-color);
+}
+.container .table table a i {
+  padding: 3px;
+}
+
+.container .table table a:nth-child(1) {
+  background-color: #3b6dee;
+}
+.container .table table a:nth-child(1):hover {
+  background-color: #2753c2;
+}
+
+.container .table table a:nth-child(2) {
+  background-color: #ff0000;
+}
+.container .table table a:nth-child(2):hover {
+  background-color: #b40000;
+}
+.container .table table a:nth-child(3) {
+  background-color: #07e037;
+}
+.container .table table a:nth-child(3):hover {
+  background-color: #02bb2a;
+}

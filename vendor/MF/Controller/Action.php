@@ -10,13 +10,13 @@ abstract class Action {
 		$this->view = new \stdClass();
 	}
 
-	protected function render($view, $view_data = []) {
+	protected function render($view, $viewData = []) {
 		$this->view->page = $view;
 
 		if(file_exists("../App/Views/layoutDefault.php")) {
 			require_once "../App/Views/layoutDefault.php";
 		} else {
-			$this->content($view_data);
+			$this->content($viewData);
 		}
 	}
 
@@ -35,7 +35,18 @@ abstract class Action {
         require_once "../App/Views/includes/sidebar_menu.php";
     }
 
-	protected function content() {
+    protected function load_footer()
+    {
+        require_once "../App/Views/includes/footer.php";
+    }
+
+	protected function content($viewData = null) {
+		if($viewData){
+			foreach($viewData as $key => $data){
+				$this->view->{$key} = $data;
+				${$key} = $data;
+			}
+		}
 		$classAtual = get_class($this);
 
 		$classAtual = str_replace('App\\Controllers\\', '', $classAtual);
