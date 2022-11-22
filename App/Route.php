@@ -66,6 +66,20 @@ class Route extends Bootstrap
 			'action' => 'edit_store'
 		);
 
+
+		$routes['posto_add'] = array(
+			'route' => '/adicionar_posto',
+			'controller' => 'postoController',
+			'action' => 'add'
+		);
+
+		$routes['posto_add_store'] = array(
+			'route' => '/adicionar_posto_store',
+			'controller' => 'postoController',
+			'action' => 'add_store'
+		);
+
+
 		/**fim */
 
 		$routes['tickets'] = array(
