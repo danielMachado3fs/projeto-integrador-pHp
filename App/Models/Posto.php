@@ -2,7 +2,7 @@
 namespace App\Models;
 use MF\Model\Model;
 
-class Funcionario extends Model{
+class Posto extends Model{
     private $table = 'posto';
     private $values = 'cnpj, email, cep, estado, bairro, numero, nomeFantasia, telefone, cidade, logradouro, complemento';
     private $cnpj;

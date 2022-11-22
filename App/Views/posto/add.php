@@ -3,13 +3,13 @@
 </div>
 <div class="panelBody">
   <div id="form">
-    <form action="/addStore" method="POST">
+    <form action="/adicionar_posto_store" method="POST">
       <div class="divFormulario">
         <div class="contentsFormulario">
           <div>
             <div class="inputForm">
               <label for="cnpj">CNPJ </label>
-              <input class="input" type="text" name="cnpj" id="cnpj" required placeholder="Ex: 0123456/000000">
+              <input class="input" type="text" name="cnpj" id="cnpj" required placeholder="Ex: 01.23.456/0000-00">
             </div>
             <div class="inputForm">
               <label for="txtEmail">Email</label>
