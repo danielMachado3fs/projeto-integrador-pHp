@@ -1,5 +1,5 @@
 <div class="title">
-  <h1>Editar Funcionário</h1>
+  <h1>Adicionar Funcionário</h1>
 </div>
 <div class="panelBody">
   <div id="form">
