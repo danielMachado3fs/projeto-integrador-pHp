@@ -45,6 +45,8 @@ class VeiculosController extends Action
 		$viewFilter['selectedType'] = $_GET['types'];
 		@$this->view->dados = $viewData;
 		@$this->view->dataFilters = $viewFilter;
+		@$this->view->topBarTitle = "Veículos";
+		@$this->view->menuSelected = "veiculosMenu";
 
 		// @$this->view->filterdatas = $viewDataFilter;
 		$this->render('index');

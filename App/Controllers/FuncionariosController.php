@@ -36,11 +36,15 @@ class FuncionariosController extends Action {
 
 		$viewData['selectedNome'] = $_GET['nome'];
 		$viewData['selectedSetor'] = $_GET['setor'];
+		$this->view->topBarTitle = "Funcionários";
+		$this->view->menuSelected = "funcionariosMenu";
 		$this->render('index', $viewData);
     }
 
 	public function add() {
 
+		$this->view->topBarTitle = "Funcionários";
+		$this->view->menuSelected = "funcionariosMenu";
 		$this->render('add');
     }
 
@@ -67,9 +71,9 @@ class FuncionariosController extends Action {
 	}
 
 	public function edit(){
-		// var_dump($_GET['id']);
 		@$this->view->data = $this->funcionarioModel->getOne($_GET['id']);
-		// var_dump($this->view->data);
+		$this->view->topBarTitle = "Funcionários";
+		$this->view->menuSelected = "funcionariosMenu";
 		$this->render('edit');
 	}
 
@@ -108,6 +112,5 @@ class FuncionariosController extends Action {
 	}
 
 }
-
 
 ?>
