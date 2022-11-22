@@ -71,9 +71,9 @@ class Veiculo extends Model
 
   public function deleteVehicle($vehicleId)
   {
-    $query = "UPDATE veiculo SET deletado=:deletado WHERE id = :id";
+    $query = "UPDATE veiculo SET deleted=:deleted WHERE id = :id";
     $stmt = $this->db->prepare($query);
-    $stmt->execute(array('id' => $vehicleId, 'deletado' => 1));
+    $stmt->execute(array('id' => $vehicleId, 'deleted' => 1));
   }
 
   public function viewVehicle($vehicleId)

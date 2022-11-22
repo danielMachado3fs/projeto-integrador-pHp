@@ -17,7 +17,6 @@ class FuncionariosController extends Action {
 	}
 
 	public function index() {
-
 		if (isset($_GET['search'])) {
 			if (isset($_GET['nome']) && isset($_GET['setor'])) {
 				if ($_GET['nome'] === 'all' && $_GET['setor'] === 'all') {
@@ -61,13 +60,13 @@ class FuncionariosController extends Action {
 		->_set('bairro', $_POST['bairro'])
 		->_set('numero', $_POST['numero'])
 		->_set('complemento', $_POST['complemento'])
-		->_set('setor', $_POST['setor']);
+		->_set('setor', $_POST['setor'])
+		->_set('cargo', $_POST['cargo']);
 
 		$save_id = $this->funcionarioModel->salvar();
 		if($save_id){
 			$this->index();
 		}
-
 	}
 
 	public function edit(){
@@ -110,7 +109,6 @@ class FuncionariosController extends Action {
 			echo json_encode(array('success' => false, 'message' => 'Registro não encontrado'));
 		}
 	}
-
 }
 
 ?>

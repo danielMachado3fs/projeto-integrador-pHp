@@ -9,18 +9,22 @@ class Route extends Bootstrap
 
 	protected function initRoutes()
 	{
+		/**rotas login */
 
-		$routes['home'] = array(
+		$routes['login'] = array(
 			'route' => '/',
-			'controller' => 'indexController',
+			'controller' => 'loginController',
 			'action' => 'index'
 		);
 
-		$routes['sobre_nos'] = array(
-			'route' => '/sobre_nos',
-			'controller' => 'indexController',
-			'action' => 'sobreNos'
+		$routes['login_autenticar'] = array(
+			'route' => '/autenticar',
+			'controller' => 'loginController',
+			'action' => 'autenticar'
 		);
+
+		/**fim */
+		/**rotas veiculos */
 
 		$routes['veiculos_index'] = array(
 			'route' => '/veiculos',
@@ -39,6 +43,8 @@ class Route extends Bootstrap
 			'controller' => 'veiculosController',
 			'action' => 'view'
 		);
+
+		/**fim */
 
 		/**rotas funcionários */
 
@@ -76,6 +82,11 @@ class Route extends Bootstrap
 			'controller' => 'funcionariosController',
 			'action' => 'delete'
 		);
+
+		/**fim */
+
+		/**rotas posto */
+
 		$routes['posto_add'] = array(
 			'route' => '/adicionar_posto',
 			'controller' => 'postoController',
@@ -90,11 +101,15 @@ class Route extends Bootstrap
 
 		/**fim */
 
+		/**rotas tickets */
+
 		$routes['tickets'] = array(
 			'route' => '/tickets',
 			'controller' => 'ticketsController',
 			'action' => 'tickets'
 		);
+
+		/**fim */
 
 		$this->setRoutes($routes);
 	}
