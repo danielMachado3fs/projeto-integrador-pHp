@@ -3,7 +3,7 @@ namespace App\Models;
 use MF\Model\Model;
 
 class Funcionario extends Model{
-    private $table = 'Funcionarios';
+    private $table = 'funcionarios';
     private $values = 'nome, dataNascimento, cpf, email, telefone, cep, cidade,estado, logradouro, bairro, numero, complemento, setor';
     private $nome;
     private $dataNascimento;
@@ -57,8 +57,13 @@ class Funcionario extends Model{
         return $stmt->errorInfo();
     }
 
-    public function add($funcionario){
-
+    public function delete($id){
+        $sql = "UPDATE $this->table SET deleted = 1 WHERE id = $id";
+        $stmt = $this->db->prepare($sql);
+        if($stmt->execute() && $id){
+            return true;
+        }
+        return $stmt->errorInfo();
     }
 
     public function getOne($id){
@@ -68,18 +73,29 @@ class Funcionario extends Model{
         return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 
+    public function getAll(){
+        $sql = "SELECT * FROM $this->table WHERE deleted = 0";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
     public function getAllWhere($options = array()){
         $where = '';
         if($options['id']){
-            $where .= " AND id = {$options['id']}";
+            $where .= " AND id = '{$options['id']}'";
         }
         
         if($options['setor']){
-            $where .= " AND setor = {$options['setor']}";
+            $where .= " AND setor = '{$options['setor']}'";
         }
 
         if($options['estado']){
-            $where .= " AND estado = {$options['estado']}";
+            $where .= " AND estado = '{$options['estado']}'";
+        }
+
+        if($options['nome']){
+            $where .= " AND nome LIKE '%{$options['nome']}%'";
         }
         
         $sql = "SELECT * FROM $this->table WHERE deleted = 0 $where";

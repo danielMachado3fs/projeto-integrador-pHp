@@ -65,8 +65,11 @@ class Route extends Bootstrap
 			'controller' => 'funcionariosController',
 			'action' => 'edit_store'
 		);
-
-
+		$routes['funcionario_delete'] = array(
+			'route' => '/funcionario_delete',
+			'controller' => 'funcionariosController',
+			'action' => 'delete'
+		);
 		$routes['posto_add'] = array(
 			'route' => '/adicionar_posto',
 			'controller' => 'postoController',
@@ -78,7 +81,6 @@ class Route extends Bootstrap
 			'controller' => 'postoController',
 			'action' => 'add_store'
 		);
-
 
 		/**fim */
 
