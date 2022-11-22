@@ -304,7 +304,8 @@ button {
   border-radius: 5rem;
 }
 
-.filter-wrapper .filter .filter-select select, .filter-select input {
+.filter-wrapper .filter .filter-select select,
+.filter-select input {
   background-color: transparent;
   border: 0;
   padding: 0 2rem 0 0;
@@ -364,7 +365,10 @@ button {
 }
 
 .filter-btn {
-  background-image: linear-gradient(var(--primary-color), var(--secondary-color));
+  background-image: linear-gradient(
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: var(--shape);
 }
 
@@ -413,7 +417,7 @@ button {
   flex-direction: row;
   justify-content: flex-end;
   padding: 2rem;
-  
+}
 
 /* --------------SweetAlert2---------------- */
 .swal2-popup {
