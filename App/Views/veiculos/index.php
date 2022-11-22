@@ -1,7 +1,5 @@
 <?php
 
-use App\Route;
-
 function uniqueValue($datas, $typeValue)
 {
   $dataList = array();
@@ -10,7 +8,6 @@ function uniqueValue($datas, $typeValue)
   }
   return array_unique($dataList);
 }
-
 ?>
 
 <div class="title">
@@ -145,7 +142,6 @@ function uniqueValue($datas, $typeValue)
   </div>
 </div>
 
-
 <script>
 $(".select-brand").click(function() {
   $(".container .filter-wrapper .filter .filter-select .custom-arrow-up-brand").toggleClass("selected");
@@ -157,9 +153,11 @@ $(".select-type").click(function() {
   $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-type").toggleClass("selected");
 });
 
-$(function() {
-  showToastAlert("success", "Veículo Excluido Com Sucesso!", "isdeleted", "false");
-})
+if (sessionStorage.getItem("isdeleted") != null) {
+  $(function() {
+    showToastAlert("success", "Veículo Excluido Com Sucesso!", "isdeleted", "false");
+  })
+}
 
 function alertDeleteVehicle(elem) {
   Swal.fire({
@@ -280,7 +278,7 @@ async function viewVehicle(elem) {
       console.log("Error no Banco de Dados.");
       Swal.fire({
         title: "Error!",
-        text: "Veículo não excluido com sucesso",
+        text: "Veículo não retornado com sucesso",
         icon: "error",
         confirmButtonColor: "var(--primary-color)",
         confirmButtonText: "Ok",
