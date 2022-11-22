@@ -107,7 +107,7 @@ button {
 }
 
 .sidebar .nav-list li a:hover:not(.finance-options-show li a),
-.sidebar .nav-list li .btn-finance.selected {
+.sidebar .nav-list li .btn-menu.selected {
   background-color: var(--primary-color);
   color: var(--shape);
   font-weight: 700;
@@ -147,7 +147,6 @@ button {
   content: "";
   position: absolute;
   border-left: 0.4rem var(--primary-color) solid;
-  /* top: 35%; */
   left: 0;
   height: 3.5rem;
   margin-top: auto;

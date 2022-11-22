@@ -1,6 +1,6 @@
 <div class="top-bar">
     <div class="title-guide">
-        <h2>Veículo</h2>
+        <h2><?= $this->view->topBarTitle ?></h2>
     </div>
 
     <div class="profile">
