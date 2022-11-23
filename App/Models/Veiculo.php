@@ -59,13 +59,13 @@ class Veiculo extends Model
 
   public function getBrands()
   {
-    $query = "select marca from veiculo";
+    $query = "SELECT marca FROM veiculo WHERE deletado=0";
     return $this->db->query($query)->fetchAll();
   }
 
   public function getTypes()
   {
-    $query = "select tipo from veiculo";
+    $query = "SELECT tipo FROM veiculo WHERE deletado=0";
     return $this->db->query($query)->fetchAll();
   }
 
