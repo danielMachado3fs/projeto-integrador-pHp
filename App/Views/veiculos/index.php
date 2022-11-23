@@ -15,7 +15,7 @@ function uniqueValue($datas, $typeValue)
 </div>
 <div class="panelBody">
 
-  <form action="/veiculos" method="GET">
+  <form action="/veiculos_cadastrados" method="GET">
     <div class="filter-wrapper">
       <div class="filter">
         <div class="filter-select">
@@ -109,7 +109,8 @@ function uniqueValue($datas, $typeValue)
               <?= $vehicle['placa'] ?>
             </td>
             <td>
-              <button><i class="bx bxs-edit"></i></button>
+              <button onclick="viewUpdateVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
+                  class="bx bxs-edit"></i></button>
               <button onclick="alertDeleteVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
                   class="bx bxs-trash"></i></button>
               <button id="btn-view" onclick="viewVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
@@ -157,6 +158,20 @@ if (sessionStorage.getItem("isdeleted") != null) {
   $(function() {
     showToastAlert("success", "Veículo Excluido Com Sucesso!", "isdeleted", "false");
   })
+}
+
+if (sessionStorage.getItem("isupdated") != null) {
+  if (sessionStorage.getItem("isupdated") == "update") {
+    $(function() {
+      showToastAlert("success", "Veículo Atualizado Com Sucesso!", "isupdated", "nothing");
+    })
+  }
+  if (sessionStorage.getItem("isupdated") == "notupdate") {
+    $(function() {
+      showToastAlert("error", "Veículo Não Atualizado Com Sucesso!", "isupdated", "nothing");
+    })
+  }
+
 }
 
 function alertDeleteVehicle(elem) {
@@ -287,6 +302,32 @@ async function viewVehicle(elem) {
   });
 }
 
+async function viewUpdateVehicle(elem) {
+  let vehicleId = $(elem).attr("data-id");
+  await $.ajax({
+    type: "GET",
+    url: `/veiculo_edit?vehicle_id=${vehicleId}`,
+    headers: {
+      'Accept': 'application/text',
+      'Content-Type': 'application/json',
+    },
+    success: function(response, textStatus, xhr) {
+      window.location.href = `/veiculo_edit?vehicle_id=${vehicleId}`;
+      console.log("Veiculo retornado com sucesso.");
+    },
+    error: function(response) {
+      console.log("Error no Banco de Dados.");
+      Swal.fire({
+        title: "Error!",
+        text: "Veículo não retornado com sucesso",
+        icon: "error",
+        confirmButtonColor: "var(--primary-color)",
+        confirmButtonText: "Ok",
+      });
+    }
+  });
+}
+
 const moneyMask = (value) => {
   value = value.replace('.', '').replace(',', '').replace(/\D/g, '')
 
@@ -296,8 +337,6 @@ const moneyMask = (value) => {
   const result = new Intl.NumberFormat('pt-BR', options).format(
     parseFloat(value) / 100
   )
-
-  console.log(result)
 
   return 'R$ ' + result
 }

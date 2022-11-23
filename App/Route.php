@@ -22,8 +22,14 @@ class Route extends Bootstrap
 			'action' => 'sobreNos'
 		);
 
-		$routes['veiculos_index'] = array(
-			'route' => '/veiculos',
+		// $routes['veiculos'] = array(
+		// 	'route' => '/veiculos',
+		// 	'controller' => 'veiculosController',
+		// 	'action' => 'index'
+		// );
+
+		$routes['veiculos_cadastrados'] = array(
+			'route' => '/veiculos_cadastrados',
 			'controller' => 'veiculosController',
 			'action' => 'index'
 		);
@@ -37,7 +43,19 @@ class Route extends Bootstrap
 		$routes['veiculos_view'] = array(
 			'route' => '/veiculos_view',
 			'controller' => 'veiculosController',
-			'action' => 'view'
+			'action' => 'view',
+		);
+
+		$routes['veiculos_update'] = array(
+			'route' => '/veiculo_edit',
+			'controller' => 'veiculosController',
+			'action' => 'update_view'
+		);
+
+		$routes['veiculos_update_store'] = array(
+			'route' => '/veiculo_edit_store',
+			'controller' => 'veiculosController',
+			'action' => 'update_view_store'
 		);
 
 		/**rotas funcionários */

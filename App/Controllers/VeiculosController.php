@@ -63,7 +63,30 @@ class VeiculosController extends Action
 	public function view()
 	{
 		$vehicleId = $_GET["vehicle_id"];
-		$dataVehicle = $this->vehicleModel->viewVehicle($vehicleId);
-		echo json_encode($dataVehicle);
+		$dataVehicle1 = $this->vehicleModel->viewVehicle($vehicleId);
+		echo json_encode($dataVehicle1);
+	}
+
+	public function update_view()
+	{
+		$vehicleId = $_GET["vehicle_id"];
+		@$this->view->dataVehicle  = $this->vehicleModel->viewVehicle($vehicleId);
+
+		$this->render('edit_veiculo');
+	}
+
+	public function update_view_store()
+	{
+		$this->vehicleModel->_set('marca', $_POST['marca'])
+			->_set('modelo', $_POST['modelo'])
+			->_set('tipo', $_POST['tipo'])
+			->_set('placa', $_POST['placa'])
+			->_set('anoFabricacao', $_POST['anoFabricacao'])
+			->_set('dataAquisicao', $_POST['dataAquisicao'])
+			->_set('valor', $_POST['valor'])
+			->_set('id', $_POST['id']);
+
+		$update = $this->vehicleModel->updateVehicle();
+		$this->index();
 	}
 }

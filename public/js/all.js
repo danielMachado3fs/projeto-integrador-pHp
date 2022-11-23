@@ -41,7 +41,6 @@ function zip_invalide() {
   $("#bairro").val("");
 }
 
-
 $(".select2").select2();
 function showToastAlert(icon, title, key, value, valueAfter = false) {
   if (sessionStorage.getItem(key) !== value) {
@@ -60,6 +59,39 @@ function showToastAlert(icon, title, key, value, valueAfter = false) {
       icon: icon,
       title: title,
     });
-    sessionStorage.setItem(key, valueAfter);
+    sessionStorage.removeItem(key);
   }
 }
+
+async function getCarsApi() {
+  const response = await fetch(
+    "https://private-anon-96d0acf58c-carsapi1.apiary-mock.com/cars",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await response.json();
+  return data;
+}
+
+// Usar os dados da retornados da funcao getCarsApi()
+
+const statesSelect = document.getElementById("vehicle-brand");
+
+getCarsApi().then(data => {
+  data
+    .map(value => value.make)
+    .filter((value, index, _arr) => _arr.indexOf(value) == index)
+    .forEach(make => {
+      const makeFormatted = make.charAt(0).toUpperCase() + make.slice(1);
+      const option = new Option(makeFormatted, make, false);
+      console.log(option);
+      statesSelect.add(option);
+    });
+
+  const dataOp = dataOptions();
+  $("#vehicle-brand").val(dataOp.datamarca).trigger("change");
+});

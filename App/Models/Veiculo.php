@@ -12,7 +12,7 @@ class Veiculo extends Model
   private $tipo;
   private $placa;
   private $anoFabricacao;
-  private $anoRequisicao;
+  private $dataAquisicao;
   private $valor;
   private $id;
 
@@ -84,5 +84,13 @@ class Veiculo extends Model
     $veiculos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
     // echo json_encode($veiculos);
     return ($veiculos);
+  }
+
+  public function updateVehicle()
+  {
+    $query = "UPDATE veiculo SET placa = :placa, modelo = :modelo, marca = :marca, anoFabricacao =:anoFabricacao, tipo= :tipo, dataAquisicao=:dataAquisicao, valor=:valor WHERE id = :id";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute(array('id' => $this->id, 'placa' => $this->placa, 'marca' => $this->marca, 'anoFabricacao' => $this->anoFabricacao, 'tipo' => $this->tipo, 'dataAquisicao' => $this->dataAquisicao, 'valor' => $this->valor, "modelo" => $this->modelo));
+    return $stmt->rowCount();
   }
 }

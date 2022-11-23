@@ -38,7 +38,8 @@ input {
   width: 100%;
 }
 
-.inputFormName {
+.inputFormName,
+.input-form-placa {
   padding: 8px;
 }
 
@@ -57,6 +58,10 @@ select {
   color: var(--text-color);
   border-color: var(--primary-color);
   width: 100%;
+}
+
+.veiculo-form {
+  margin-top: 5rem;
 }
 
 /*----------- REMOVE A BORDA DOS INPUT QUANDO CLICADO--------- */
