@@ -8,12 +8,15 @@ $password= "";
 $databaseName="scf_db";
 
 $connect = mysqli_connect($hostname,$username, $password, $databaseName);
-$query="SELECT * FROM `registration`";
+$query1="SELECT * FROM `funcionarios`";
+$query2="SELECT * FROM `postos`";
+$query3="SELECT * FROM `veiculo`";
 
-$result1 = mysqli_query($connect,$query);
-$result2 = mysqli_query($connect,$query);
-$result3 = mysqli_query($connect,$query);
-$result4 = mysqli_query($connect,$query);
+
+$result1 = mysqli_query($connect,$query1);
+$result2 = mysqli_query($connect,$query2);
+$result3 = mysqli_query($connect,$query3);
+ 
 
 ?>
 <!--  fim da conexão -->
@@ -41,7 +44,7 @@ $result4 = mysqli_query($connect,$query);
                     
                       <select  size="1" name="motorista">
                       <?php while ($row1 = mysqli_fetch_array($result1)):;?>
-                      <option><?php echo $row1[0];?></option>
+                      <option><?php echo $row1[1];?></option>
                       <?php endwhile;?>
                       </select>
                       </select>
@@ -52,10 +55,10 @@ $result4 = mysqli_query($connect,$query);
 
                   <div>
                     <div >
-                      <label class="inputForm" for="postoCombustiveis">Posto de Combustíveis</label> 
-                      <select  size="1" name="postocombustiveis" >
+                      <label class="inputForm" for="postos">Posto de Combustíveis</label> 
+                      <select  size="1" name="postos" >
                       <?php while ($row2 = mysqli_fetch_array($result2)):;?>
-                      <option><?php echo $row2[1];?></option>
+                      <option><?php echo $row2[11];?></option>
                       <?php endwhile;?>
                     </select>
                     </div>
@@ -63,9 +66,13 @@ $result4 = mysqli_query($connect,$query);
 
                       <label class="inputForm" for="TipoCombustiveis">Tipo de Combustíveis</label> 
                       <select   size="1" name="tiposCombustiveis">
-                      <?php while ($row3 = mysqli_fetch_array($result3)):;?>
-                      <option><?php echo $row3[2];?></option>
-                      <?php endwhile;?>
+                        <option> Gasolina comum </option>
+                        <option> Gasolina aditivada </option>
+                        <option> Gasolina premium </option>
+                        <option> Gasolina formulada </option>
+                        <option> Etanol </option>
+                        <option> Etanol aditivado </option>
+                        <option> Diesel </option>
                     </select>
                     </div>
 
@@ -77,8 +84,9 @@ $result4 = mysqli_query($connect,$query);
                     <div>
                       <label class="inputForm" for="veiculo">&nbsp;Veiculo</label> 
                        <select  size="1" name="postos">
-                      <?php while ($row4 = mysqli_fetch_array($result4)):;?>
-                      <option><?php echo $row4[4];?></option>
+                      <?php while ($row3 = mysqli_fetch_array($result3)):;?>
+                      <option><?php echo $row3[3]; echo "&nbsp"; echo $row3[2]; echo "&nbsp placa:&nbsp";  echo $row3[1];?></option>
+                      
                       <?php endwhile;?>
                     </select>
                     </div>
