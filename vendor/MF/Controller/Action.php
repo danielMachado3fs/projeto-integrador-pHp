@@ -5,9 +5,11 @@ namespace MF\Controller;
 abstract class Action {
 
 	protected $view;
+	protected $user;
 
 	public function __construct() {
 		$this->view = new \stdClass();
+		$this->user = new \stdClass();
 	}
 
 	protected function render($view, $viewData = [], $layout = null) {

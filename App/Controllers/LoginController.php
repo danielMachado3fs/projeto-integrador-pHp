@@ -33,9 +33,14 @@ class LoginController extends Action
 			$_SESSION['id'] = $usuario->id;
 			$_SESSION['nome'] = $usuario->nome;
 
-			header('location: /dashboard');
+			header('location: /funcionarios');
 		} else {
 			header('location: /?login=erro');
 		}
+	}
+
+	public function logoff(){
+		session_destroy();
+		$this->index();
 	}
 }

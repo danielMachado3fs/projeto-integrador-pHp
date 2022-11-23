@@ -25,9 +25,9 @@
             <label for="setor">Setor</label>
             <select class="select2" size="1" name="setor" id="setor">
               <option> Selecione...</option>
-              <option <?php if ($modelInfo->setor == 'administrativo') echo 'selected'; ?> value="administrativo"> Administrativo </option>
-              <option <?php if ($modelInfo->setor == 'financeiro') echo 'selected'; ?> value="financeiro"> Financeiro </option>
-              <option <?php if ($modelInfo->setor == 'logistica') echo 'selected'; ?> value="logistica"> Logística </option>
+              <option <?php if (strtolower($modelInfo->setor) == 'administrativo') echo 'selected'; ?> value="administrativo"> Administrativo </option>
+              <option <?php if (strtolower($modelInfo->setor) == 'financeiro') echo 'selected'; ?> value="financeiro"> Financeiro </option>
+              <option <?php if (strtolower($modelInfo->setor) == 'logistica') echo 'selected'; ?> value="logistica"> Logística </option>
             </select>
           </div>
           <div class="inputForm">

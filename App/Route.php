@@ -23,6 +23,12 @@ class Route extends Bootstrap
 			'action' => 'autenticar'
 		);
 
+		$routes['logoff'] = array(
+			'route' => '/logoff',
+			'controller' => 'loginController',
+			'action' => 'logoff'
+		);
+
 		/**fim */
 		/**rotas veiculos */
 
@@ -87,6 +93,12 @@ class Route extends Bootstrap
 
 		/**rotas posto */
 
+		$routes['posto_index'] = array(
+			'route' => '/postos_combustivel',
+			'controller' => 'postoController',
+			'action' => 'index'
+		);
+
 		$routes['posto_add'] = array(
 			'route' => '/adicionar_posto',
 			'controller' => 'postoController',
@@ -97,6 +109,24 @@ class Route extends Bootstrap
 			'route' => '/adicionar_posto_store',
 			'controller' => 'postoController',
 			'action' => 'add_store'
+		);
+
+		$routes['posto_edit'] = array(
+			'route' => '/posto_edit',
+			'controller' => 'postoController',
+			'action' => 'edit'
+		);
+
+		$routes['posto_edit_store'] = array(
+			'route' => '/editar_posto_store',
+			'controller' => 'postoController',
+			'action' => 'edit_store'
+		);
+
+		$routes['posto_delete'] = array(
+			'route' => '/posto_delete',
+			'controller' => 'postoController',
+			'action' => 'delete'
 		);
 
 		/**fim */

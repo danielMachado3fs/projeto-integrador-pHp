@@ -19,7 +19,7 @@
     </li>
 
     <li>
-      <a href="" class="btn-menu postoMenu" onclick="selectMenu('postoMenu')">
+      <a href="/postos_combustivel" class="btn-menu postoMenu" onclick="selectMenu('postoMenu')">
         <i class="bx bx-gas-pump"></i>
         <span class="link_name">Post. Combustivel</span>
       </a>
@@ -40,13 +40,13 @@
     </li>
 
     <li>
-      <a href="#" class="btn-menu financeiro" onclick="selectMenu('financeiro')">
+      <a href="#" class="btn-menu financeiroMenu" onclick="selectMenu('financeiroMenu')">
         <i class="bx bx-money"></i>
         <span class="link_name">Financeiro</span>
         <i class="bx bxs-chevron-right"></i>
       </a>
       <ul class="finance-options-show">
-        <li><a href="">Tickets</a></li>
+        <li><a href="/tickets">Tickets</a></li>
         <li><a href="">Relatórios</a></li>
       </ul>
     </li>
@@ -57,7 +57,7 @@
   $(".financeiroMenu").click(function () {
     $(".sidebar .nav-list .finance-options-show").toggleClass("show");
     $(".sidebar .nav-list li a .bxs-chevron-right").toggleClass("rotate");
-    $(".sidebar .nav-list li .btn-menu").toggleClass("selected");
+    // $(".sidebar .nav-list li .financeiroMenu").toggleClass("selected");
   });
 
   function selectMenu(btn){

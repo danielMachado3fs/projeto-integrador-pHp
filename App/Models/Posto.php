@@ -3,7 +3,7 @@ namespace App\Models;
 use MF\Model\Model;
 
 class Posto extends Model{
-    private $table = 'posto';
+    protected $table = 'postos';
     private $values = 'cnpj, email, cep, estado, bairro, numero, nomeFantasia, telefone, cidade, logradouro, complemento';
     private $cnpj;
     private $email;
@@ -53,13 +53,6 @@ class Posto extends Model{
         return $stmt->errorInfo();
     }
 
-    public function getOne($id){
-        $sql = "SELECT * FROM $this->table WHERE deleted = 0 AND id = $id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetch(\PDO::FETCH_OBJ);
-    }
-
     public function getAllWhere($options = array()){
         $where = '';
         if($options['id']){
@@ -70,8 +63,12 @@ class Posto extends Model{
             $where .= " AND cnpj = {$options['cnpj']}";
         }
 
-        if($options['nomeFantasia']){
-            $where .= " AND nomeFantasia = {$options['nomeFantasia']}";
+        if($options['nome']){
+            $where .= " AND nomeFantasia LIKE '%{$options['nome']}%'";
+        }
+
+        if($options['cidade']){
+            $where .= " AND cidade LIKE '%{$options['cidade']}%'";
         }
         
         $sql = "SELECT * FROM $this->table WHERE deleted = 0 $where";
@@ -79,5 +76,4 @@ class Posto extends Model{
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
-
 }

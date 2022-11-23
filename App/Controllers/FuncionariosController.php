@@ -28,13 +28,13 @@ class FuncionariosController extends Action {
 					];
 					$viewData['funcionarios'] = $this->funcionarioModel->getAllWhere($options);
 				}
+				$viewData['selectedNome'] = $_GET['nome'];
+				$viewData['selectedSetor'] = $_GET['setor'];
 			}
 		} else {
 			$viewData['funcionarios'] = $this->funcionarioModel->getAll();
 		}
 
-		$viewData['selectedNome'] = $_GET['nome'];
-		$viewData['selectedSetor'] = $_GET['setor'];
 		$this->view->topBarTitle = "Funcionários";
 		$this->view->menuSelected = "funcionariosMenu";
 		$this->render('index', $viewData);

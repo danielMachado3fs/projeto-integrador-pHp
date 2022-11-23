@@ -1,10 +1,10 @@
 .imagem {
-    width: 50%;
+    width: 60%;
     height: 100vh;
     background-image: url("../images/escolhidda.jpeg");
     background-size:cover;
     background-position: center;
-    background-repeat: repeat-x;
+    background-repeat: no-repeat;
 }
 
 body {
@@ -12,6 +12,10 @@ body {
     margin: 0 !important;
     font-family: "Poppins", sans-serif;
     font-size: 1.3rem;
+    /* background-image: url("../images/escolhidda.jpeg");
+    background-size:cover;
+    background-position: left;
+    background-repeat: no-repeat; */
 }
 
 a {
@@ -26,12 +30,16 @@ a {
 }
 
 .form-container {
-    width: 50%;
+    width: 40%;
     height: 100vh;
     background: #e6eef1;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-image: url("../images/background_2.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat; */
 }
 
 .form input {
@@ -63,6 +71,8 @@ a {
     border: 1px solid #005776;
     font-weight: bold;
     border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .btn-entrar:hover {
