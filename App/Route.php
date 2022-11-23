@@ -32,8 +32,8 @@ class Route extends Bootstrap
 		/**fim */
 		/**rotas veiculos */
 
-		$routes['veiculos_index'] = array(
-			'route' => '/veiculos',
+		$routes['veiculos_cadastrados'] = array(
+			'route' => '/veiculos_cadastrados',
 			'controller' => 'veiculosController',
 			'action' => 'index'
 		);
@@ -47,7 +47,31 @@ class Route extends Bootstrap
 		$routes['veiculos_view'] = array(
 			'route' => '/veiculos_view',
 			'controller' => 'veiculosController',
-			'action' => 'view'
+			'action' => 'view',
+		);
+
+		$routes['veiculos_update'] = array(
+			'route' => '/veiculo_edit',
+			'controller' => 'veiculosController',
+			'action' => 'update_view'
+		);
+
+		$routes['veiculos_update_store'] = array(
+			'route' => '/veiculo_edit_store',
+			'controller' => 'veiculosController',
+			'action' => 'update_view_store'
+		);
+
+		$routes['veiculos_add'] = array(
+			'route' => '/veiculo_add',
+			'controller' => 'veiculosController',
+			'action' => 'add'
+		);
+
+		$routes['veiculos_add_store'] = array(
+			'route' => '/veiculo_add_store',
+			'controller' => 'veiculosController',
+			'action' => 'add_store'
 		);
 
 		/**fim */

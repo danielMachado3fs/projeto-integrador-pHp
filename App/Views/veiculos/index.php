@@ -1,7 +1,5 @@
 <?php
 
-use App\Route;
-
 function uniqueValue($datas, $typeValue)
 {
   $dataList = array();
@@ -10,7 +8,6 @@ function uniqueValue($datas, $typeValue)
   }
   return array_unique($dataList);
 }
-
 ?>
 
 <div class="title">
@@ -18,7 +15,7 @@ function uniqueValue($datas, $typeValue)
 </div>
 <div class="panelBody">
 
-  <form action="/veiculos" method="GET">
+  <form action="/veiculos_cadastrados" method="GET">
     <div class="filter-wrapper">
       <div class="filter">
         <div class="filter-select">
@@ -112,7 +109,8 @@ function uniqueValue($datas, $typeValue)
               <?= $vehicle['placa'] ?>
             </td>
             <td>
-              <button><i class="bx bxs-edit"></i></button>
+              <button onclick="viewUpdateVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
+                  class="bx bxs-edit"></i></button>
               <button onclick="alertDeleteVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
                   class="bx bxs-trash"></i></button>
               <button id="btn-view" onclick="viewVehicle(this)" data-id="<?= $vehicle['id'] ?>"><i
@@ -141,10 +139,9 @@ function uniqueValue($datas, $typeValue)
     </div>
   </div>
   <div class="footerButton">
-    <button id="sendBtn">Cadastrar</button>
+    <a href="/veiculo_add" id="sendBtn">Cadastrar Veículo</a>
   </div>
 </div>
-
 
 <script>
 $(".select-brand").click(function() {
@@ -157,9 +154,37 @@ $(".select-type").click(function() {
   $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-type").toggleClass("selected");
 });
 
-$(function() {
-  showToastAlert("success", "Veículo Excluido Com Sucesso!", "isdeleted", "false");
-})
+if (sessionStorage.getItem("isdeleted") != null) {
+  $(function() {
+    showToastAlert("success", "Veículo Excluido Com Sucesso!", "isdeleted", "false");
+  })
+}
+
+if (sessionStorage.getItem("isupdated") != null) {
+  if (sessionStorage.getItem("isupdated") == "update") {
+    $(function() {
+      showToastAlert("success", "Veículo Atualizado Com Sucesso!", "isupdated", "nothing");
+    })
+  }
+  if (sessionStorage.getItem("isupdated") == "notupdate") {
+    $(function() {
+      showToastAlert("error", "Veículo Não Atualizado Com Sucesso!", "isupdated", "nothing");
+    })
+  }
+}
+
+if (sessionStorage.getItem("isinserted") != null) {
+  if (sessionStorage.getItem("isinserted") == "insert") {
+    $(function() {
+      showToastAlert("success", "Veículo Cadastrado Com Sucesso!", "isinserted", "nothing");
+    })
+  }
+  if (sessionStorage.getItem("isupdated") == "notinsert") {
+    $(function() {
+      showToastAlert("error", "Veículo Não Cadastrado Com Sucesso!", "isinserted", "nothing");
+    })
+  }
+}
 
 function alertDeleteVehicle(elem) {
   Swal.fire({
@@ -280,7 +305,33 @@ async function viewVehicle(elem) {
       console.log("Error no Banco de Dados.");
       Swal.fire({
         title: "Error!",
-        text: "Veículo não excluido com sucesso",
+        text: "Veículo não retornado com sucesso",
+        icon: "error",
+        confirmButtonColor: "var(--primary-color)",
+        confirmButtonText: "Ok",
+      });
+    }
+  });
+}
+
+async function viewUpdateVehicle(elem) {
+  let vehicleId = $(elem).attr("data-id");
+  await $.ajax({
+    type: "GET",
+    url: `/veiculo_edit?vehicle_id=${vehicleId}`,
+    headers: {
+      'Accept': 'application/text',
+      'Content-Type': 'application/json',
+    },
+    success: function(response, textStatus, xhr) {
+      window.location.href = `/veiculo_edit?vehicle_id=${vehicleId}`;
+      console.log("Veiculo retornado com sucesso.");
+    },
+    error: function(response) {
+      console.log("Error no Banco de Dados.");
+      Swal.fire({
+        title: "Error!",
+        text: "Veículo não retornado com sucesso",
         icon: "error",
         confirmButtonColor: "var(--primary-color)",
         confirmButtonText: "Ok",
@@ -298,8 +349,6 @@ const moneyMask = (value) => {
   const result = new Intl.NumberFormat('pt-BR', options).format(
     parseFloat(value) / 100
   )
-
-  console.log(result)
 
   return 'R$ ' + result
 }
