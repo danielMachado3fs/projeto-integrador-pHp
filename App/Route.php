@@ -58,6 +58,18 @@ class Route extends Bootstrap
 			'action' => 'update_view_store'
 		);
 
+		$routes['veiculos_add'] = array(
+			'route' => '/veiculo_add',
+			'controller' => 'veiculosController',
+			'action' => 'add'
+		);
+
+		$routes['veiculos_add_store'] = array(
+			'route' => '/veiculo_add_store',
+			'controller' => 'veiculosController',
+			'action' => 'add_store'
+		);
+
 		/**rotas funcionários */
 
 		$routes['funcionario_index'] = array(

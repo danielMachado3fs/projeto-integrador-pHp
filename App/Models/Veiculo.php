@@ -93,4 +93,12 @@ class Veiculo extends Model
     $stmt->execute(array('id' => $this->id, 'placa' => $this->placa, 'marca' => $this->marca, 'anoFabricacao' => $this->anoFabricacao, 'tipo' => $this->tipo, 'dataAquisicao' => $this->dataAquisicao, 'valor' => $this->valor, "modelo" => $this->modelo));
     return $stmt->rowCount();
   }
+
+  public function addVehicle()
+  {
+    $query = "INSERT INTO veiculo ( placa, modelo, marca, anoFabricacao, tipo, dataAquisicao, valor) VALUES (:placa,  :modelo,  :marca, :anoFabricacao,  :tipo, :dataAquisicao,:valor)";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute(array('placa' => $this->placa, 'marca' => $this->marca, 'anoFabricacao' => $this->anoFabricacao, 'tipo' => $this->tipo, 'dataAquisicao' => $this->dataAquisicao, 'valor' => $this->valor, "modelo" => $this->modelo));
+    return $stmt->errorInfo();
+  }
 }

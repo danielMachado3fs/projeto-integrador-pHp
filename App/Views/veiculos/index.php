@@ -139,7 +139,7 @@ function uniqueValue($datas, $typeValue)
     </div>
   </div>
   <div class="footerButton">
-    <button id="sendBtn">Cadastrar</button>
+    <a href="/veiculo_add" id="sendBtn">Cadastrar Veículo</a>
   </div>
 </div>
 
@@ -171,7 +171,19 @@ if (sessionStorage.getItem("isupdated") != null) {
       showToastAlert("error", "Veículo Não Atualizado Com Sucesso!", "isupdated", "nothing");
     })
   }
+}
 
+if (sessionStorage.getItem("isinserted") != null) {
+  if (sessionStorage.getItem("isinserted") == "insert") {
+    $(function() {
+      showToastAlert("success", "Veículo Cadastrado Com Sucesso!", "isinserted", "nothing");
+    })
+  }
+  if (sessionStorage.getItem("isupdated") == "notinsert") {
+    $(function() {
+      showToastAlert("error", "Veículo Não Cadastrado Com Sucesso!", "isinserted", "nothing");
+    })
+  }
 }
 
 function alertDeleteVehicle(elem) {
