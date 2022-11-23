@@ -124,13 +124,21 @@ getVehiclesApi().then(data => {
     option.setAttribute("data-id", `${value.codigo}`);
     statesSelect.add(option);
   });
+
+  const dataOp = dataOptions();
+  console.log(dataOp.datamodelo);
+  console.log(dataOp.datamarca);
+  if (dataOp.datamarca != "" && dataOp.datamodelo != "") {
+    $("#vehicle-brand").val(dataOp.datamarca).trigger("change");
+    // $("#vehicle-model").val(dataOp.datamodelo).trigger("change");
+  }
 });
 
 // let url = `https://parallelum.com.br/fipe/api/v1/caminhoes/marcas/`;
 $(".select2").on("select2:selecting", function (e) {
   const brandId = e.params.args.data.element.dataset.id;
   getVehiclesApi(brandId).then(data => {
-    const statesSelect = document.getElementById("modelo");
+    const statesSelect = document.getElementById("vehicle-model");
     statesSelect.removeAttribute("disabled");
     $("#modelo").html("");
     $("#modelo").html(
