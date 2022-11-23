@@ -47,8 +47,7 @@
         </div>
         <div class="inputForm">
           <label for="email">Valor</label>
-          <input class="input" type="text" name="valor" id="valor" step=".01" placeholder="R$100.00" required
-            value='<?= $dataVehicle["valor"] ?>'>
+          <input class="input" type="text" name="valor" id="valor" step=".01" placeholder="R$100.00" required value=''>
         </div>
       </div>
     </div>
@@ -70,14 +69,6 @@ $(document).ready(function() {
     reverse: true
   });
 })
-
-function dataOptions() {
-  // const dataMarca = "<?php echo $dataVehicle["marca"] ?>".toLowerCase();
-  const dataMarca = "<?php echo $dataVehicle["modelo"] ?>".toLowerCase();
-  return {
-    "datamarca": dataMarca,
-  }
-}
 
 async function addVehicle(elem) {
   await fetch(
