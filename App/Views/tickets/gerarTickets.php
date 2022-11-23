@@ -1,24 +1,49 @@
+
+<!-- conexão com o banco de dados para pegar os dados -->
+<!-- mudar os query para pegar os dados de cada tabela diferente, da tabela funcionarios, veiculo etc -->
+<?php
+$hostname = "localhost";
+$username="root";
+$password= "";
+$databaseName="scf_db";
+
+$connect = mysqli_connect($hostname,$username, $password, $databaseName);
+$query="SELECT * FROM `registration`";
+
+$result1 = mysqli_query($connect,$query);
+$result2 = mysqli_query($connect,$query);
+$result3 = mysqli_query($connect,$query);
+$result4 = mysqli_query($connect,$query);
+
+?>
+<!--  fim da conexão -->
+
+
+<!doctype html>
+<head>
+<charset="utf8">
+</head>
+
 <div class="title">
   <h1>Gerar Tickets</h1>
 </div>
+
 <div class="panelBody">
   <div id="form">
                 
-            <form>
+            <form action="connectGetTickets.php" method="post">
+
               <div class="divFormulario">
                 <div class="contentsFormulario">
                   
                   <div>
-                    <label class="inputForm" for="motorista">&nbsp;Motorista</label> 
-                     
+                    <label class="inputForm" for="motorista"> Motorista</label> 
+                    
                       <select  size="1" name="motorista">
-                          <option> Artur Santos</option>
-                          <option> Daniel Maciel </option>
-                          <option> Fabricio Correia</option>
-                          <option> Fernando Elias</option>
-                          <option> Guilherme Freitas </option>
-                          <option> Julio Eler </option>
-                          <option> Raniery Neiva </option>
+                      <?php while ($row1 = mysqli_fetch_array($result1)):;?>
+                      <option><?php echo $row1[0];?></option>
+                      <?php endwhile;?>
+                      </select>
                       </select>
                       <br>
                   </div>
@@ -28,43 +53,36 @@
                   <div>
                     <div >
                       <label class="inputForm" for="postoCombustiveis">Posto de Combustíveis</label> 
-                      <select  size="1" name="postos">
-                        <option> Posto Belvedere </option>
-                        <option> Posto Ipiranga </option>
-                        <option> Posto Veraneio XIII </option>
-                        <option> Posto Shell </option>
-                        <option> Posto Furacão Rede Riva 7 </option>
-                        <option> Posto D&F da rede D&D </option>
-                        <option> Posto GT7 </option>
+                      <select  size="1" name="postocombustiveis" >
+                      <?php while ($row2 = mysqli_fetch_array($result2)):;?>
+                      <option><?php echo $row2[1];?></option>
+                      <?php endwhile;?>
                     </select>
                     </div>
                     <div  >
+
                       <label class="inputForm" for="TipoCombustiveis">Tipo de Combustíveis</label> 
                       <select   size="1" name="tiposCombustiveis">
-                        <option> Gasolina comum </option>
-                        <option> Gasolina aditivada </option>
-                        <option> Gasolina premium </option>
-                        <option> Gasolina formulada </option>
-                        <option> Etanol </option>
-                        <option> Etanol aditivado </option>
-                        <option> Diesel </option>
+                      <?php while ($row3 = mysqli_fetch_array($result3)):;?>
+                      <option><?php echo $row3[2];?></option>
+                      <?php endwhile;?>
                     </select>
                     </div>
+
                     <div class="inputForm">
                       <label for="valor">Valor</label>
                       <input class="input" type="number" name="valor" id="valor" placeholder="R$00">
                     </div>
-                    <div  >
+
+                    <div>
                       <label class="inputForm" for="veiculo">&nbsp;Veiculo</label> 
                        <select  size="1" name="postos">
-                        <option> Hyundai: HR</option>
-                        <option> Hyundai: HD80 </option>
-                        <option> Volvo: FH </option>
-                        <option> Scania </option>
-                        <option> Volksvagen </option>
-
+                      <?php while ($row4 = mysqli_fetch_array($result4)):;?>
+                      <option><?php echo $row4[4];?></option>
+                      <?php endwhile;?>
                     </select>
                     </div>
+
                     <div class="inputForm">
                       <label for="dateEmissao"> Data de emissão</label> 
                       
