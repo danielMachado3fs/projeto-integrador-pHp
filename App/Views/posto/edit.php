@@ -1,0 +1,74 @@
+<div class="title">
+  <h1>Cadastro de posto de combustível</h1>
+</div>
+<div class="panelBody">
+  <div id="form">
+    <form action="/editar_posto_store" method="POST">
+      <div class="divFormulario">
+        <div class="contentsFormulario">
+          <div>
+            <div class="inputForm">
+              <label for="cnpj">CNPJ </label>
+              <input class="input" type="text" name="cnpj" id="cnpj" value='<?= $modelInfo->cnpj ?>' required placeholder="Ex: 01.23.456/0000-00">
+            </div>
+            <div class="inputForm">
+              <label for="txtEmail">Email</label>
+              <input class="input" type="email" name="txtEmail" id="txtEmail" value='<?= $modelInfo->email ?>' placeholder="shell@exemplo.com" required>
+            </div>
+            <div class="inputForm">
+              <label for="numberCep">CEP</label>
+              <input class="input" type="text" name="numberCep" id="numberCep" value='<?= $modelInfo->cep ?>' placeholder="12345-678">
+            </div>
+            <div class="inputForm">
+              <label for="txtEstate">Estado</label>
+              <input class="input" type="text" name="txtEstate" id="txtEstate" value='<?= $modelInfo->estado ?>'>
+            </div>
+            <div class="inputForm">
+              <label for="txtDistrict">Bairro</label>
+              <input class="input" type="text" name="txtDistrict" id="txtDistrict" value='<?= $modelInfo->cidade ?>'>
+            </div>
+            <div class="inputForm">
+              <label for="numberEnd">Numero</label>
+              <input class="input" type="text" name="numberEnd" id="numberEnd" value='<?= $modelInfo->numero ?>'>
+            </div>
+          </div>
+        </div>
+        <div class="contentsFormulario2">
+          <div class="inputForm">
+            <label for="txtFantasia">Nome Fantasia</label>
+            <input class="input" type="text" name="txtFantasia" id="txtFantasia" value='<?= $modelInfo->nomeFantasia ?>' required
+              placeholder="Ex: Posto Ipiranga">
+          </div>
+          <div class="inputForm">
+            <label for="numberTelephone">Telefone</label>
+            <input class="input" type="text" name="numberTelephone" id="numberTelephone" value='<?= $modelInfo->telefone ?>' required
+              placeholder="(31) 91234-5678">
+          </div>
+          <div class="inputForm">
+            <label for="txtCity">Cidade</label>
+            <input class="input" type="text" name="txtCity" id="txtCity" value='<?= $modelInfo->cidade ?>'>
+          </div>
+          <div class="inputForm">
+            <label for="txtPatio">Logradouro</label>
+            <input class="input" type="text" name="txtPatio" id="txtPatio" value='<?= $modelInfo->logradouro ?>' placeholder="Avenida Paulista">
+          </div>
+          <div class="inputForm">
+            <label for="txtComplement">Complemento</label>
+            <input class="input" type="text" name="txtComplement" value='<?= $modelInfo->complemento ?>' id="txtComplement"
+              placeholder="Casa, apartamento, condomínio">
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="id" id="id" value='<?= $modelInfo->id ?>'>
+      <div class="rodape_btn">
+        <button id="sendBtn" type="submit">Salvar</button>
+        <a href="/postos_combustivel" id="cancelBtn">Cancelar</a>
+      </div>
+    </form>
+  </div>  
+</div>
+<script>
+  $("#cnpj").mask("00.000.000/0000-00")
+  $("#numberCep").mask("00000-000")
+  $("#numberTelephone").mask("(00) 0 0000-0000")
+</script>

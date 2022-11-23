@@ -1,29 +1,32 @@
 <?php
-function uniqueValue($datas, $typeValue)
+function uniqueValue($data, $typeValue)
 {
     $dataList = array();
-    foreach ($datas as $indice => $data) {
-        array_push($dataList, $data[$typeValue]);
+    foreach ($data as $indice => $d) {
+        array_push($dataList, $d->{$typeValue});
     }
     return array_unique($dataList);
 }
 
 ?>
 
-<!-- <div class="title">
-  <h1>Veículos Cadastrados</h1>
-</div> -->
 <div class="panelBody">
-    <form action="/funcionarios" method="GET">
+    <form action="/postos_combustivel" method="GET">
         <div class="filter-wrapper">
             <div class="filter">
                 <div class="filter-select">
-                    <span class="label">Setor</span>
-                    <select name="setor" id="setor">
-                        <option value=''>Todos</option>
-                        <option <?php if ($selectedSetor == 'volvo') echo 'selected'; ?> value="volvo"> Volvo </option>
-                        <option <?php if ($selectedSetor == 'mercedes') echo 'selected'; ?> value="mercedes"> Mercedes </option>
-                        <option <?php if ($selectedSetor == 'volkswagen') echo 'selected'; ?> value="volkswagen"> Volkswagen </option>
+                    <span class="label">Cidade</span>
+                    
+                    <select name="cidade" id="cidade">
+                        <option value=''>Todas</option>
+                        <?php
+                        $cidades = uniqueValue($postos, "cidade");
+                        $selected = '';
+                        foreach ($cidades as $c) {
+                            if ($c == $selectedCidade) $selected = 'selected';
+                        ?>
+                            <option <?= $selected ?> value='<?= $c ?>'><?= $c ?></option>
+                        <?php } ?>
                     </select>
                     <i class="custom-arrow-down-type bx bxs-chevron-down"></i>
                     <i class="custom-arrow-up-type bx bxs-chevron-up"></i>
@@ -56,17 +59,17 @@ function uniqueValue($datas, $typeValue)
 
                 <tbody>
                     <?php
-                    foreach ($funcionarios as $indice => $funcionario) {
+                    foreach ($postos as $indice => $posto) {
                     ?>
                         <tr>
-                            <td><?= $funcionario->nome ?></td>
-                            <td><?= $funcionario->email ?></td>
-                            <td><?= $funcionario->telefone ?></td>
-                            <td><?= strtoupper($funcionario->setor) ?></td>
+                            <td><?= $posto->nomeFantasia ?></td>
+                            <td><?= $posto->telefone ?></td>
+                            <td><?= $posto->email ?></td>
+                            <td><?= ucfirst($posto->cidade) ?></td>
                             <td>
-                                <a href="/funcionario_edit?id=<?= $funcionario->id ?>"><i class="bx bxs-edit"></i></a>
-                                <a onclick="alertDeleteFuncionario(<?= $funcionario->id ?>)"><i class="bx bxs-trash"></i></a>
-                                <a href="/funcionario_view?id=<?= $funcionario->id ?>"><i class="bx bxs-show"></i></a>
+                                <a href="/posto_edit?id=<?= $posto->id ?>"><i class="bx bxs-edit"></i></a>
+                                <a onclick="alertDeleteposto(<?= $posto->id ?>)"><i class="bx bxs-trash"></i></a>
+                                <a href="/posto_view?id=<?= $posto->id ?>"><i class="bx bxs-show"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -75,7 +78,7 @@ function uniqueValue($datas, $typeValue)
         </div>
     </div>
     <div class="footerButton">
-        <a href="/funcionario_add" id="sendBtn">Cadastrar Funcionário</a>
+        <a href="/adicionar_posto" id="sendBtn">Cadastrar Posto Combustível</a>
     </div>
 </div>
 
@@ -92,9 +95,9 @@ function uniqueValue($datas, $typeValue)
     });
 
 
-    function alertDeleteFuncionario(id) {
+    function alertDeleteposto(id) {
         Swal.fire({
-                title: "Excluir Funcionario",
+                title: "Excluir posto de combustível?",
                 text: "Esse processo não pode ser desfeito.",
                 icon: 'warning',
                 showCancelButton: true,
@@ -107,7 +110,7 @@ function uniqueValue($datas, $typeValue)
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "GET",
-                        url: '/funcionario_delete',
+                        url: '/posto_delete',
                         data: {
                             id: id
                         },
@@ -116,7 +119,7 @@ function uniqueValue($datas, $typeValue)
                             console.log(result);
                             if (result.success) {
                                 Swal.fire({
-                                    title: "Funcionário Excluído Com Sucesso!",
+                                    title: "Registro excluido com sucesso!",
                                     icon: "success",
                                     confirmButtonColor: "var(--primary-color)",
                                     confirmButtonText: "Ok",

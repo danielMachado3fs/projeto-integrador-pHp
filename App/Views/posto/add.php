@@ -17,7 +17,7 @@
             </div>
             <div class="inputForm">
               <label for="numberCep">CEP</label>
-              <input class="input" type="number" name="numberCep" id="numberCep" placeholder="12345-678">
+              <input class="input" type="text" name="numberCep" id="numberCep" placeholder="12345-678">
             </div>
             <div class="inputForm">
               <label for="txtEstate">Estado</label>
@@ -29,7 +29,7 @@
             </div>
             <div class="inputForm">
               <label for="numberEnd">Numero</label>
-              <input class="input" type="number" name="numberEnd" id="numberEnd">
+              <input class="input" type="text" name="numberEnd" id="numberEnd">
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
           </div>
           <div class="inputForm">
             <label for="numberTelephone">Telefone</label>
-            <input class="input" type="number" name="numberTelephone" id="numberTelephone" required
+            <input class="input" type="text" name="numberTelephone" id="numberTelephone" required
               placeholder="(31) 91234-5678">
           </div>
           <div class="inputForm">
@@ -61,11 +61,13 @@
       </div>
       <div class="rodape_btn">
         <button id="sendBtn" type="submit">Salvar</button>
-        <button id="cancelBtn">Cancelar</button>
+        <a href="/postos_combustivel" id="cancelBtn">Cancelar</a>
       </div>
     </form>
   </div>  
 </div>
 <script>
   $("#cnpj").mask("00.000.000/0000-00")
+  $("#numberCep").mask("00000-000")
+  $("#numberTelephone").mask("(00) 0 0000-0000")
 </script>

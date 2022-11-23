@@ -10,9 +10,6 @@ function uniqueValue($datas, $typeValue)
 
 ?>
 
-<!-- <div class="title">
-  <h1>Veículos Cadastrados</h1>
-</div> -->
 <div class="panelBody">
     <form action="/funcionarios" method="GET">
         <div class="filter-wrapper">

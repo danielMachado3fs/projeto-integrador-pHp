@@ -3,8 +3,8 @@ namespace App\Models;
 use MF\Model\Model;
 
 class Funcionario extends Model{
-    private $table = 'funcionarios';
-    private $values = 'nome, dataNascimento, cpf, email, telefone, cep, cidade,estado, logradouro, bairro, numero, complemento, setor';
+    protected $table = 'funcionarios';
+    private $values = 'nome, dataNascimento, cpf, email, telefone, cep, cidade,estado, logradouro, bairro, numero, complemento, setor, cargo';
     private $nome;
     private $dataNascimento;
     private $cpf;
@@ -18,6 +18,7 @@ class Funcionario extends Model{
     private $numero;
     private $complemento;
     private $setor;
+    private $cargo;
 
     public function _set($atributo, $valor){
         $this->{$atributo} = $valor;
@@ -29,9 +30,9 @@ class Funcionario extends Model{
     }
 
     public function salvar($id = null){
-        $sql = "INSERT INTO $this->table ($this->values) VALUES (:nome, :dataNascimento, :cpf, :email, :telefone, :cep, :cidade, :estado, :logradouro, :bairro, :numero, :complemento, :setor)";
+        $sql = "INSERT INTO $this->table ($this->values) VALUES (:nome, :dataNascimento, :cpf, :email, :telefone, :cep, :cidade, :estado, :logradouro, :bairro, :numero, :complemento, :setor, :cargo)";
         if($id){
-            $sql = "UPDATE $this->table SET nome = :nome, dataNascimento = :dataNascimento, cpf = :cpf, email = :email, telefone = :telefone, cep = :cep, cidade = :cidade, estado = :estado, logradouro = :logradouro, bairro = :bairro, numero = :numero, complemento = :complemento, setor = :setor WHERE id = $id";
+            $sql = "UPDATE $this->table SET nome = :nome, dataNascimento = :dataNascimento, cpf = :cpf, email = :email, telefone = :telefone, cep = :cep, cidade = :cidade, estado = :estado, logradouro = :logradouro, bairro = :bairro, numero = :numero, complemento = :complemento, setor = :setor, cargo = :cargo WHERE id = $id";
         }
        
         $stmt = $this->db->prepare($sql);
@@ -48,6 +49,7 @@ class Funcionario extends Model{
         $stmt->bindValue(':numero', $this->numero);
         $stmt->bindValue(':complemento', $this->complemento);
         $stmt->bindValue(':setor', $this->setor);
+        $stmt->bindValue(':cargo', $this->cargo);
 
         if($stmt->execute() && !$id){
             return $this->db->lastInsertId();
@@ -55,29 +57,6 @@ class Funcionario extends Model{
             return $id;
         }
         return $stmt->errorInfo();
-    }
-
-    public function delete($id){
-        $sql = "UPDATE $this->table SET deleted = 1 WHERE id = $id";
-        $stmt = $this->db->prepare($sql);
-        if($stmt->execute() && $id){
-            return true;
-        }
-        return $stmt->errorInfo();
-    }
-
-    public function getOne($id){
-        $sql = "SELECT * FROM $this->table WHERE deleted = 0 AND id = $id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetch(\PDO::FETCH_OBJ);
-    }
-
-    public function getAll(){
-        $sql = "SELECT * FROM $this->table WHERE deleted = 0";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function getAllWhere($options = array()){

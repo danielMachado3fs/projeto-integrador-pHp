@@ -9,27 +9,31 @@ class Route extends Bootstrap
 
 	protected function initRoutes()
 	{
+		/**rotas login */
 
-		$routes['home'] = array(
+		$routes['login'] = array(
 			'route' => '/',
-			'controller' => 'indexController',
+			'controller' => 'loginController',
 			'action' => 'index'
 		);
 
-		$routes['sobre_nos'] = array(
-			'route' => '/sobre_nos',
-			'controller' => 'indexController',
-			'action' => 'sobreNos'
+		$routes['login_autenticar'] = array(
+			'route' => '/autenticar',
+			'controller' => 'loginController',
+			'action' => 'autenticar'
 		);
 
-		// $routes['veiculos'] = array(
-		// 	'route' => '/veiculos',
-		// 	'controller' => 'veiculosController',
-		// 	'action' => 'index'
-		// );
+		$routes['logoff'] = array(
+			'route' => '/logoff',
+			'controller' => 'loginController',
+			'action' => 'logoff'
+		);
 
-		$routes['veiculos_cadastrados'] = array(
-			'route' => '/veiculos_cadastrados',
+		/**fim */
+		/**rotas veiculos */
+
+		$routes['veiculos_index'] = array(
+			'route' => '/veiculos',
 			'controller' => 'veiculosController',
 			'action' => 'index'
 		);
@@ -70,6 +74,8 @@ class Route extends Bootstrap
 			'action' => 'add_store'
 		);
 
+		/**fim */
+
 		/**rotas funcionários */
 
 		$routes['funcionario_index'] = array(
@@ -106,6 +112,17 @@ class Route extends Bootstrap
 			'controller' => 'funcionariosController',
 			'action' => 'delete'
 		);
+
+		/**fim */
+
+		/**rotas posto */
+
+		$routes['posto_index'] = array(
+			'route' => '/postos_combustivel',
+			'controller' => 'postoController',
+			'action' => 'index'
+		);
+
 		$routes['posto_add'] = array(
 			'route' => '/adicionar_posto',
 			'controller' => 'postoController',
@@ -118,13 +135,35 @@ class Route extends Bootstrap
 			'action' => 'add_store'
 		);
 
+		$routes['posto_edit'] = array(
+			'route' => '/posto_edit',
+			'controller' => 'postoController',
+			'action' => 'edit'
+		);
+
+		$routes['posto_edit_store'] = array(
+			'route' => '/editar_posto_store',
+			'controller' => 'postoController',
+			'action' => 'edit_store'
+		);
+
+		$routes['posto_delete'] = array(
+			'route' => '/posto_delete',
+			'controller' => 'postoController',
+			'action' => 'delete'
+		);
+
 		/**fim */
+
+		/**rotas tickets */
 
 		$routes['tickets'] = array(
 			'route' => '/tickets',
 			'controller' => 'ticketsController',
 			'action' => 'tickets'
 		);
+
+		/**fim */
 
 		$this->setRoutes($routes);
 	}

@@ -17,7 +17,6 @@ class FuncionariosController extends Action {
 	}
 
 	public function index() {
-
 		if (isset($_GET['search'])) {
 			if (isset($_GET['nome']) && isset($_GET['setor'])) {
 				if ($_GET['nome'] === 'all' && $_GET['setor'] === 'all') {
@@ -29,18 +28,22 @@ class FuncionariosController extends Action {
 					];
 					$viewData['funcionarios'] = $this->funcionarioModel->getAllWhere($options);
 				}
+				$viewData['selectedNome'] = $_GET['nome'];
+				$viewData['selectedSetor'] = $_GET['setor'];
 			}
 		} else {
 			$viewData['funcionarios'] = $this->funcionarioModel->getAll();
 		}
 
-		$viewData['selectedNome'] = $_GET['nome'];
-		$viewData['selectedSetor'] = $_GET['setor'];
+		$this->view->topBarTitle = "Funcionários";
+		$this->view->menuSelected = "funcionariosMenu";
 		$this->render('index', $viewData);
     }
 
 	public function add() {
 
+		$this->view->topBarTitle = "Funcionários";
+		$this->view->menuSelected = "funcionariosMenu";
 		$this->render('add');
     }
 
@@ -57,19 +60,19 @@ class FuncionariosController extends Action {
 		->_set('bairro', $_POST['bairro'])
 		->_set('numero', $_POST['numero'])
 		->_set('complemento', $_POST['complemento'])
-		->_set('setor', $_POST['setor']);
+		->_set('setor', $_POST['setor'])
+		->_set('cargo', $_POST['cargo']);
 
 		$save_id = $this->funcionarioModel->salvar();
 		if($save_id){
 			$this->index();
 		}
-
 	}
 
 	public function edit(){
-		// var_dump($_GET['id']);
 		@$this->view->data = $this->funcionarioModel->getOne($_GET['id']);
-		// var_dump($this->view->data);
+		$this->view->topBarTitle = "Funcionários";
+		$this->view->menuSelected = "funcionariosMenu";
 		$this->render('edit');
 	}
 
@@ -106,8 +109,6 @@ class FuncionariosController extends Action {
 			echo json_encode(array('success' => false, 'message' => 'Registro não encontrado'));
 		}
 	}
-
 }
-
 
 ?>
