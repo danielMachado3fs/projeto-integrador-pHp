@@ -33,7 +33,7 @@ class LoginController extends Action
 			$_SESSION['id'] = $usuario->id;
 			$_SESSION['nome'] = $usuario->nome;
 
-			header('location: /funcionarios');
+			header('location: /dashboard');
 		} else {
 			header('location: /?login=erro');
 		}
@@ -42,5 +42,11 @@ class LoginController extends Action
 	public function logoff(){
 		session_destroy();
 		$this->index();
+	}
+
+	public function dash(){
+		$this->view->topBarTitle = "Dashboard";
+		$this->view->menuSelected = "dashboardMenu";
+		$this->render('dashboard');
 	}
 }

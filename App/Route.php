@@ -29,6 +29,12 @@ class Route extends Bootstrap
 			'action' => 'logoff'
 		);
 
+		$routes['dashboard'] = array(
+			'route' => '/dashboard',
+			'controller' => 'loginController',
+			'action' => 'dash'
+		);
+
 		/**fim */
 		/**rotas veiculos */
 

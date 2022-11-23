@@ -5,7 +5,7 @@
 
   <ul class="nav-list">
     <li>
-      <a href="" class="btn-menu dashboardMenu" onclick="selectMenu('dashboardMenu')">
+      <a href="/dashboard" class="btn-menu dashboardMenu" onclick="selectMenu('dashboardMenu')">
         <i class="bx bx-line-chart"></i>
         <span class="link_name">Dashboard</span>
       </a>

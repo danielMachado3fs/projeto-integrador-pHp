@@ -47,6 +47,7 @@ function uniqueValue($datas, $typeValue)
                         <th>Email</th>
                         <th>Telefone</th>
                         <th>Setor</th>
+                        <th>Cargo</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -59,6 +60,7 @@ function uniqueValue($datas, $typeValue)
                             <td><?= $funcionario->nome ?></td>
                             <td><?= $funcionario->email ?></td>
                             <td><?= $funcionario->telefone ?></td>
+                            <td><?= strtoupper($funcionario->cargo) ?></td>
                             <td><?= strtoupper($funcionario->setor) ?></td>
                             <td>
                                 <a href="/funcionario_edit?id=<?= $funcionario->id ?>"><i class="bx bxs-edit"></i></a>
