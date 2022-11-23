@@ -1,0 +1,104 @@
+
+
+/* ---------------DASHBOARD --------------------- */
+.dashboard{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 60px;
+}
+.titleDashboard{
+  margin: 20px 40px;
+}
+.dashPainel1, .dashPainel2 {
+  background-color: #f1f1f1;
+  padding-bottom: 15px;
+  border-radius: 7px;
+}
+.dashboard span{
+  display: block;
+  height: bold;
+  font-size: 2rem;
+  margin: 10px;
+}
+.dashTitle{
+  font-weight: bold;
+  
+}
+.valor{
+  text-align: right;
+  margin-right: 20px;
+  font-size: 3rem;
+}
+.coment{
+  text-align: right;
+  margin-right: 20px;
+  margin-bottom: 5px;
+  color: #504e4e;
+}
+/*     ---------------BARRA DE PROGESSO VERDE ------------------ */
+.containerBarraProgresso{
+  width: 500px;
+  }
+.barraProgressoVazia{
+   width: 85%;
+   height: 9px;
+   margin: auto;
+   background-color: #afafae;
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+}
+.barraProgressoVerde{
+  width: 80%;
+  height: 7px;
+  background-color: var(--corBarraProgressVerde);
+  border-radius: 10px;
+}
+.porcentagemBarraProgressoVerde{
+  width: 100px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: var(--corBarraProgressVerde);
+}
+/*--------------------------- BARRA PROGRESSO VERMELHA -------------------------*/
+.containerBarraProgresso{
+  width: 500px;
+  }
+.barraProgressoVazia{
+   width: 85%;
+   height: 9px;
+   margin: auto;
+   background-color: #afafae;
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+}
+.barraProgressoVermelho{
+  width: 85%;
+  height: 7px;
+  background-color: var(--corBarraProgressVermelho);
+  border-radius: 10px;
+}
+.porcentagemBarraProgressoVermelho{
+  width: 100px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: var(--corBarraProgressVermelho);
+}
+
+
+
+/* ------------IMAGEM ESTATISTICA GRAFICO -----------------------*/
+.imagemGrafico{
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+}
