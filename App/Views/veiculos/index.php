@@ -15,7 +15,7 @@ function uniqueValue($datas, $typeValue)
 </div>
 <div class="panelBody">
 
-  <form action="/veiculos_cadastrados" method="GET">
+  <form action="/veiculos" method="GET">
     <div class="filter-wrapper">
       <div class="filter">
         <div class="filter-select">

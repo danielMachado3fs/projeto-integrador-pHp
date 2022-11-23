@@ -32,8 +32,8 @@ class Route extends Bootstrap
 		/**fim */
 		/**rotas veiculos */
 
-		$routes['veiculos_cadastrados'] = array(
-			'route' => '/veiculos_cadastrados',
+		$routes['veiculos_index'] = array(
+			'route' => '/veiculos',
 			'controller' => 'veiculosController',
 			'action' => 'index'
 		);

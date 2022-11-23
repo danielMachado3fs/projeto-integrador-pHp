@@ -58,7 +58,7 @@
     </div>
     <div class="rodape_btn veiculo-form">
       <button id="sendBtn" onclick="updateVehicle(this)" type="submit">Salvar</button>
-      <a id="cancelBtn" href="/veiculos_cadastrados">Cancelar</a>
+      <a id="cancelBtn" href="/veiculos">Cancelar</a>
     </div>
     <input type="hidden" name="id" id="id" value='<?= $dataVehicle["id"] ?>'>
   </form>
