@@ -6,7 +6,7 @@ use MF\Model\Model;
 
 class Veiculo extends Model
 {
-
+  protected $table = 'veiculos';
   private $marca;
   private $modelo;
   private $tipo;
@@ -59,21 +59,21 @@ class Veiculo extends Model
 
   public function getBrands()
   {
-    $query = "SELECT marca FROM veiculo WHERE deletado=0";
+    $query = "SELECT marca FROM veiculo WHERE deleted=0";
     return $this->db->query($query)->fetchAll();
   }
 
   public function getTypes()
   {
-    $query = "SELECT tipo FROM veiculo WHERE deletado=0";
+    $query = "SELECT tipo FROM veiculo WHERE deleted=0";
     return $this->db->query($query)->fetchAll();
   }
 
   public function deleteVehicle($vehicleId)
   {
-    $query = "UPDATE veiculo SET deletado=:deletado WHERE id = :id";
+    $query = "UPDATE veiculo SET deleted=:deleted WHERE id = :id";
     $stmt = $this->db->prepare($query);
-    $stmt->execute(array('id' => $vehicleId, 'deletado' => 1));
+    $stmt->execute(array('id' => $vehicleId, 'deleted' => 1));
   }
 
   public function viewVehicle($vehicleId)

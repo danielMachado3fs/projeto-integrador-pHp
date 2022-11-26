@@ -166,7 +166,37 @@ class Route extends Bootstrap
 		$routes['tickets'] = array(
 			'route' => '/tickets',
 			'controller' => 'ticketsController',
-			'action' => 'tickets'
+			'action' => 'index'
+		);
+
+		$routes['gerar_tickets'] = array(
+			'route' => '/gerar_ticket',
+			'controller' => 'ticketsController',
+			'action' => 'gerar_ticket'
+		);
+
+		$routes['gerar_ticket_store'] = array(
+			'route' => '/gerar_ticket_store',
+			'controller' => 'ticketsController',
+			'action' => 'gerar_ticket_store'
+		);
+
+		$routes['editar_tickets'] = array(
+			'route' => '/editar_ticket',
+			'controller' => 'ticketsController',
+			'action' => 'editar'
+		);
+
+		$routes['deletar_tickets'] = array(
+			'route' => '/deletar_tickets',
+			'controller' => 'ticketsController',
+			'action' => 'deletar'
+		);
+
+		$routes['baixar_tickets'] = array(
+			'route' => '/baixar_tickets',
+			'controller' => 'ticketsController',
+			'action' => 'baixar_tickets'
 		);
 
 		/**fim */

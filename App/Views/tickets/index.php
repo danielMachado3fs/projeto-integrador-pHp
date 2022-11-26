@@ -1,3 +1,14 @@
+<style>
+    .filter-wrapper {
+        width: 100% !important;
+    }
+
+    .pesquisar {
+        margin-top: 20px;
+        text-align: end;
+    }
+</style>
+
 <?php
 function uniqueValue($datas, $typeValue)
 {
@@ -11,16 +22,20 @@ function uniqueValue($datas, $typeValue)
 ?>
 
 <div class="panelBody">
-    <form action="/funcionarios" method="GET">
+    <form action="/tickets" method="GET">
         <div class="filter-wrapper">
+            <div class="line"></div>
             <div class="filter">
                 <div class="filter-select">
-                    <span class="label">Setor</span>
-                    <select name="setor" id="setor">
-                        <option value=''>Todos</option>
-                        <option <?php if ($selectedSetor == 'administrativo') echo 'selected'; ?> value="administrativo"> Administrativo </option>
-                        <option <?php if ($selectedSetor == 'financeiro') echo 'selected'; ?> value="financeiro"> Financeiro </option>
-                        <option <?php if ($selectedSetor == 'logistica') echo 'selected'; ?> value="logistica"> Logística </option>
+                    <span class="label">Posto de Combustível</span>
+                    <select name="postoCombustivelId" id="postoCombustivelId">
+                        <option value="all">Todos</option>
+                        <?php
+                        foreach($postos as $p){ 
+                            $selected2 = '';
+                            if($postoCombustivelSelected == $p->id) $selected2 = 'selected'?>
+                            <option <?= $selected2 ?> value="<?= $p->id ?>"><?= $p->nomeFantasia ?></option>
+                        <?php } ?>
                     </select>
                     <i class="custom-arrow-down-type bx bxs-chevron-down"></i>
                     <i class="custom-arrow-up-type bx bxs-chevron-up"></i>
@@ -29,10 +44,39 @@ function uniqueValue($datas, $typeValue)
             <div class="line"></div>
             <div class="filter">
                 <div class="filter-select">
-                    <span class="label">Nome</span>
-                    <input type="text" name="nome" id="nome" value="<?= $selectedNome ?>">
+                    <span class="label">Veículo</span>
+                    <select name="veiculoId" id="veiculoId">
+                        <option value="all">Todos</option>
+                        <?php
+                        foreach($veiculos as $v){ 
+                            $selected1 = '';
+                            if($veiculoSelected == $v->id) $selected1 = 'selected'?>
+                            <option <?= $selected1 ?> value="<?= $v->id ?>"><?= $v->modelo ?>-<?= $v->placa ?></option>
+                        <?php } ?>
+                    </select>
+                    <i class="custom-arrow-down-type bx bxs-chevron-down"></i>
+                    <i class="custom-arrow-up-type bx bxs-chevron-up"></i>
                 </div>
             </div>
+            <div class="line"></div>
+            <div class="filter">
+                <div class="filter-select">
+                    <span class="label">Motorista</span>
+                    <select name="motoristaId" id="motoristaId">
+                        <option value="all">Todos</option>
+                        <?php
+                        foreach($motoristas as $m){ 
+                            $selected3 = '';
+                            if($motoristaSelected == $m->id) $selected3 = 'selected'?>
+                            <option <?= $selected3 ?> value="<?= $m->id ?>"><?= $m->nome ?></option>
+                        <?php } ?>
+                    </select>
+                    <i class="custom-arrow-down-type bx bxs-chevron-down"></i>
+                    <i class="custom-arrow-up-type bx bxs-chevron-up"></i>
+                </div>
+            </div>
+        </div>
+        <div class="pesquisar">
             <button class="search filter-btn" type="submit" name="search" value="search">
                 <i class="bx bx-search"></i>
             </button>
@@ -43,29 +87,31 @@ function uniqueValue($datas, $typeValue)
             <table>
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Cargo</th>
-                        <th>Setor</th>
+                        <th>Posto</th>
+                        <th>Combustível</th>
+                        <th>Valor</th>
+                        <th>Veículo</th>
+                        <th>Status</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
-                    foreach ($funcionarios as $indice => $funcionario) {
+                    foreach ($tickets as $indice => $ticket) {
                     ?>
                         <tr>
-                            <td><?= $funcionario->nome ?></td>
-                            <td><?= $funcionario->email ?></td>
-                            <td><?= $funcionario->telefone ?></td>
-                            <td><?= strtoupper($funcionario->cargo) ?></td>
-                            <td><?= strtoupper($funcionario->setor) ?></td>
+                            <td><?= $ticket->nomePosto ?></td>
+                            <td><?= strtoupper(str_replace('-', ' ',$ticket->tipoCombustivel)) ?></td>
+                            <td><?= $ticket->valor ?></td>
+                            <td><?= $ticket->veiculo . '' . $ticket->veiculoPlaca ?></td>
+                            <td><?= $ticket->status ?></td>
                             <td>
-                                <a href="/funcionario_edit?id=<?= $funcionario->id ?>"><i class="bx bxs-edit"></i></a>
-                                <a onclick="alertDeleteFuncionario(<?= $funcionario->id ?>)"><i class="bx bxs-trash"></i></a>
-                                <a href="/funcionario_view?id=<?= $funcionario->id ?>"><i class="bx bxs-show"></i></a>
+                                <?= $ticket->actions ?>
+                                <!-- <a href="/ticket_edit?id=<?= $ticket->id ?>"><i class="bx bxs-edit"></i></a>
+                                <a onclick="alertDeleteticket(<?= $ticket->id ?>)"><i class="bx bxs-trash"></i></a>
+                                <a href="/baixar_ticket?id=<?= $ticket->id ?>"><i class="bx bxs-show"></i></a>
+                                <a href="/ticket_view?id=<?= $ticket->id ?>"><i class="bx bxs-show"></i></a> -->
                             </td>
                         </tr>
                     <?php } ?>
@@ -74,7 +120,7 @@ function uniqueValue($datas, $typeValue)
         </div>
     </div>
     <div class="footerButton">
-        <a href="/funcionario_add" id="sendBtn">Cadastrar Funcionário</a>
+        <a href="/gerar_ticket" id="sendBtn">Gerar Ticket</a>
     </div>
 </div>
 

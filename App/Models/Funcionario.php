@@ -76,6 +76,10 @@ class Funcionario extends Model{
         if($options['nome']){
             $where .= " AND nome LIKE '%{$options['nome']}%'";
         }
+
+        if($options['cargo']){
+            $where .= " AND cargo LIKE '%{$options['cargo']}%'";
+        }
         
         $sql = "SELECT * FROM $this->table WHERE deleted = 0 $where";
         $stmt = $this->db->prepare($sql);

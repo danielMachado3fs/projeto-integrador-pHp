@@ -89,7 +89,8 @@ class FuncionariosController extends Action {
 		->_set('bairro', $_POST['bairro'])
 		->_set('numero', $_POST['numero'])
 		->_set('complemento', $_POST['complemento'])
-		->_set('setor', $_POST['setor']);
+		->_set('setor', $_POST['setor'])
+		->_set('cargo', $_POST['cargo']);
 
 		$save_id = $this->funcionarioModel->salvar($_POST['id']);
 		if($save_id){
