@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Nov-2022 às 03:34
+-- Tempo de geração: 26-Nov-2022 às 21:29
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -94,16 +94,26 @@ INSERT INTO `postos` (`id`, `cnpj`, `email`, `telefone`, `cep`, `cidade`, `estad
 
 CREATE TABLE `tickets` (
   `id` int(11) NOT NULL,
-  `nome` varchar(250) NOT NULL,
-  `nomeFantasia` varchar(150) NOT NULL,
-  `tipocombustiveis` varchar(20) NOT NULL,
+  `motoristaId` int(11) NOT NULL,
+  `postoCombustivelId` int(11) NOT NULL,
+  `veiculoId` int(11) NOT NULL,
+  `tipoCombustivel` varchar(50) NOT NULL,
   `valor` float NOT NULL,
-  `modelo` varchar(60) NOT NULL,
-  `dataemissao` date NOT NULL,
-  `datavalidade` date NOT NULL,
+  `dataEmissao` date NOT NULL,
+  `dataValidade` date NOT NULL,
+  `status` varchar(30) NOT NULL DEFAULT 'LIBERADO',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `motoristaId`, `postoCombustivelId`, `veiculoId`, `tipoCombustivel`, `valor`, `dataEmissao`, `dataValidade`, `status`, `created_at`, `deleted`) VALUES
+(1, 1, 1, 2, 'gasolina-aditivada', 100, '2022-11-26', '2022-11-30', 'LIBERADO', '2022-11-26 02:27:33', 0),
+(2, 1, 1, 2, 'gasolina-aditivada', 100, '2022-11-26', '2022-11-30', 'LIBERADO', '2022-11-26 02:27:54', 0),
+(3, 1, 2, 1, 'diesel', 350, '2022-11-26', '2022-12-01', 'LIBERADO', '2022-11-26 20:10:26', 0);
 
 -- --------------------------------------------------------
 
@@ -131,10 +141,36 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `created_at`, `deleted`)
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `veiculo`
+-- Estrutura da tabela `veiculos`
 --
 
-CREATE TABLE `veiculo` (
+CREATE TABLE `veiculos` (
+  `id` int(11) NOT NULL,
+  `placa` varchar(7) NOT NULL,
+  `modelo` varchar(60) NOT NULL,
+  `marca` varchar(60) NOT NULL,
+  `anoFabricacao` varchar(10) NOT NULL,
+  `tipo` varchar(60) NOT NULL,
+  `dataAquisicao` date NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `veiculos`
+--
+
+INSERT INTO `veiculos` (`id`, `placa`, `modelo`, `marca`, `anoFabricacao`, `tipo`, `dataAquisicao`, `valor`, `deleted`) VALUES
+(1, 'ABC1234', 'S10', 'CHEVROLET', '2020', 'carro', '2022-11-15', '50000.00', 0),
+(2, 'HDV2133', 'GOL', 'VOLKSWAGEN', '2022', 'carro', '2022-10-10', '16000.00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `_veiculo`
+--
+
+CREATE TABLE `_veiculo` (
   `id` int(11) NOT NULL,
   `placa` varchar(7) NOT NULL,
   `modelo` varchar(60) NOT NULL,
@@ -147,11 +183,11 @@ CREATE TABLE `veiculo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `veiculo`
+-- Extraindo dados da tabela `_veiculo`
 --
 
-INSERT INTO `veiculo` (`id`, `placa`, `modelo`, `marca`, `anoFabricacao`, `tipo`, `dataAquisicao`, `valor`, `deleted`) VALUES
-(1, 'ABC1234', 'S10', 'CHEVROLET', '2021', 'carro', '2022-11-15', '50000.00', 0),
+INSERT INTO `_veiculo` (`id`, `placa`, `modelo`, `marca`, `anoFabricacao`, `tipo`, `dataAquisicao`, `valor`, `deleted`) VALUES
+(1, 'ABC1234', 'S10', 'CHEVROLET', '2021', 'carro', '2022-11-15', '50000.00', 1),
 (2, 'HDV2133', 'GOL', 'VOLKSWAGEN', '2006', 'carro', '2022-10-10', '16000.00', 0);
 
 --
@@ -183,9 +219,18 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `veiculo`
+-- Índices para tabela `veiculos`
 --
-ALTER TABLE `veiculo`
+ALTER TABLE `veiculos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UQ_PLACA` (`placa`),
+  ADD KEY `IX_MARCA` (`marca`),
+  ADD KEY `IX_MARCA_TIPO` (`marca`,`tipo`);
+
+--
+-- Índices para tabela `_veiculo`
+--
+ALTER TABLE `_veiculo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -208,7 +253,7 @@ ALTER TABLE `postos`
 -- AUTO_INCREMENT de tabela `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -217,9 +262,15 @@ ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `veiculo`
+-- AUTO_INCREMENT de tabela `veiculos`
 --
-ALTER TABLE `veiculo`
+ALTER TABLE `veiculos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+
+--
+-- AUTO_INCREMENT de tabela `_veiculo`
+--
+ALTER TABLE `_veiculo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
