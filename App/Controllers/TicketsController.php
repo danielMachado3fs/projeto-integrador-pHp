@@ -19,20 +19,20 @@ class TicketsController extends Action {
 
 	public function index() {
 		if (isset($_GET['search'])) {
-			if (isset($_GET['postoCombustivelId']) || isset($_GET['veiculoId']) || isset($_GET['motoristaId'])) {
-				if ($_GET['postoCombustivelId'] === 'all' && $_GET['veiculoId'] === 'all' && $_GET['motoristaId'] === 'all') {
+			if (isset($_GET['postoCombustivelId']) || isset($_GET['veiculoId']) || isset($_GET['status'])) {
+				if ($_GET['postoCombustivelId'] === 'all' && $_GET['veiculoId'] === 'all' && $_GET['status'] === 'all') {
 					$tickets = $this->ticketsModel->getAllWhere();
 				} else {
 					$options = [
 						"postoCombustivelId" => $_GET['postoCombustivelId'],
 						"veiculoId" => $_GET['veiculoId'],
-						"motoristaId" => $_GET['motoristaId'],
+						"status" => $_GET['status'],
 					];
 					$tickets = $this->ticketsModel->getAllWhere($options);
 				}
 				$viewData['postoCombustivelSelected'] = $_GET['postoCombustivelId'];
 				$viewData['veiculoSelected'] = $_GET['veiculoId'];
-				$viewData['motoristaSelected'] = $_GET['motoristaId'];
+				$viewData['statusSelected'] = $_GET['status'];
 			}
 		} else {
 			$tickets = $this->ticketsModel->getAllWhere();
@@ -40,7 +40,7 @@ class TicketsController extends Action {
 
 		$viewData['tickets'] = [];
 		foreach($tickets as $data){
-			$viewData['tickets'][] = $this->getStatus($data);
+			$viewData['tickets'][] = $this->getStatusAndActions($data);
 		}
 
 		$viewData['motoristas'] = $this->funcionarioModel->getAllWhere(array("cargo" => 'MOTORISTA'));
@@ -73,7 +73,7 @@ class TicketsController extends Action {
 		// var_dump($this->ticketsModel);
 		$save_id = $this->ticketsModel->salvar();
 		if($save_id){
-			$this->index();
+			header('location: /tickets');
 		}
 	}
 
@@ -119,20 +119,20 @@ class TicketsController extends Action {
 		}
 	}
 
-	public function getStatus($data){
+	public function getStatusAndActions($data){
 		if((strtotime(date("Y-m-d")) > strtotime($data->dataValidade)) && $data->status == 'LIBERADO'){
 			$data->status = "<span style='color:red; font-weigth: bold;'>VENCIDO</span>";
-			$data->actions .= "<a onclick='alertDeleteticket(<?= $data->id ?>)'><i class='bx bxs-trash'></i></a>";
-			$data->actions .= "<a href='/ticket_view?id=<?= $data->id ?>'><i class='bx bxs-show'></i></a>";
+			$data->actions .= "<a href='#' onclick='alertDeleteticket($data->id)'><i class='bx bxs-trash'></i></a>";
+			$data->actions .= "<a href='/ticket_view?id=$data->id'><i class='bx bxs-show'></i></a>";
 		}else if($data->status == 'LIBERADO'){
 			$data->status = "<span style='color:blue; font-weigth: bold;'>LIBERADO</span>";
-			$data->actions = "<a href='/ticket_edit?id=<?= $data->id ?>'><i class='bx bxs-edit'></i></a>";
-			$data->actions .= "<a onclick='alertDeleteticket(<?= $data->id ?>)'><i class='bx bxs-trash'></i></a>";
-			$data->actions .= "<a href='/baixar_view?id=<?= $data->id ?>'><i class='bx bxs-show'></i></a>";
-			$data->actions .= "<a href='#'><i class='bx bxs-show'></i></a>";
+			$data->actions = "<a href='/ticket_edit?id=$data->id'><i class='bx bxs-edit'></i></a>";
+			$data->actions .= "<a href='#' onclick='alertDeleteticket($data->id)'><i class='bx bxs-trash'></i></a>";
+			$data->actions .= "<a href='/baixar_view?id=$data->id'><i class='bx bxs-show'></i></a>";
+			$data->actions .= "<a href='#'><i class='bx bxs-check-circle'></i></a>";
 		}else{
-			$data->status = "<span style='color:green; font-weigth: bold;'>BAIXADO</span>";
-			$data->actions .= "<a href='/ticket_view?id=<?= $data->id ?>'><i class='bx bxs-show'></i></a>";
+			$data->status = "<span style='color:#02bb2a; font-weigth: bold;'>BAIXADO</span>";
+			$data->actions .= "<a href='/ticket_view?id=$data->id'><i class='bx bxs-show'></i></a>";
 		}
 
 		return $data;

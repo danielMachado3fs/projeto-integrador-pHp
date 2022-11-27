@@ -19,7 +19,7 @@ class FuncionariosController extends Action {
 	public function index() {
 		if (isset($_GET['search'])) {
 			if (isset($_GET['nome']) && isset($_GET['setor'])) {
-				if ($_GET['nome'] === 'all' && $_GET['setor'] === 'all') {
+				if ($_GET['nome'] == '' && $_GET['setor'] === 'all') {
 					$viewData['funcionarios'] = $this->funcionarioModel->getAll();
 				} else {
 					$options = [
@@ -108,6 +108,17 @@ class FuncionariosController extends Action {
 			}
 		}else{
 			echo json_encode(array('success' => false, 'message' => 'Registro não encontrado'));
+		}
+	}
+
+	public function view(){
+		$this->view->topBarTitle = "Funcionários";
+		$this->view->menuSelected = "funcionariosMenu";
+		$data = $this->funcionarioModel->getOne($_GET['id']);
+		if($data->id){
+			echo json_encode(array('success' => true, 'data' => $data));
+		}else{
+			echo json_encode(array('success' => false, 'message' => 'Erro ao buscar dados!'));
 		}
 	}
 }

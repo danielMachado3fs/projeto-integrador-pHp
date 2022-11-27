@@ -61,7 +61,14 @@ function uniqueValue($datas, $typeValue)
             <div class="line"></div>
             <div class="filter">
                 <div class="filter-select">
-                    <span class="label">Motorista</span>
+                    <span class="label">Status</span>
+                    <select name="status" id="status">
+                        <option value="all">Todos</option>
+                        <option <?php if ($statusSelected == 'LIBERADO') echo 'selected'; ?> value="LIBERADO">Liberado</option>
+                        <option <?php if ($statusSelected == 'BAIXADO') echo 'selected'; ?> value="BAIXADO">Baixado</option>
+                        <option <?php if ($statusSelected == 'VENCIDO') echo 'selected'; ?> value="VENCIDO">Vencido</option>
+                    </select>
+                    <!-- <span class="label">Motorista</span>
                     <select name="motoristaId" id="motoristaId">
                         <option value="all">Todos</option>
                         <?php
@@ -70,7 +77,7 @@ function uniqueValue($datas, $typeValue)
                             if($motoristaSelected == $m->id) $selected3 = 'selected'?>
                             <option <?= $selected3 ?> value="<?= $m->id ?>"><?= $m->nome ?></option>
                         <?php } ?>
-                    </select>
+                    </select> -->
                     <i class="custom-arrow-down-type bx bxs-chevron-down"></i>
                     <i class="custom-arrow-up-type bx bxs-chevron-up"></i>
                 </div>
@@ -137,7 +144,7 @@ function uniqueValue($datas, $typeValue)
     });
 
 
-    function alertDeleteFuncionario(id) {
+    function alertDeleteticket(id) {
         Swal.fire({
                 title: "Excluir Funcionario",
                 text: "Esse processo não pode ser desfeito.",
@@ -152,7 +159,7 @@ function uniqueValue($datas, $typeValue)
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "GET",
-                        url: '/funcionario_delete',
+                        url: '/deletar_tickets',
                         data: {
                             id: id
                         },

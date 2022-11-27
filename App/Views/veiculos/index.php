@@ -20,9 +20,8 @@ function uniqueValue($datas, $typeValue)
       <div class="filter">
         <div class="filter-select">
           <span class="label">Tipo</span>
-          <select name="types" id="types" class="select-type" required>
-            <option value="" disabled selected hidden>Selecione o tipo do veículo</option>
-            <option value="all">Todos os tipos</option>
+          <select name="types" id="types" class="select-type">
+            <option value="all">Todos</option>
             <?php
             $typesData = $this->view->dataFilters['tipo'];
             $selected = $this->view->dataFilters['selectedType'];
@@ -42,9 +41,8 @@ function uniqueValue($datas, $typeValue)
       <div class="filter">
         <div class="filter-select">
           <span class="label">Marca</span>
-          <select name="brands" id="brands" class="select-brand" required>
-            <option value="" disabled selected hidden>Selecione a marca do veículo</option>
-            <option value="all">Todas as marcas</option>
+          <select name="brands" id="brands" class="select-brand">
+            <option value="all">Todas</option>
             <?php
             $brandsData = $this->view->dataFilters['marca'];
             $selected = $this->view->dataFilters['selectedBrand'];
@@ -260,8 +258,6 @@ async function viewVehicle(elem) {
     contentType: "application/json",
     dataType: "json",
     success: function(response) {
-      $("#modal-view").toggleClass("hide");
-      $("#fade-view").toggleClass("hide");
 
       function findKey(obj, value) {
         const key = Object.keys(obj).find(key => obj[key].includes(value))
@@ -287,17 +283,21 @@ async function viewVehicle(elem) {
           </div>
           <div class="box-input-view">
             <label>${findKey(response[index],response[index].anoFabricacao) == "AnoFabricacao" && "Ano Fabricação"}</label>
-            <input class="input input-view" type="text" value="${response[index].anoFabricacao}" readonly>
+            <input class="input input-view" type="text" value="${dataFormatada(new Date(response[index].anoFabricacao))}" readonly>
           </div>
           <div class="box-input-view">
             <label>${findKey(response[index],response[index].dataAquisicao) == "DataAquisicao" && "Data De Aquisição"}</label>
-            <input class="input input-view" type="text" value="${response[index].dataAquisicao}" readonly>
+            <input class="input input-view" type="text" value="${dataFormatada(new Date(response[index].dataAquisicao))}" readonly>
           </div>
           <div class="box-input-view">
             <label>${findKey(response[index],response[index].valor)}</label>
             <input class="input input-view-amount" type="text" data-thousands="." data-decimal="," data-prefix="R$ " value="${moneyMask(response[index].valor)}" readonly>
         `)
       });
+
+      
+      $("#modal-view").toggleClass("hide");
+      $("#fade-view").toggleClass("hide");
 
       console.log("Veiculo retornado com sucesso.");
     },

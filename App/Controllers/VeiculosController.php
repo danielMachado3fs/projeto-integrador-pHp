@@ -28,7 +28,7 @@ class VeiculosController extends Action
 			$this->vehicleModel->_set('tipo', $_GET['types']);
 			$this->vehicleModel->_set('marca', $_GET['brands']);
 
-			if (isset($_GET['types']) && isset($_GET['brands'])) {
+			if (isset($_GET['types']) || isset($_GET['brands'])) {
 				if ($_GET['types'] === 'all' && $_GET['brands'] === 'all') {
 					$viewData = $this->vehicleModel->getVehicles();
 				} else {

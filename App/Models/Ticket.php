@@ -54,20 +54,26 @@ class Ticket extends Model{
             $where .= " AND id = '{$options['id']}'";
         }
         
-        if($options['motoristaId']){
-            $where .= " AND motoristaId = {$options['motoristaId']}";
+        if($options['motoristaId'] && $options['motoristaId'] != 'all'){
+            $where .= " AND motoristaId = '{$options['motoristaId']}'";
         }
 
-        if($options['postoId']){
-            $where .= " AND postoId = {$options['postoId']}";
+        if($options['postoCombustivelId'] && $options['postoCombustivelId'] != 'all'){
+            $where .= " AND postoCombustivelId = '{$options['postoCombustivelId']}'";
         }
 
-        if($options['veiculoId']){
-            $where .= " AND veiculoId = {$options['veiculoId']}";
+        if($options['veiculoId'] && $options['veiculoId'] != 'all'){
+            $where .= " AND veiculoId = '{$options['veiculoId']}'";
         }
 
-        if($options['tipoCombustivel']){
-            $where .= " AND tipoCombustivel LIKE '%{$options['tipoCombustivel']}%'";
+        if($options['status'] && $options['status'] != 'all'){
+            if($options['status'] == 'VENCIDO'){
+                $where .= " AND dataValidade < DATE(NOW())";
+            }else if($options['status'] == 'LIBERADO'){
+                $where .= " AND status LIKE '%{$options['status']}%' AND dataValidade >= DATE(NOW())";
+            }else{
+                $where .= " AND status LIKE '%{$options['status']}%'";
+            }
         }
         
         $sql = "SELECT `$this->table`.*,
@@ -81,6 +87,7 @@ class Ticket extends Model{
                 LEFT JOIN `veiculos` ON `veiculos`.id = `$this->table`.veiculoId
                 WHERE `$this->table`.deleted = 0 $where";
 
+        // var_dump($sql);
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_OBJ);

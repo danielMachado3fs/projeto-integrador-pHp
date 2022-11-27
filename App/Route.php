@@ -113,10 +113,17 @@ class Route extends Bootstrap
 			'controller' => 'funcionariosController',
 			'action' => 'edit_store'
 		);
+		
 		$routes['funcionario_delete'] = array(
 			'route' => '/funcionario_delete',
 			'controller' => 'funcionariosController',
 			'action' => 'delete'
+		);
+
+		$routes['funcionario_view'] = array(
+			'route' => '/funcionario_view',
+			'controller' => 'funcionariosController',
+			'action' => 'view'
 		);
 
 		/**fim */
@@ -190,7 +197,7 @@ class Route extends Bootstrap
 		$routes['deletar_tickets'] = array(
 			'route' => '/deletar_tickets',
 			'controller' => 'ticketsController',
-			'action' => 'deletar'
+			'action' => 'delete'
 		);
 
 		$routes['baixar_tickets'] = array(

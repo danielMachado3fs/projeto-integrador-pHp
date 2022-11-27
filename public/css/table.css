@@ -106,7 +106,6 @@
 .container .table table a:nth-child(1):hover {
   background-color: #2753c2;
 }
-
 .container .table table a:nth-child(2) {
   background-color: #ff0000;
 }
@@ -118,4 +117,10 @@
 }
 .container .table table a:nth-child(3):hover {
   background-color: #02bb2a;
+}
+.container .table table a:nth-child(4) {
+  background-color: #10627f;
+}
+.container .table table a:nth-child(4):hover {
+  background-color: #2a7b98;
 }
