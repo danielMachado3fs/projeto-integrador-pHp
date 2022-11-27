@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Nov-2022 às 21:29
+-- Tempo de geração: 27-Nov-2022 às 19:12
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -53,7 +53,8 @@ CREATE TABLE `funcionarios` (
 
 INSERT INTO `funcionarios` (`id`, `nome`, `dataNascimento`, `cpf`, `email`, `telefone`, `cep`, `cidade`, `estado`, `logradouro`, `bairro`, `numero`, `complemento`, `setor`, `cargo`, `created_at`, `deleted`) VALUES
 (1, 'Daniel', '1990-02-18', '111.111.111-11', 'teste@teste.com', '(33) 33333-3333', '35170-272', 'Coronel Fabriciano', 'MG', 'Rua Vicente Barbosa', 'Santa Rita', 1522, 'Casa', 'logistica', 'Motorista', '2022-11-22 13:37:28', 0),
-(2, 'Fabricio', '1991-10-20', '132.468.406-28', 'fabricio@teste.com', '(77) 77755-5555', '35170-300', 'Coronel Fabriciano', 'MG', 'Rua Pedro Nolasco', 'Centro', 963, 'Casa', 'financeiro', 'Gerente', '2022-11-22 22:41:22', 0);
+(2, 'Fabricio', '1991-10-20', '132.468.406-28', 'fabricio@teste.com', '(77) 77755-5555', '35170-300', 'Coronel Fabriciano', 'MG', 'Rua Pedro Nolasco', 'Centro', 963, 'Casa', 'financeiro', 'Gerente', '2022-11-22 22:41:22', 0),
+(3, 'Guilherme Freitas', '1995-12-20', '111.111.111-11', 'teste@teste.com', '(31) 99999-9999', '35170-666', 'Coronel Fabriciano', 'MG', 'Beco Seis', 'Santa Cruz', 1855, 'AP', 'logistica', 'Motorista', '2022-11-27 13:40:51', 0);
 
 -- --------------------------------------------------------
 
@@ -111,9 +112,11 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`id`, `motoristaId`, `postoCombustivelId`, `veiculoId`, `tipoCombustivel`, `valor`, `dataEmissao`, `dataValidade`, `status`, `created_at`, `deleted`) VALUES
-(1, 1, 1, 2, 'gasolina-aditivada', 100, '2022-11-26', '2022-11-30', 'LIBERADO', '2022-11-26 02:27:33', 0),
+(1, 1, 1, 2, 'gasolina-aditivada', 100, '2022-11-26', '2022-11-30', 'LIBERADO', '2022-11-27 16:47:29', 1),
 (2, 1, 1, 2, 'gasolina-aditivada', 100, '2022-11-26', '2022-11-30', 'LIBERADO', '2022-11-26 02:27:54', 0),
-(3, 1, 2, 1, 'diesel', 350, '2022-11-26', '2022-12-01', 'LIBERADO', '2022-11-26 20:10:26', 0);
+(3, 1, 2, 1, 'diesel', 350, '2022-11-26', '2022-12-01', 'LIBERADO', '2022-11-26 20:10:26', 0),
+(8, 3, 2, 2, 'etanol', 150, '2022-11-25', '2022-11-26', 'LIBERADO', '2022-11-27 16:48:12', 0),
+(9, 3, 1, 1, 'diesel', 250, '2022-11-27', '2022-11-28', 'BAIXADO', '2022-11-27 16:59:05', 0);
 
 -- --------------------------------------------------------
 
@@ -241,7 +244,7 @@ ALTER TABLE `_veiculo`
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `postos`
@@ -253,7 +256,7 @@ ALTER TABLE `postos`
 -- AUTO_INCREMENT de tabela `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
