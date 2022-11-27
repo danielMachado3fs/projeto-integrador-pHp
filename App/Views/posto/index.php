@@ -50,9 +50,9 @@ function uniqueValue($data, $typeValue)
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
                         <th>Telefone</th>
-                        <th>Setor</th>
+                        <th>Email</th>
+                        <th>Cidade</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
