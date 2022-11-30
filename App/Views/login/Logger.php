@@ -17,7 +17,7 @@ class Logger implements SplObserver
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'senderemailfrotas@gmail.com';
-        $mail->Password = 'akaeexkpsbwnmprh';
+        $mail->Password = '';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
