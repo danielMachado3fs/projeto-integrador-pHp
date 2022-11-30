@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Miniframework</title>
+		<title>Rastrear - controle de frotas</title>
 		<?= $this->load_head() ?>
 	</head>
 

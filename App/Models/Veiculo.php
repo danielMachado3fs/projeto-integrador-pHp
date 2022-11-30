@@ -6,7 +6,7 @@ use MF\Model\Model;
 
 class Veiculo extends Model
 {
-
+  protected $table = 'veiculos';
   private $marca;
   private $modelo;
   private $tipo;
@@ -30,7 +30,7 @@ class Veiculo extends Model
 
   public function getVehicles()
   {
-    $query = "SELECT * FROM veiculo";
+    $query = "SELECT * FROM $this->table";
     $stmt = $this->db->prepare($query);
     $stmt->execute();
     while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
@@ -43,13 +43,13 @@ class Veiculo extends Model
   public function getVeiculosByTypeAndBrand()
   {
     if ($this->marca == "all") {
-      $query = "SELECT * FROM veiculo WHERE tipo = :tipo";
+      $query = "SELECT * FROM $this->table WHERE tipo = :tipo";
       $params = array('tipo' => $this->tipo);
     } elseif ($this->tipo == "all") {
-      $query = "SELECT * FROM veiculo WHERE marca = :marca";
+      $query = "SELECT * FROM $this->table WHERE marca = :marca";
       $params = array('marca' => $this->marca);
     } else {
-      $query = "SELECT * FROM veiculo WHERE marca = :marca AND tipo = :tipo";
+      $query = "SELECT * FROM $this->table WHERE marca = :marca AND tipo = :tipo";
       $params = array('marca' => $this->marca, 'tipo' => $this->tipo);
     }
     $stmt = $this->db->prepare($query);
@@ -59,13 +59,13 @@ class Veiculo extends Model
 
   public function getBrands()
   {
-    $query = "SELECT marca FROM veiculo WHERE deletado=0";
+    $query = "SELECT marca FROM $this->table WHERE deleted=0";
     return $this->db->query($query)->fetchAll();
   }
 
   public function getTypes()
   {
-    $query = "SELECT tipo FROM veiculo WHERE deletado=0";
+    $query = "SELECT tipo FROM $this->table WHERE deleted=0";
     return $this->db->query($query)->fetchAll();
   }
 
@@ -78,7 +78,7 @@ class Veiculo extends Model
 
   public function viewVehicle($vehicleId)
   {
-    $query = "SELECT * FROM veiculo WHERE id = :id";
+    $query = "SELECT * FROM $this->table WHERE id = :id";
     $stmt = $this->db->prepare($query);
     $stmt->execute(array('id' => $vehicleId));
     $veiculos = $stmt->fetchAll(\PDO::FETCH_ASSOC);

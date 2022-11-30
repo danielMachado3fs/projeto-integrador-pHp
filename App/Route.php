@@ -29,6 +29,12 @@ class Route extends Bootstrap
 			'action' => 'logoff'
 		);
 
+		$routes['dashboard'] = array(
+			'route' => '/dashboard',
+			'controller' => 'loginController',
+			'action' => 'dash'
+		);
+
 		/**fim */
 		/**rotas veiculos */
 
@@ -107,10 +113,17 @@ class Route extends Bootstrap
 			'controller' => 'funcionariosController',
 			'action' => 'edit_store'
 		);
+		
 		$routes['funcionario_delete'] = array(
 			'route' => '/funcionario_delete',
 			'controller' => 'funcionariosController',
 			'action' => 'delete'
+		);
+
+		$routes['funcionario_view'] = array(
+			'route' => '/funcionario_view',
+			'controller' => 'funcionariosController',
+			'action' => 'view'
 		);
 
 		/**fim */
@@ -160,7 +173,37 @@ class Route extends Bootstrap
 		$routes['tickets'] = array(
 			'route' => '/tickets',
 			'controller' => 'ticketsController',
-			'action' => 'tickets'
+			'action' => 'index'
+		);
+
+		$routes['gerar_tickets'] = array(
+			'route' => '/gerar_ticket',
+			'controller' => 'ticketsController',
+			'action' => 'gerar_ticket'
+		);
+
+		$routes['gerar_ticket_store'] = array(
+			'route' => '/gerar_ticket_store',
+			'controller' => 'ticketsController',
+			'action' => 'gerar_ticket_store'
+		);
+
+		$routes['editar_tickets'] = array(
+			'route' => '/editar_ticket',
+			'controller' => 'ticketsController',
+			'action' => 'editar'
+		);
+
+		$routes['deletar_tickets'] = array(
+			'route' => '/deletar_tickets',
+			'controller' => 'ticketsController',
+			'action' => 'delete'
+		);
+
+		$routes['baixar_tickets'] = array(
+			'route' => '/baixar_tickets',
+			'controller' => 'ticketsController',
+			'action' => 'baixar_tickets'
 		);
 
 		/**fim */

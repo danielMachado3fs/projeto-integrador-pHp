@@ -11,30 +11,29 @@ class LoginController extends Action
 {
     private $usuarioModel;
 
-    public function __construct()
-    {
-        $this->usuarioModel = Container::getModel('Usuario');
-    }
-    
-    public function index()
-    {
-        $this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
-        $this->render('index', [], 'layoutLogin');
-    }
+	public function __construct(){
+		$this->usuarioModel = Container::getModel('Usuario');
+	}
 
-    public function autenticar()
-    {
-        $this->usuarioModel->_set('email', $_POST['usuario']);
-        $this->usuarioModel->_set('senha', $_POST['senha']);
+	public function index()
+	{
+		$this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
+		$this->render('index', [], 'layoutLogin');
+	}
 
-        $usuario = $this->usuarioModel->autenticar();
+	public function autenticar()
+	{
+		$this->usuarioModel->_set('email', $_POST['usuario']);
+		$this->usuarioModel->_set('senha', $_POST['senha']);
 
-        if ($usuario && $usuario->id) {
+		$usuario = $this->usuarioModel->autenticar();
 
-            session_start();
+		if ($usuario && $usuario->id) {
 
-            $_SESSION['id'] = $usuario->id;
-            $_SESSION['nome'] = $usuario->nome;
+			session_start();
+
+			$_SESSION['id'] = $usuario->id;
+			$_SESSION['nome'] = $usuario->nome;
 
             $login = new Login();
             $login->userid = $usuario->id;
@@ -42,15 +41,20 @@ class LoginController extends Action
             $login->attach(new Logger());
             $login->handle();
 
-            header('location: /funcionarios');
-        } else {
-            header('location: /?login=erro');
-        }
-    }
+			header('location: /dashboard');
+		} else {
+			header('location: /?login=erro');
+		}
+	}
 
-    public function logoff()
-    {
-        session_destroy();
-        $this->index();
-    }
+	public function logoff(){
+		session_destroy();
+		$this->index();
+	}
+
+	public function dash(){
+		$this->view->topBarTitle = "Dashboard";
+		$this->view->menuSelected = "dashboardMenu";
+		$this->render('dashboard');
+	}
 }

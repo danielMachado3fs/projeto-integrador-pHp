@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/botoes.css" />
 <link rel="stylesheet" href="css/formulario.css" />
 <link rel="stylesheet" href="css/table.css" />
+<link rel="stylesheet" href="css/inicio.css" />
 
 <!-- Scripts -->
 <script src="js/jquery/jquery.min.js"></script>

@@ -24,6 +24,8 @@
   --submenu-color: #e6eef1;
   --line-color: hsl(0, 0%, 77%);
   --shape-black: hsl(0, 0%, 0%);
+  --corBarraProgressVerde: #07e037;
+  --corBarraProgressVermelho: #ff0000;
 
   --colorText-00: #ffffff;
   --colorText-01: #c33333;
@@ -448,7 +450,7 @@ button {
   transform: translate(-50%, -50%);
   background-color: var(--background-color);
   z-index: 10;
-  width: 500px;
+  width: 800px;
   max-width: 90%;
   padding: 1.5rem;
   border-radius: 0.5rem;
