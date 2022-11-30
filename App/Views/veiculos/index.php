@@ -82,7 +82,7 @@ function uniqueValue($datas, $typeValue)
                 <?php
                 $vehicles = $this->view->dados;
                 foreach ($vehicles as $indice => $vehicle) {
-                    if ($vehicle['deletado'] == 0) {
+                    if ($vehicle['deleted'] == 0) {
                         ?>
                         <tr>
                             <td>
