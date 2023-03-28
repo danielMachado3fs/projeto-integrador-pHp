@@ -41,21 +41,21 @@ function uniqueValue($datas, $typeValue)
       <div class="filter">
         <div class="filter-select">
           <span class="label">Marca</span>
-          <select name="brands" id="brands" class="select-brand">
+          <select name="makes" id="makes" class="select-make">
             <option value="all">Todas</option>
             <?php
-            $brandsData = $this->view->dataFilters['marca'];
-            $selected = $this->view->dataFilters['selectedBrand'];
-            $filteredListBrand = uniqueValue($brandsData, "marca");
-            foreach ($filteredListBrand as $indice => $brand) {
+            $makesData = $this->view->dataFilters['marca'];
+            $selected = $this->view->dataFilters['selectedmake'];
+            $filteredListmake = uniqueValue($makesData, "marca");
+            foreach ($filteredListmake as $indice => $make) {
             ?>
-            <option value="<?= $brand ?>" <?php if ($selected == $brand) {
+            <option value="<?= $make ?>" <?php if ($selected == $make) {
                                               echo 'selected';
-                                            } ?>><?= ucfirst($brand) ?></option>
+                                            } ?>><?= ucfirst($make) ?></option>
             <?php } ?>
           </select>
-          <i class="custom-arrow-down-brand bx bxs-chevron-down"></i>
-          <i class="custom-arrow-up-brand bx bxs-chevron-up"></i>
+          <i class="custom-arrow-down-make bx bxs-chevron-down"></i>
+          <i class="custom-arrow-up-make bx bxs-chevron-up"></i>
         </div>
       </div>
       <button class="search filter-btn" type="submit" name="search" value="searched">
@@ -142,9 +142,9 @@ function uniqueValue($datas, $typeValue)
 </div>
 
 <script>
-$(".select-brand").click(function() {
-  $(".container .filter-wrapper .filter .filter-select .custom-arrow-up-brand").toggleClass("selected");
-  $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-brand").toggleClass("selected");
+$(".select-make").click(function() {
+  $(".container .filter-wrapper .filter .filter-select .custom-arrow-up-make").toggleClass("selected");
+  $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-make").toggleClass("selected");
 });
 
 $(".select-type").click(function() {

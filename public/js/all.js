@@ -82,7 +82,7 @@ async function getVehiclesApi(dataId, dataIdNext) {
 }
 
 getVehiclesApi().then(data => {
-  const statesSelect = document.getElementById("vehicle-brand");
+  const statesSelect = document.getElementById("vehicle-make");
   data.forEach(value => {
     const valueFormatted =
       value.nome.charAt(0).toUpperCase() + value.nome.slice(1).toLowerCase();
@@ -94,13 +94,13 @@ getVehiclesApi().then(data => {
 
   const dataOp = dataOptions();
   if (dataOp.datamarca != "") {
-    $("#vehicle-brand").val(dataOp.datamarca).trigger("change");
+    $("#vehicle-make").val(dataOp.datamarca).trigger("change");
   }
 });
 
 $(".select2").on("select2:selecting", function (e) {
-  const brandId = e.params.args.data.element.dataset.id;
-  getVehiclesApi(brandId).then(data => {
+  const makeId = e.params.args.data.element.dataset.id;
+  getVehiclesApi(makeId).then(data => {
     const statesSelect = document.getElementById("vehicle-model");
     statesSelect.removeAttribute("disabled");
     $("#modelo").html("");
@@ -121,12 +121,11 @@ $(".select2").on("select2:selecting", function (e) {
   });
 });
 
-
 function dataFormatada(data) {
-  dia = data.getDate().toString(),
-  diaF = (dia.length == 1) ? '0' + dia : dia,
-  mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-  mesF = (mes.length == 1) ? '0' + mes : mes,
-  anoF = data.getFullYear();
-return diaF + "/" + mesF + "/" + anoF;
+  (dia = data.getDate().toString()),
+    (diaF = dia.length == 1 ? "0" + dia : dia),
+    (mes = (data.getMonth() + 1).toString()), //+1 pois no getMonth Janeiro começa com zero.
+    (mesF = mes.length == 1 ? "0" + mes : mes),
+    (anoF = data.getFullYear());
+  return diaF + "/" + mesF + "/" + anoF;
 }

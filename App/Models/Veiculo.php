@@ -6,7 +6,7 @@ use MF\Model\Model;
 
 class Veiculo extends Model
 {
-  protected $table = 'veiculos';
+  protected $table = 'veiculo';
   private $marca;
   private $modelo;
   private $tipo;
@@ -14,7 +14,7 @@ class Veiculo extends Model
   private $anoFabricacao;
   private $dataAquisicao;
   private $valor;
-  private $id;
+
 
 
   public function _set($atributo, $valor)
@@ -40,7 +40,7 @@ class Veiculo extends Model
     return $veiculos;
   }
 
-  public function getVeiculosByTypeAndBrand()
+  public function getVeiculosByTypeAndMake()
   {
     if ($this->marca == "all") {
       $query = "SELECT * FROM $this->table WHERE tipo = :tipo";
@@ -57,7 +57,7 @@ class Veiculo extends Model
     return $stmt->fetchAll();
   }
 
-  public function getBrands()
+  public function getMakes()
   {
     $query = "SELECT marca FROM $this->table WHERE deleted=0";
     return $this->db->query($query)->fetchAll();
@@ -73,7 +73,12 @@ class Veiculo extends Model
   {
     $query = "UPDATE veiculo SET deleted=:deleted WHERE id = :id";
     $stmt = $this->db->prepare($query);
-    $stmt->execute(array('id' => $vehicleId, 'deleted' => 1));
+    $result=$stmt->execute(array('id' => $vehicleId, 'deleted' => 1));
+    if($result){
+      return $stmt->rowCount();
+    }
+    return $stmt->errorInfo();
+  
   }
 
   public function viewVehicle($vehicleId)
@@ -86,19 +91,35 @@ class Veiculo extends Model
     return ($veiculos);
   }
 
-  public function updateVehicle()
+  public function updateVehicle($vehicleId)
   {
     $query = "UPDATE veiculo SET placa = :placa, modelo = :modelo, marca = :marca, anoFabricacao =:anoFabricacao, tipo= :tipo, dataAquisicao=:dataAquisicao, valor=:valor WHERE id = :id";
     $stmt = $this->db->prepare($query);
-    $stmt->execute(array('id' => $this->id, 'placa' => $this->placa, 'marca' => $this->marca, 'anoFabricacao' => $this->anoFabricacao, 'tipo' => $this->tipo, 'dataAquisicao' => $this->dataAquisicao, 'valor' => $this->valor, "modelo" => $this->modelo));
-    return $stmt->rowCount();
+    $result =  $stmt->execute(array('id' => $vehicleId, 'placa' => $this->placa, 'marca' => $this->marca, 'anoFabricacao' => $this->anoFabricacao, 'tipo' => $this->tipo, 'dataAquisicao' => $this->dataAquisicao, 'valor' => $this->valor, "modelo" => $this->modelo));
+    
+    if($result){
+      return $stmt->rowCount();
+    }
+    return $stmt->errorInfo();
   }
 
   public function addVehicle()
   {
     $query = "INSERT INTO veiculo ( placa, modelo, marca, anoFabricacao, tipo, dataAquisicao, valor) VALUES (:placa,  :modelo,  :marca, :anoFabricacao,  :tipo, :dataAquisicao,:valor)";
     $stmt = $this->db->prepare($query);
-    $stmt->execute(array('placa' => $this->placa, 'marca' => $this->marca, 'anoFabricacao' => $this->anoFabricacao, 'tipo' => $this->tipo, 'dataAquisicao' => $this->dataAquisicao, 'valor' => $this->valor, "modelo" => $this->modelo));
+    $stmt->bindValue(':placa', $this->placa);
+    $stmt->bindValue(':modelo', $this->modelo);
+    $stmt->bindValue(':marca', $this->marca);
+    $stmt->bindValue(':anoFabricacao', $this->anoFabricacao);
+    $stmt->bindValue(':tipo', $this->tipo);
+    $stmt->bindValue(':dataAquisicao', $this->dataAquisicao);
+    $stmt->bindValue(':valor', $this->valor);
+
+    if($stmt->execute()){
+      return $this->db->lastInsertId();
+    }
     return $stmt->errorInfo();
-  }
+}
+
+  
 }

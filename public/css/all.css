@@ -325,8 +325,8 @@ button {
 
 .filter-select .custom-arrow-down-type,
 .filter-select .custom-arrow-up-type,
-.filter-select .custom-arrow-down-brand,
-.filter-select .custom-arrow-up-brand {
+.filter-select .custom-arrow-down-make,
+.filter-select .custom-arrow-up-make {
   position: absolute;
   /* background-color: red; */
   top: 50%;
@@ -347,15 +347,15 @@ button {
   display: inherit;
 }
 
-.filter-select .custom-arrow-down-brand.selected {
+.filter-select .custom-arrow-down-make.selected {
   display: none;
 }
 
-.filter-select .custom-arrow-up-brand {
+.filter-select .custom-arrow-up-make {
   display: none;
 }
 
-.filter-select .custom-arrow-up-brand.selected {
+.filter-select .custom-arrow-up-make.selected {
   display: inherit;
 }
 
@@ -409,7 +409,7 @@ button {
   display: block;
 }
 
-.filter .select-vehicle-brand.show {
+.filter .select-vehicle-make.show {
   display: block;
 }
 

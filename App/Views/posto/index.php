@@ -84,9 +84,9 @@ function uniqueValue($data, $typeValue)
 
 
 <script>
-    $(".select-brand").click(function() {
-        $(".container .filter-wrapper .filter .filter-select .custom-arrow-up-brand").toggleClass("selected");
-        $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-brand").toggleClass("selected");
+    $(".select-make").click(function() {
+        $(".container .filter-wrapper .filter .filter-select .custom-arrow-up-make").toggleClass("selected");
+        $(".container .filter-wrapper .filter .filter-select .custom-arrow-down-make").toggleClass("selected");
     });
 
     $(".select-type").click(function() {

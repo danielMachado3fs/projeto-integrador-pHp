@@ -15,8 +15,8 @@
       <div class="contentsFormulario">
         <div>
           <div class="inputForm">
-            <label for="setor brand-add">Marca</label>
-            <select class="select2" size="1" name="marca" id="vehicle-brand" required>
+            <label for="setor make-add">Marca</label>
+            <select class="select2" size="1" name="marca" id="vehicle-make" required>
               <option disabled selected hidden> Selecione...</option>
             </select>
           </div>
